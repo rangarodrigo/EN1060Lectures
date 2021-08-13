@@ -1,0 +1,54 @@
+\begin{tikzpicture}[scale=0.8, every node/.append style={font=\scriptsize}]
+
+
+    \begin{axis}[
+    		name=axis1,
+		y=1cm,
+		x=0.5cm,
+		 clip=false,
+		 xmin=-10,xmax=10,
+		 xlabel= $\omega$,
+		 ylabel={$H_{lp}(e^{j\omega})$},
+		 ymin=0,ymax=1.5,
+		 axis lines=middle,
+         	xtick={-6, -3, -1, 1, 3, 6},
+         	xticklabels={$-2\pi$, $\pi$, $-\omega_c$, $\omega_c$, $\pi$, $2\pi$},
+		ytick={1.2},
+		 yticklabels={1},
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+     	\foreach \x in {-7, -1, 5}
+     	{
+		\addplot [red, very thick, mark=none] coordinates {(\x,0) (\x,1) (\x+2,1) (\x+2, 0)};
+	}
+    \end{axis}
+    
+    
+        \begin{axis}[
+    		name=axis2,
+    		at={($(axis1.south)+(0,-2cm)$)},anchor= north,
+		y=1cm,
+		x=0.5cm,
+		 clip=false,
+		 xmin=-10,xmax=10,
+		 xlabel= $\omega$,
+		 ylabel={$H_{hp}(e^{j\omega}) = H_{lp}(e^{j(\omega-\pi)})$},
+		 ymin=0,ymax=1.5,
+		 axis lines=middle,
+         	xtick={-6, -3, 3, 6},
+         	xticklabels={$-2\pi$, $\pi$, $\pi$, $2\pi$},
+		ytick={1},
+		 %yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+     	\foreach \x in {-4, 2}
+     	{
+		\addplot [red, very thick, mark=none] coordinates {(\x,0) (\x,1) (\x+2,1) (\x+2, 0)};
+	}
+	\draw[latex-] (axis cs:-2, -0.1) -- (axis cs:-2, -0.5) node[anchor=north] {$-(\pi-\omega_c)$}; 
+	\draw[latex-] (axis cs: 2, -0.1) -- (axis cs:2, -0.5) node[anchor=north] {$(\pi-\omega_c)$}; 
+    \end{axis}
+
+\end{tikzpicture} 

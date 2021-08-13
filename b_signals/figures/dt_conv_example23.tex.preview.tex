@@ -1,0 +1,77 @@
+%& C:\Users\RANGAR~1\AppData\Roaming\TikzEdt\TikzEdt\023~1.0\TEMP_H~1
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}
+[
+    scale=1,
+    name=axis1,
+    axis x line=middle,
+    axis y line=middle,
+    every axis x label={at={(current axis.right of origin)},anchor=north west},
+    every axis y label={at={(current axis.above origin)},anchor= north west},
+    every axis plot post/.style={mark options={fill=black, mark size=1}},
+    xmin=-15,
+    xmax=15,
+    xlabel={$n$},
+    ylabel={$x[n] = \alpha^n u[n]$},
+    ymin=0,
+    ymax=1.2,
+         every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west,},
+         every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+]
+\addplot+[ycomb,domain=0:10, samples=11, blue, mark options={black, mark size=1}] {pow(0.9, x)} ;
+\addplot+[ycomb,domain=-10:-1, samples=10, blue, mark options={black, mark size=1}] {0} ;
+\node at (axis cs: 12, 0.4) {$\dots$};
+\node at (axis cs: -12, 0.4) {$\dots$};
+\end{axis}
+
+
+\begin{axis}
+[
+    scale=1,
+    name=axis2,
+    at={($(axis1.south east)+(0,-1.5cm)$)},anchor=north east,
+    axis x line=middle,
+    axis y line=middle,
+    every axis x label={at={(current axis.right of origin)},anchor=north west},
+    every axis y label={at={(current axis.above origin)},anchor= north west},
+    every axis plot post/.style={mark options={fill=black, mark size=1}},
+    xmin=-15,
+    xmax=15,
+    xlabel={$n$},
+    ylabel={$h[n] = u[n]$},
+    ymin=0,
+    ymax=1.2,
+         every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west,},
+         every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+]
+\addplot+[ycomb,domain=0:10, samples=11, blue, mark options={black, mark size=1}] {1} ;
+\addplot+[ycomb,domain=-10:-1, samples=10, blue, mark options={black, mark size=1}] {0} ;
+\node at (axis cs: 12, 0.4) {$\dots$};
+\node at (axis cs: -12, 0.4) {$\dots$};
+\end{axis}
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture}
+
+\end{document}
+}
+nt}
+
+ocument}

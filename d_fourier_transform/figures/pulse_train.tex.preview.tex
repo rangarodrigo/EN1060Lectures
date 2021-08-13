@@ -1,0 +1,100 @@
+%& C:\Users\RANGAR~1\AppData\Roaming\TikzEdt\TikzEdt\021~1.0\TEMP_H~1
+\begin{document}
+\begin{tikzpicture}
+	
+    \begin{axis}[
+    		name = xt,
+		y=1cm,
+		x=1cm,
+		 clip=false,
+		 xmin=-3.5,xmax=3.5,
+		 xlabel= $t$,
+		 ylabel={$x(t)$},
+		 ymin=0,ymax=1.5,
+		 axis y line=middle,
+		 axis x line=bottom,
+		%ticks=none,
+		ytick = {1},
+		xtick = {-2, -1, 0, 1, 2},
+		xticklabels={$-2T$, $-T$, $0$, $T$, $2T$},
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]		
+		\addplot [mark=*, thick, mark size=1, y filter/.expression={y!=0 ? nan : y}] table[x=w,y=xw] {
+w  xw
+-2       1
+-1        1
+0         1
+1         1
+2         1
+};		
+		\addplot+[red, thick, mark=none, y filter/.expression={y==0 ? nan : y}, quiver={u=0,v=-\thisrow{xw}}, stealth-] table[x=w,y=xw] {
+w  xw
+-2       1
+-1        1
+0         1
+1         1
+2         1
+};
+		\node at (axis cs:3, 0.5) [] {\scriptsize $\cdots$ };	
+		\node at (axis cs:-3, 0.5) [] {\scriptsize $\cdots$ };			
+    \end{axis}
+
+
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture} 
+
+\end{document}
+
+, thick, mark=none, y filter/.expression={y==0 ? nan : y}, quiver={u=0,v=-\thisrow{xw}}, stealth-] table[x=w,y=xw] {
+w  xw
+-2       1
+-1        1
+0         1
+1         1
+2         1
+};
+		\node at (axis cs:2.5, 0.5) [] {\scriptsize $\cdots$ };	
+		\node at (axis cs:-2.5, 0.5) [] {\scriptsize $\cdots$ };			
+    \end{axis}
+    
+
+
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture} 
+
+\end{document}

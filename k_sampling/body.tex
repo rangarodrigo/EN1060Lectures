@@ -1,0 +1,311 @@
+%\part{Sampling and Reconstruction}
+\section{Sampling and Reconstruction}
+%\begin{frame}{Fourier Transform for Periodic Signals}
+%    \begin{itemize}
+%      \item We studied the Fourier transform for aperiodic signals. We can also develop Fourier transform representations for periodic signals, thus allowing us to consider both periodic and aperiodic signals within a unified context.
+%      \item We can construct the Fourier transform of a periodic signal directly from its Fourier series representation. The resulting transform consists of a train of impulses in the frequency domain, with the areas of impulses proportional to the Fourier series coefficients.
+%    \end{itemize}
+%\end{frame}
+%
+%\begin{frame}[allowframebreaks]
+%    Let us consider the signal $x(t)$ with Fourier transform $X(j\omega)$ that is a single impulse of area $2\pi$ at $\omega = \omega_0$:
+%    \begin{equation*}
+%        X(j\omega) = 2\pi \delta(\omega - \omega_0).
+%    \end{equation*}
+%    To determine the signal $x(t)$ we can apply the inverse Fourier transform relation
+%    \pause
+%    \mode<beamer>
+%    {
+%    \begin{equation*}
+%        \begin{split}
+%        x(t) &= \frac{1}{2\pi} \int_{-\infty}^{+\infty}2\pi \delta(\omega - \omega_0)e^{j\omega t}d\omega\\
+%        &= e^{j\omega_0 t}.\\
+%        \end{split}
+%    \end{equation*}
+%    More generally, if $X(j\omega)$ is of the form of a linear combination of impulses equally spaced in frequency, that is,
+%    \begin{equation*}
+%        X(j\omega) = \sum_{k=-\infty}^{+\infty}2\pi a_k \delta(\omega - k\omega_0).
+%    \end{equation*}
+%    then the application of the inverse Transform equation yields
+%    \begin{equation*}
+%        x(t) = \sum_{k=-\infty}^{+\infty}a_k e^{jk\omega_0 t}
+%    \end{equation*}
+%    }
+%    This corresponds exactly to the Fourier \alert{series} representation of a periodic signal.\\
+%    Thus the Fourier transform of a periodic signal with Fourier series coefficients $\{a_k\}$ can be interpreted as a train of impulses occurring at harmonically related frequencies for which the area of the impulse at the $k$th harmonic frequency $k\omega_0$ is $2\pi$ times the $k$the Fourier series coefficient $a_k$.
+%\end{frame}
+%
+%
+%\begin{frame}
+%    \begin{example}
+%        Consider the square wave.
+%        \begin{center}
+%            \input{Figures/periodic_square}
+%        \end{center}
+%        \begin{enumerate}
+%            \item Obtain the Fourier series coefficients $\{a_k\}$.
+%            \item Obtain the Fourier transform of the signal.
+%        \end{enumerate}
+%    \end{example}
+%\end{frame}
+%
+%\begin{frame}
+%    \mode<beamer>
+%    {
+%        Fourier series coefficients:
+%        \begin{equation*}
+%            a_k = \frac{\sin k\omega_0 T_1}{\pi k}
+%        \end{equation*}
+%        \pause
+%        Fourier transform\\
+%        \begin{equation*}
+%            X(j\omega) = \sum_{k=-\infty}^{+\infty}  2\frac{\sin k\omega_0 T_1}{ k}\delta (\omega - k\omega_0)
+%        \end{equation*}
+%
+%    }
+%\end{frame}
+%
+%
+%\begin{frame}
+%     \begin{center}
+%        \input{Figures/ft_square_wave}
+%    \end{center}
+%\end{frame}
+%
+%\begin{frame}
+%    \begin{example}
+%        Sketch the Fourier transform of
+%        \begin{enumerate}
+%            \item $x(t) = \sin\omega_0 t$
+%            \item $x(t) = \cos\omega_0 t$
+%        \end{enumerate}
+%    \end{example}
+%\end{frame}
+%
+%
+%\begin{frame}
+%    \begin{example}
+%        Obtain the Fourier transform of the impulse train given by
+%        \begin{equation*}
+%            x(t) = \sum_{k=-\infty}^{+\infty}  \delta(t - kT)
+%        \end{equation*}
+%        which is periodic with period $T$. Sketch.
+%    \end{example}
+%    \mode<beamer>
+%    {
+%        \begin{equation*}
+%            a_k = \frac{1}{T}\int_{-T/2}^{T/2}\delta(t)e^{-jk\omega_0 t} dt \pause = \frac{1}{T}
+%        \end{equation*}
+%        \pause
+%        \begin{equation*}
+%            X(j\omega) = \dfrac{2\pi}{T}\sum_{k=-\infty}^{+\infty}\delta\left(\omega - \dfrac{2\pi k}{T}\right)
+%        \end{equation*}
+%
+%    }
+%\end{frame}
+
+%\subsection{Sampling}
+
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item Under ceratin conditions, a continuous-time (CT) signal can be completely represented by and recoverable from knowledge of its values at points equally spaced in time.
+        \item These values are called \alert{samples}.
+        \item This somewhat surprising property follows from a basic result that is referred to as the alert{sampling theorem}.
+        \item Sampling theorem is extremely important, particulary as it forms the bridge between CT signals and discrete-time (DT) signals.
+        \item Under ceratin conditions, a CT signal can be completely recovered from a sequence of its samples. This provides a mechanism for representing CT signals by a DT signal.
+        \item We exploit sampling to convert a CT signal to a DT signal , process the DT signal using a DT system, and then convert back to CT.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    In general, in the absence of any additional information, we would not expect that a signal could be uniquely specified by a sequence of equally spaced samples.
+    {
+        \centering
+        \input{./Figures/samples_and_signals}
+    }
+    \par
+    However, if the signal is band-limited---i.e., if its Fourier transform is zero outside a finite band of frequencies---and if the samples are taken sufficiently close together in relation to the highest frequency present in the signal, then the samples uniquely specify the signal, and we can reconstruct it perfectly.\par \par
+    This result is known as the \alert{sampling theorem}.
+\end{frame}
+
+%\begin{frame}{Sampling}
+%    \begin{itemize}
+%        \item The sampling theorem, which is a relatively straightforward consequence of
+%the modulation theorem, is elegant in its simplicity.
+%        \item It states that a bandlimited time function can be exactly reconstructed from equally spaced samples provided that the sampling rate is sufficiently high---specifically, that it is greater than twice the highest frequency present in the signal.
+%        \item A similar result holds for both continuous time and discrete time.
+%        \item One of the important consequences of the sampling theorem is that it provides a mechanism for exactly representing a bandlimited continuous-time signal by a sequence of samples, that is, by a discrete-time signal.
+%        \item The reconstruction procedure consists of processing the impulse train of samples by an ideal lowpass filter.
+%    \end{itemize}
+%\end{frame}
+
+
+%\begin{frame}{Sampling Frequency and Aliasing}
+%    \begin{itemize}
+%        \item Assumption: the sampling frequency is greater than twice the highest frequency in the signal.
+%        \item The reconstructing lowpass filter will always generate a reconstruction consistent with this constraint, even if the constraint was purposely or inadvertently violated in the sampling process.
+%    \item Said another way, the reconstruction process will always generate a signal that is bandlimited to less than half the sampling frequency
+%and that matches the given set of samples.
+%    \item If the original signal met these constraints, the reconstructed signal will be identical to the original signal.
+%    \item On the other hand, if the conditions of the sampling theorem are violated, then frequencies in the original signal above half the sampling frequency become reflected down to frequencies less than half the sampling frequency.
+%    \item This distortion is commonly referred to as \alert{aliasing}, a name suggestive of the fact that higher frequencies (above half the sampling frequency) take on the alias of lower frequencies.
+%    \end{itemize}
+%\end{frame}
+
+
+
+
+
+
+\begin{frame}{Impulse-Train Sampling}
+    A convenient way to represent sampling of a CT signal at regular intervals is to use an impulse train multiplied by the CT signal $x(t)$ that we wish to sample.
+    \begin{equation*}
+        x_p(t) = x(t)p(t)
+    \end{equation*}
+    where
+    \begin{equation*}
+        p(t) = \sum_{n=-\infty}^{\infty}\delta(t-nT)
+    \end{equation*}
+    $p(t)$: sampling function, $T$: sampling period, $\omega_s = 2\pi/T$: sampling frequency.
+    \begin{align*}
+        x_p(t) &= x(t)\sum_{n=-\infty}^{+\infty} \delta(t - nT)\\
+        &= \sum_{n=-\infty}^{+\infty} x(nT)\delta(t - nT)
+    \end{align*}
+\end{frame}
+
+
+\begin{frame}
+
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \mode<beamer>
+            {
+                \begin{tikzpicture}[scale=0.5]
+                	\draw (0,0) node (a) [anchor=east] {$x(t)$} ++(2,0) node (b) [draw, circle, inner sep=1pt] { $\times$} ;
+                	\path (2,2) node (d) [anchor=south] {$p(t)$} ++(0, -2);
+                	\path  (b)  ++(2,0) node (c) [anchor=west] {$x_p(t)$};
+                	%\edge (a) -- (b);
+                	
+                	
+                	\draw[-latex]  (a) edge (b);
+                	\draw[-latex]  (b) edge (c);
+                	\draw[-latex]  (d) edge (b);
+                \end{tikzpicture}
+                \pause
+
+                \input{./Figures/impulse_train_sampling}
+            }
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{equation*}
+                x_p(t) = x(t)p(t)
+            \end{equation*}
+            \begin{equation*}
+                p(t) = \sum_{n=-\infty}^{\infty}\delta(t-nT)
+            \end{equation*}
+            \begin{align*}
+                x_p(t) &= x(t)\sum_{n=-\infty}^{+\infty} \delta(t - nT)\\
+                &= \sum_{n=-\infty}^{+\infty} x(nT)\delta(t - nT)
+            \end{align*}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Impulse-Train Sampling Cntd.}
+    \begin{align*}
+        X_p(j\omega)  &= \frac{1}{2\pi} \left[X(\omega)\ast P(\omega)\right]\\
+        P(j\omega) &= \frac{2\pi}{T} \sum_{k=-\infty}^{+\infty}\delta\left(\omega- k\omega_s\right)
+    \end{align*}
+    \pause
+    \begin{equation*}
+        X_p(j\omega) = \frac{1}{T}\sum_{k=-\infty}^{+\infty} X\left(j(\omega- k\omega_s)\right)
+    \end{equation*}
+    \pause
+    That is, $X_p(j\omega)$ is a periodic function of $\omega$ consiting of superposition of shifted replicas of $X(j\omega)$, scaled by $1/T$.
+\end{frame}
+
+\begin{frame}{}
+
+    \begin{center}
+        \input{Figures/aliasing01}
+    \end{center}
+\end{frame}
+
+\begin{frame}{}
+\mode<beamer>
+{
+    \begin{center}
+        \input{Figures/aliasing02}
+    \end{center}
+}
+\end{frame}
+
+\begin{frame}{}
+\mode<beamer>
+{
+    \begin{center}
+        \input{Figures/aliasing03}
+    \end{center}
+}
+\end{frame}
+
+
+\begin{frame}{Sampling Theorem}
+    If $\omega_M < (\omega_s - \omega_M)$, or equivalently $\omega_s > 2\omega_M$, there is no overlap between shifted replicas of $X(j\omega)$. If $\omega_s > 2\omega_M$, $x(t)$ can be recovered exactly from $x_p(t)$ by means of a lowpass filter with gain $T$ and a cutoff frequency greater than $\omega_M$ and less than $\omega_s - \omega_M$.
+    \begin{theorem} \end{theorem}
+    Let $x(t)$ be a band-limited signal with $X(j\omega) = 0$ for $|\omega| > \omega_M$. Then $x(t)$ is uniquely determined by its samples $x(nT), \: n = 0, \pm 1, \pm 2, \dots$, if
+    \begin{equation*}
+        \omega_2 > 2\omega_M,
+    \end{equation*}
+    where $\omega_2 = 2\pi/T$\par
+    Given these samples, we can reconstruct $x(t)$ by generating a periodic impulse train in which successive impulses have amplitudes that are successive sample values, The impulse train is then passed through an ideal lowpass filter with gain $T$ and cutoff frequency greater than $\omega_M$ and less than $\omega_s - \omega_M$. the resulting output signal will exactly equal $x(t)$.
+        
+
+\end{frame}
+
+
+
+\begin{frame}{}
+    \begin{center}
+        \input{Figures/sampling_block_diagram}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Discrete-Time Processing of Continuous-Time Signals}
+    \input{Figures/dt_processing_ct}
+\end{frame}
+
+\begin{frame}{}
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{tikzpicture}[scale=0.5]
+        	\draw (0,0) node (a) [anchor=east] {$x(t)$} ++(2,0) node (b) [draw, circle, inner sep=1pt] { $\times$} ;
+        	\path (2,2) node (d) [anchor=south] {$p(t) = \sum_{n=-\infty}^{\infty}\delta(t-nT)$} ++(0, -2);
+        	\path  (b)  ++(4,0) node (c) [anchor=west, draw, rectangle, minimum height = 1cm] {$H(\omega)$};
+        	\path (c) ++(4,0) node (e) {$x_r(t)$};
+        	\draw[-latex]  (a) edge (b);
+        	\draw[-latex]  (b) edge node[above] {$x_p(t)$}(c) ;
+        	\draw[-latex]  (d) edge (b);
+        	\draw[-latex]  (c) edge (e);
+        \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{align*}
+            x_p(t) &= x(t)p(t)\\
+            &= x(t)\sum_{n=-\infty}^{\infty}\delta(t-nT)\\
+                &=\sum_{n=-\infty}^{\infty}x(nT)\delta(t-nT)
+        \end{align*}
+
+        \begin{align*}
+            x_r(t) &= x_p(t)\ast h(t)\\
+            &= \sum_{n = -\infty}^{+\infty} x(nT)h(t-nT)\\
+        \end{align*}
+    \end{column}
+\end{columns}
+
+
+
+\end{frame}
+

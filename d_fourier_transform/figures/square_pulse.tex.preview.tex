@@ -1,0 +1,71 @@
+%& C:\Users\RANGAR~1\AppData\Roaming\TikzEdt\TikzEdt\023~1.0\TEMP_H~1
+\begin{document}
+\begin{tikzpicture}
+
+	\def\xmin{-4}
+	\def\xmax{4}
+	\def\ymin{0}
+	\def\ymax{2}
+	\def\period{2.0}
+	\def\T1{1}
+	\def\A{1}
+	
+	\edef\pulse{|- ++(2*\T1, \A) |- ++( \period - \T1, -\A)}
+
+	
+	\draw (\xmin-1, 0) --(\xmax+1, 0) node[anchor=west] {\small $t$};
+	\draw (0, \ymin) --(0, \ymax) node[anchor=south] {\small $x(t)$};
+	\draw[thick, red] (-3, 0) -- (-\T1,0) -- (-\T1, 1) -- (\T1,1) -- (\T1,0) -- (3,0);
+	
+	\node at (-\T1, 0) [anchor=north] {\small $-T_1$};
+	\node at (\T1, 0) [anchor=north] {\small $T_1$};
+	\node at (0, \A) [anchor=south east] {\small $1$};	
+
+	
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture}
+
+\end{document}
+
+
+ --(axis cs:-0.6,-0.3) node  [anchor=north] { $-\pi/T_1$ } ;		
+    \end{axis}
+\end{scope}		
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture}
+
+\end{document}

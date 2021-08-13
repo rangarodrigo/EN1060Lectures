@@ -1,0 +1,26 @@
+\begin{tikzpicture}[xscale=3, yscale=0.4]
+	\def\d{0.2}
+	\draw[-latex] (-1.6,0) -- (1.6, 0) node[anchor=west] {$t$} ;
+	\draw[-latex] (0,-0.1) -- (0, 2) node[anchor=south] {$x(t)$} ;
+	
+	\foreach \y in {1}
+	{
+	    \draw (-0.1, \y) node[anchor=south, xshift=0.15cm] {\y}-- ++(0.2, 0);
+	}
+	
+	\foreach \t/\lab 	in { -1/-T_0,  1/T_0}
+	{
+	    \draw (\t, -0.1) node[anchor=north, yshift=-0.1cm] {$\lab$} -- ++(0, 0.2);
+	}
+	\foreach \t in {-1, 0, 1}
+	{
+		\draw[thick] (\t -0.5,0) -|  (\t - \d,1) -|  (\t+\d, 0) -- (\t + 0.5, 0);
+	}
+
+
+	   \draw (-\d, -0.1) node[anchor=north, yshift=-0.1cm] {$-\dfrac{\tau}{2}$};
+	   \draw (\d, -0.1) node[anchor=north, yshift=-0.1cm] {$\dfrac{\tau}{2}$};
+	
+
+
+\end{tikzpicture} 

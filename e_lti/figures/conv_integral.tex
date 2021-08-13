@@ -1,0 +1,27 @@
+
+\pgfplotsset{every axis/.append style={font=\scriptsize}}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+	name=axis1,
+       width=16cm,
+       height=6cm,
+	axis y line=middle,
+	axis x line=bottom,
+	ymin=0,ymax=6,
+	xmin=-3,xmax=9,	
+	xlabel=$\tau$,
+	ylabel= $x(\tau)h_\tau(t)$,	
+	xtick={1, 2},	
+	xticklabels={$k\Delta$, $(k+1)\Delta$},
+	ytick=\empty,
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+		every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=south},	
+	clip=false,
+]
+\addplot [black, thick, smooth] coordinates {(-2, 1) (-1, 0.2) (0,3) (1, 4.5) (2,5.1) (3, 5.2) (4, 3) (5, 0.3) (6, 3) (7,4) (8, 7)};
+\draw[pattern=north west lines, pattern color=HotPink] (axis cs:1,0) rectangle (axis cs:2, 4.5);
+\draw[latex-] (axis cs:1.5,3) -- (axis cs: 4,6) node [anchor=south] {$x(k\Delta)h_{k\Delta}(t)\Delta$};
+
+\end{axis}
+
+\end{tikzpicture} 

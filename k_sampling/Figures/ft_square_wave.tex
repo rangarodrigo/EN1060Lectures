@@ -1,0 +1,34 @@
+% \documentclass[tikz]{standalone}
+% \usetikzlibrary{math}
+% \tikzmath{
+%   function sinc(\x) {
+%     if  abs(\x) < .001 then { % (|x| < .001) ~ (x = 0)
+%       return 1;
+%     } else {
+%       return sin(\x r)/\x;
+%     };
+%   };
+% }
+% \begin{document}
+  \begin{tikzpicture}[scale=0.6]
+    %\draw[help lines] (-3.5,-1.5) grid (3.5,1.5);
+	\draw (-10, 0) -- (10, 0) node [anchor=west] {$\omega$};
+	\draw (0, 0) -- (0, 4) node [anchor=south] {$X(j\omega)$};
+    \begin{scope}[very thick, domain=-3*pi:3*pi, samples=100, smooth]
+      %\draw[blue] plot (\x,{sin(5*\x r)});
+      \draw[red, dashed]  plot (\x,{pi*sinc(\x)});
+      \foreach \x/\y in {{-5*pi/2}/{}, {-3*pi/2}/{},{-pi/2}/{2}, 0/{\pi}, {pi/2}/{2}, {3*pi/2}/{}, {5*pi/2}/{}}
+      {
+      		\draw[-latex] (\x, 0) -- ++(0, {pi*sinc(\x)}) node [anchor=south] {$\y$};
+      }
+      \foreach \x in {-2*pi, -pi, pi, 2*pi}
+      {
+      		\draw[fill=black]  (\x, 0) circle (0.1);
+      }
+      \foreach \x/\y in {{-pi/2}/{-\omega_0},  {pi/2}/{\omega_0}}
+      {
+      		\node at (\x, 0) [anchor=north] {\scriptsize $\y$};
+      }      
+    \end{scope}
+  \end{tikzpicture}
+% \end{document} 

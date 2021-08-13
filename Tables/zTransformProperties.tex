@@ -1,0 +1,68 @@
+\renewcommand{\arraystretch}{2}
+\begin{table}
+    \centering
+    \caption{Properties of the $z$-Transform}\label{ta:zt_properties}
+        \begin{tabular}{@{}p{3cm}p{4cm}lp{5cm}@{}}
+            \toprule
+                Property & \text{Aperiodic signal} & \text{$z$-transform} & ROC\\
+                            \midrule
+                Linearity & $ax_1[n] + bx_2[n]$ & $aX_1(z) + bX_2(z)$ & at least $R_1 \cap R_2$\\
+                Time shifting & $x[n-n_0]$ & $z^{-n_0}X(z)$ & $R$\\
+                Scaling in $z$ domain & $z_0^{n}x[n]$ & $X\left(\dfrac{z}{z_0}\right)$ & $|z_0|R$\\
+                 & $e^{j \omega n}x[n] $ & $X(e^{-j \omega n}z)$ & $R$\\
+                 & $a^nx[n]$ & $X(a^{-1}z)$ & Scaled version of $R$ (i.e., $|a|R$, the set of points $\{a|z|\}$ for $z$ in $R$)\\
+                 Time reversal & $x[-n]$ & $X(z^{-1})$ & Inverted $R$ (i.e., $R^{-1}$ = the set of points $z^{-1}$, where $z$ is in $R$).\\
+                 Time expansion & $x_{(k)}[n] = \begin{cases}x[r],& n=rk\\0, &n \neq rk\end{cases}$ for some integer $r$.& $X(z^k)$ & $R^{1/k}$ (i.e., the set of points $z^{1/k}$, where $z$ is in $R$)\\
+                Convolution &$x_1[n]\ast x_2[n]$ & $X_1(z)X_2(z)$ & at least $R_1 \cap R_2$\\
+                Conjugation & $x^\ast[n]$ & $X^\ast(z^\ast)$ & $R$\\
+                %Convolution & $x_1[n] \ast x_2[n]$ & $X_1(z)X_2(z)$ & At least the intersection of $R_1$ and $R_2$\\
+                First difference & $x[n] - x[n-1]$ & $(1-z^{-1})X(z)$ & At least the intersection of $R$ and $|z| > 0$\\
+                Accumulation & $\sum_{k=-\infty}^{n}x[k]$ & $\frac{1}{1-z^{-1}}X(z)$ & At least the intersection of $R$ and $|z| > 1$\\
+                Differentiation in the $z$-domain & $nx[n]$ & $-z\frac{dX(z)}{dz}$ & $R$\\
+                \multicolumn{4}{l}
+                {
+                    Initial value theorem:\par\hspace{0.5in}
+    If $x[n] = 0$ for $n<0$, then $x[0] = \lim_{z \rightarrow \infty} X(z)$
+                }\\
+            \bottomrule
+        \end{tabular}
+\end{table}
+
+
+
+%\begin{frame}{$z$-Transform Properties}
+%    \begin{center}
+%        \begin{tabular}{lp{1.5in}p{1in}p{1.5in}}
+%            \hline
+%            Property & Signal & Transform & ROC\\
+%            \hline
+%            Linearity & $ax_1[n] + bx_2[n]$ & $aX_1(z) + bX_2(z)$ & at least $R_1 \cap R_2$\\
+%            Time shifting & $x[n-n_0]$ & $z^{-n_0}X(z)$ & $R$\\
+%            Scaling in $z$ domain & $z_0^{n}x[n]$ & $X\left(\dfrac{z}{z_0}\right)$ & $|z_0|R$\\
+%             & $e^{j \omega n}x[n] $ & $X(e^{-j \omega n}z)$ & $R$\\
+%             & $a^nx[n]$ & $X(a^{-1}z)$ & Scaled version of $R$ (i.e., $|a|R$, the set of points $\{a|z|\}$ for $z$ in $R$)\\
+%             Time reversal & $x[-n]$ & $X(z^{-1})$ & Inverted $R$ (i.e., $R^{-1}$ = the set of points $z^{-1}$, where $z$ is in $R$).\\
+%             Time expansion & $x_{(k)}[n] = \begin{cases}x[r],& n=rk\\0, &n \neq rk\end{cases}$ for some integer $r$.& $X(z^k)$ & $R^{1/k}$ (i.e., the set of points $z^{1/k}$, where $z$ is in $R$)\\
+%            Convolution &$x_1[n]\ast x_2[n]$ & $X_1(z)X_2(z)$ & at least $R_1 \cap R_2$\\
+%            \hline
+%        \end{tabular}
+%    \end{center}
+%\end{frame}
+
+%\begin{frame}{$z$-Transform Properties II}
+%    \begin{center}
+%        \begin{tabular}{lp{1.5in}p{1in}p{1.5in}}
+%            \hline
+%            Property & Signal & Transform & ROC\\
+%            \hline
+%            Conjugation & $x^\ast[n]$ & $X^\ast(z^\ast)$ & $R$\\
+%            Convolution & $x_1[n] \ast x_2[n]$ & $X_1(z)X_2(z)$ & At least the intersection of $R_1$ and $R_2$\\
+%            First difference & $x[n] - x[n-1]$ & $(1-z^{-1})X(z)$ & At least the intersection of $R$ and $|z| > 0$\\
+%            Accumulation & $\sum_{k=-\infty}^{\infty}$ & $\frac{1}{1-z^{-1}}X(z)$ & At least the intersection of $R$ and $|z| > 1$\\
+%            Differentiation in the $z$-domain & $nx[n]$ & $-z\frac{dX(z)}{dz}$ & $R$\\
+%            \hline
+%        \end{tabular}
+%    \end{center}
+%    Initial value theorem:\par
+%    If $x[n] = 0$ for $n<0$, then $x[0] = \lim_{z \rightarrow \infty} X(z)$
+%\end{frame} 

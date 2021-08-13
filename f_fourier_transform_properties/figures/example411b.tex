@@ -1,0 +1,41 @@
+\begin{tikzpicture}[scale=0.6]
+	\begin{scope}
+		\def\xmin{-2}
+		\def\xmax{2}
+		\def\ymin{-1}
+		\def\ymax{2}
+		
+		\node at (-4, 0) {$g(t) = \frac{dx(t)}{dt}=$};
+		
+		\draw[-latex] (\xmin, 0) -- (\xmax, 0) node[anchor=west] {$t$};
+		\draw[-latex] (0, \ymin) -- (0, \ymax) node[anchor=south] {$$};
+		\node at (-1,0) [anchor=north] {$-1$};
+		\node at (1,0) [anchor=north] {$1$};		
+		
+
+		\node at (0,1) [anchor=south east] {$1$};			
+
+		\draw[thick] (-1,0) -- (-1, 1) -- (1,1) -- (1,0);	
+	\end{scope}
+	
+	\begin{scope}[xshift=5.5cm]
+		\def\xmin{-2}
+		\def\xmax{2}
+		\def\ymin{-2}
+		\def\ymax{2}
+		
+		\node at (-2.5, 0) {$+$};
+		
+		\draw[-latex] (\xmin, 0) -- (\xmax, 0) node[anchor=west] {$t$};
+		\draw[-latex] (0, \ymin) -- (0, \ymax) node[anchor=south] {$$};
+		\node at (-1,0) [anchor=south] {$-1$};
+		\node at (1,0) [anchor=south] {$1$};		
+		
+
+			
+
+		\draw[thick, -latex] (-1,0) -- ++(0, -1)  node[anchor=north] {$-1$};	
+
+		\draw[thick, -latex] (1,0) -- ++(0, -1)  node[anchor=north] {$-1$};				
+	\end{scope}	
+\end{tikzpicture}

@@ -1,0 +1,42 @@
+%& C:\Users\RANGAR~1\AppData\Roaming\TikzEdt\TikzEdt\023~1.0\TEMP_H~1
+\begin{document}
+\tikzstyle{int}=[draw, fill=pink!60, minimum size=2em, align=center]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[node distance=2.5cm,auto,>=latex',
+var/.style={draw=none, fill=none, text width=6mm, inner sep=2mm}
+]
+	
+	\begin{scope}[yshift=-2cm,
+		start chain,
+		node distance=5mm,
+		every node/.style={int, draw,on chain,join,inner sep=2mm},
+		every join/.style={->}
+		]
+		\node[var]  {$x(t)$\\ $x[n]$};	
+		\node[int, text width=6mm]  {$h(t)$\\ $h[n]$};	
+		\node[var]  {$y(t)$\\ $y[n]$};	
+	\end{scope}
+	
+	
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture} 
+
+\end{document}

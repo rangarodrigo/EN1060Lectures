@@ -1,0 +1,42 @@
+\renewcommand{\arraystretch}{2}
+\begin{table}
+    \centering
+    \caption{Properties of the Fourier Transform}\label{ta:ft_properties}
+        \begin{tabular}{@{}p{6cm}LL@{}}
+            \toprule
+                Property & \text{Aperiodic signal} & \text{Fourier transform}\\
+            \midrule
+                     & x(t) & X(j\omega)\\
+                     & y(t) & Y(j\omega)\\
+            \midrule
+                Linearity & ax(t) + by(t)& aX(j\omega)  + bY(j\omega)\\
+                Time shifting & x(t-t_0) & e^{-j\omega t_0}X(j\omega)\\
+                Frequency shifting & e^{j\omega_0 t}x(t) & X(j(\omega - \omega_0))\\
+                Conjugation & x^\ast(t) & X^\ast(-j\omega)\\
+                Time reversal & x(-t) & X(-j\omega)\\
+                Time and frequency scaling & x(at) & \frac{1}{|a|}X\left(\frac{j\omega}{a}\right)\\
+                Convolution& x(t)\ast y(t) & X(j\omega)Y(j\omega)\\
+                Multiplication & x(t) y(t) & \dfrac{1}{2\pi}X(j\omega)\ast Y(j\omega)\\
+                Differentiation in time & \frac{d}{dt}x(t) & j\omega X(j\omega)\\
+                Integration & \int_{-\infty}^{t}x(\tau)d\tau & \frac{1}{j\omega}  X(j\omega) + \pi X(0)\delta(\omega)\\
+                Differentiation in frequency & tx(t) & j\frac{d}{d\omega}  X(j\omega)\\
+                Conjugate symmetry for real signals & x(t)\quad \text{real} & \left\{\begin{aligned}&X(j\omega) = X^\ast(-j\omega)\\
+                                                                                                    &\mathfrak{Re}\{X(j\omega)\} = \mathfrak{Re}\{X(-j\omega)\}\\
+                                                                                                    &\mathfrak{Im}\{X(j\omega)\} = -\mathfrak{Im}\{X(-j\omega)\} \\
+                                                                                                    &|X(j\omega)| = |X(-j\omega)|\\
+                                                                                                    &\sphericalangle X(j\omega) = -\sphericalangle X(-j\omega)                             \end{aligned}\right.\\
+                Symmetry for real and even signals & x(t)\quad \text{real and even} & X(j\omega)\quad \text{real and even}\\
+                Symmetry for real and odd signals & x(t)\quad \text{real and odd} & X(j\omega)\quad \text{purely imaginary and odd}\\
+                Even-odd decomposition for real signals & \begin{aligned}&x_e(t) = \mathfrak{Ev}\{x(t)\}, \quad [x(t)\:\text{real}]\\
+                                                                          &x_o(t) = \mathfrak{Od}\{x(t)\}, \quad [x(t)\:\text{real}] \end{aligned}  & \begin{aligned}&\mathfrak{Re}\{X(j\omega)\}\\  &j\mathfrak{Im}\{X(j\omega)\} \end{aligned}\\
+            \midrule
+            \multicolumn{3}{l}{
+            Parseval's relation for aperiodic signals\par \hspace{0.in}
+%            \begin{equation*}
+                $\int_{-\infty}^{\infty}|x(t)|^2dt = \frac{1}{2\pi}\int_{-\infty}^{\infty}|X(j\omega)|^2d\omega$
+%            \end{equation*}
+            }\\
+            \bottomrule
+        \end{tabular}
+\end{table}
+

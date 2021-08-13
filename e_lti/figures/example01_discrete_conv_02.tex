@@ -1,0 +1,206 @@
+
+\begin{tikzpicture}[scale=0.6]
+	\def\nmin{-4}
+	\def\nmax{4}		
+	\begin{scope}[xshift=0cm, yshift=0cm]	
+		\def\h{{0,  0, 0, 2, 1, 0, 0, 0, 0}}		
+		\draw (\nmin-1, 0) -- (\nmax+1,0) node[anchor=west] {\small $k$};
+		\foreach \n in {\nmin, ..., \nmax}
+		{
+			\node at (\n, 0) [anchor=north] {\scriptsize $\n$};
+		}
+		\node at (\nmax,1.5) [anchor=south] {\scriptsize $h[-k]$};
+		
+		\foreach \n in {0,1, ...,8}
+		{
+			\pgfmathparse{\h[\n]}
+			\edef\hn{\pgfmathresult}	
+			\ifthenelse{\hn > 0}
+			{
+				\draw[thick, fill=black]  (\n + \nmin, 0) -- ++(0, \hn) circle (1pt) node[anchor=east] {\scriptsize $\hn$};
+			}
+			{
+				\draw[fill=black] (\n+ \nmin,  0) circle (1pt);
+			}
+		}
+	\end{scope}		
+
+
+	\begin{scope}[xshift=0cm, yshift=-3cm]	
+		\def\h{{0, 0,  0, 0, 2, 1, 0, 0, 0}}		
+		\draw (\nmin-1, 0) -- (\nmax+1,0) node[anchor=west] {\small $k$};
+		\foreach \n in {\nmin, ..., \nmax}
+		{
+			\node at (\n, 0) [anchor=north] {\scriptsize $\n$};
+		}
+		\node at (\nmax,1.5) [anchor=south] {\scriptsize $h[1-k]$};
+		
+		\foreach \n in {0,1, ...,8}
+		{
+			\pgfmathparse{\h[\n]}
+			\edef\hn{\pgfmathresult}	
+			\ifthenelse{\hn > 0}
+			{
+				\draw[thick, fill=black]  (\n + \nmin, 0) -- ++(0, \hn) circle (1pt) node[anchor=east] {\scriptsize $\hn$};
+			}
+			{
+				\draw[fill=black] (\n+ \nmin,  0) circle (1pt);
+			}
+		}
+	\end{scope}		
+
+
+	\begin{scope}[xshift=0cm, yshift=-6cm]	
+		\def\h{{0, 0, 0,  0, 0, 2, 1, 0, 0}}		
+		\draw (\nmin-1, 0) -- (\nmax+1,0) node[anchor=west] {\scriptsize $k$};
+		\foreach \n in {\nmin, ..., \nmax}
+		{
+			\node at (\n, 0) [anchor=north] {\scriptsize $\n$};
+		}
+		\node at (\nmax,1.5) [anchor=south] {\scriptsize $h[2-k]$};
+		
+		\foreach \n in {0,1, ...,8}
+		{
+			\pgfmathparse{\h[\n]}
+			\edef\hn{\pgfmathresult}	
+			\ifthenelse{\hn > 0}
+			{
+				\draw[thick, fill=black]  (\n + \nmin, 0) -- ++(0, \hn) circle (1pt) node[anchor=east] {\scriptsize $\hn$};
+			}
+			{
+				\draw[fill=black] (\n+ \nmin,  0) circle (1pt);
+			}
+		}
+	\end{scope}		
+	
+	\begin{scope}[xshift=0cm, yshift=-9cm]	
+		\def\h{{0, 0, 0, 0,  0, 0, 2, 1, 0}}		
+		\draw (\nmin-1, 0) -- (\nmax+1,0) node[anchor=west] {\scriptsize $k$};
+		\foreach \n in {\nmin, ..., \nmax}
+		{
+			\node at (\n, 0) [anchor=north] {\scriptsize $\n$};
+		}
+		\node at (\nmax,1.5) [anchor=south] {\scriptsize $h[3-k]$};
+		
+		\foreach \n in {0,1, ...,8}
+		{
+			\pgfmathparse{\h[\n]}
+			\edef\hn{\pgfmathresult}	
+			\ifthenelse{\hn > 0}
+			{
+				\draw[thick, fill=black]  (\n + \nmin, 0) -- ++(0, \hn) circle (1pt) node[anchor=east] {\scriptsize $\hn$};
+			}
+			{
+				\draw[fill=black] (\n+ \nmin,  0) circle (1pt);
+			}
+		}
+	\end{scope}			
+
+   \pause
+	\begin{scope}[xshift=0cm, yshift=0cm]		
+		\def\x{{0, 0, 0, 1, 1, 2, 0, 0, 0}}	
+
+
+		\node at (\nmax,.5) [anchor=south, red] {\scriptsize $x[k]$};
+		
+		\foreach \n in {0,1, ...,8}
+		{
+			\pgfmathparse{\x[\n]}
+			\edef\xn{\pgfmathresult}	
+			\ifthenelse{\xn > 0}
+			{
+				\draw[red, thick, fill=red, opacity=.4]  (\n + \nmin, 0) -- ++(0, \xn) circle (1pt) node[anchor=east] {\scriptsize $\xn$};
+			}
+			{
+
+			}
+		}
+	\end{scope}		
+	
+
+	\begin{scope}[xshift=0cm, yshift=-3cm]		
+		\def\x{{0, 0, 0, 1, 1, 2, 0, 0, 0}}	
+
+
+		\node at (\nmax,.5) [anchor=south, red] {\scriptsize $x[k]$};
+		
+		\foreach \n in {0,1, ...,8}
+		{
+			\pgfmathparse{\x[\n]}
+			\edef\xn{\pgfmathresult}	
+			\ifthenelse{\xn > 0}
+			{
+				\draw[red, thick, fill=red, opacity=.4]  (\n + \nmin, 0) -- ++(0, \xn) circle (1pt) node[anchor=east] {\scriptsize $\xn$};
+			}
+			{
+
+			}
+		}
+	\end{scope}		
+	
+
+	\begin{scope}[xshift=0cm, yshift=-6cm]		
+		\def\x{{0, 0, 0, 1, 1, 2, 0, 0, 0}}	
+
+
+		\node at (\nmax,.5) [anchor=south, red] {\scriptsize $x[k]$};
+		
+		\foreach \n in {0,1, ...,8}
+		{
+			\pgfmathparse{\x[\n]}
+			\edef\xn{\pgfmathresult}	
+			\ifthenelse{\xn > 0}
+			{
+				\draw[red, thick, fill=red, opacity=.4]  (\n + \nmin, 0) -- ++(0, \xn) circle (1pt) node[anchor=east] {\scriptsize $\xn$};
+			}
+			{
+
+			}
+		}
+	\end{scope}		
+	
+
+	\begin{scope}[xshift=0cm, yshift=-9cm]		
+		\def\x{{0, 0, 0, 1, 1, 2, 0, 0, 0}}	
+
+
+		\node at (\nmax,.5) [anchor=south, red] {\scriptsize $x[k]$};
+		
+		\foreach \n in {0,1, ...,8}
+		{
+			\pgfmathparse{\x[\n]}
+			\edef\xn{\pgfmathresult}	
+			\ifthenelse{\xn > 0}
+			{
+				\draw[red, thick, fill=red, opacity=.4]  (\n + \nmin, 0) -- ++(0, \xn) circle (1pt) node[anchor=east] {\scriptsize $\xn$};
+			}
+			{
+
+			}
+		}
+	\end{scope}		
+	
+    \pause
+	\begin{scope}[xshift=8cm, yshift=0cm]		
+
+		\node at (0,.5) [anchor=west, magenta] {\scriptsize $y[0] = 2\times 1+ 1\times 1 = 3$};
+		
+	\end{scope}		
+	
+	
+	\begin{scope}[xshift=8cm, yshift=-3cm]		
+		\node at (0,.5) [anchor=west, magenta] {\scriptsize $y[1] = 2\times 1+ 1\times 2 = 4$};
+	\end{scope}		    
+	
+	\begin{scope}[xshift=8cm, yshift=-6cm]		
+
+		\node at (0,.5) [anchor=west, magenta] {\scriptsize $y[2] = 2\times 2 = 4$};
+		
+	\end{scope}		
+	
+	
+	\begin{scope}[xshift=8cm, yshift=-9cm]		
+		\node at (0,.5) [anchor=west, magenta] {\scriptsize $y[3] = 0$};
+	\end{scope}		
+	
+\end{tikzpicture} 

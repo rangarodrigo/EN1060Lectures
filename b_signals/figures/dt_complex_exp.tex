@@ -1,0 +1,57 @@
+
+\begin{tikzpicture}
+  \def\r{1.12}
+\begin{axis}
+[
+    scale=1,
+    name = plot1,
+    axis x line=middle,
+    axis y line=middle,
+    x label style={at={(current axis.right of origin)},anchor=west},
+    y label style={at={(current axis.above origin)}, anchor=south},
+    every axis plot post/.style={mark options={fill=black, mark size=1}},
+    xmin=-25,
+    xmax=25,
+    xlabel={$n$},
+    ylabel={$x[n] = |C||\alpha|^n\cos(\omega_0n + \theta), \quad |\alpha| = 1.12, \theta = 0$},
+    ymin=-7,
+    ymax=7,
+]
+\addplot+[ycomb,blue, mark options={black, mark size=1}] table [x={n}, y={xn}] {b_signals/figures/dt_complex_exp_alpha_greater_than_one.dat};
+      \addplot[domain=-25:25,samples=200,red, dashed]{pow(\r,x)}
+                                node[right,pos=1,font=\footnotesize, black]{\scriptsize $e^{rt}$};
+                                      \addplot[domain=-25:25,samples=200,red, dashed]{-pow(\r,x)}
+                                node[right,pos=1,font=\footnotesize, black]{\scriptsize $-e^{rt}$};
+\node at (axis cs: -16, -4) {$| \alpha | >1$};
+\end{axis}
+
+%\begin{scope}[xshift=8cm]
+\def\r{0.92}
+\begin{axis}
+[
+    scale=1,
+    at=(plot1.right of south east), anchor=left of south west,
+    axis x line=middle,
+    axis y line=middle,
+    x label style={at={(current axis.right of origin)},anchor=west},
+    y label style={at={(current axis.above origin)}, anchor=south},
+    every axis plot post/.style={mark options={fill=black, mark size=1}},
+    xmin=-25,
+    xmax=25,
+    xlabel={$n$},
+    ylabel={$xn = |C||\alpha|^n\cos(\omega_0n + \theta), \quad |\alpha| = 0.92, \theta = 0$},
+    ymin=-7,
+    ymax=7,
+]
+\addplot+[ycomb,blue, mark options={black, mark size=1}] table [x={n}, y={xn}] {b_signals/figures/dt_complex_exp_alpha_less_than_one.dat};
+      \addplot[domain=-25:25,samples=200,red, dashed]{pow(\r,x)}
+                                node[right,pos=1,font=\footnotesize, black]{\scriptsize $e^{rt}$};
+                                      \addplot[domain=-25:25,samples=200,red, dashed]{-pow(\r,x)}
+                                node[right,pos=1,font=\footnotesize, black]{\scriptsize $-e^{rt}$};
+\node at (axis cs: -16, -4) {$| \alpha | < 1$};
+\end{axis}
+%\end{scope}
+
+
+\end{tikzpicture}
+%b_signals/figures/ 

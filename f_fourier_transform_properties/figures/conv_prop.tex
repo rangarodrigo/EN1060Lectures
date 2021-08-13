@@ -1,0 +1,18 @@
+\tikzstyle{int}=[draw, fill=blue!20, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[node distance=2.5cm,auto,>=latex']
+	\node [int] (h) {$h(t)$};
+	\node (x) [left of=h,node distance=2cm, anchor=east] {$x(t)$};
+	\node (y) [right of=h, node distance=2cm, anchor=west]{$y(t) = h(t)\ast x(t)$};
+	\path[->] (x) edge  (h);
+	\draw[->] (h) edge (y) ;
+\pause
+	\begin{scope}[yshift=-2cm]
+		\node [int] (h) {$H(j\omega)$};
+		\node (x) [left of=h,node distance=2cm, anchor=east] {$X(j\omega)$};
+		\node (y) [right of=h, node distance=2cm, anchor=west]{$Y(j\omega) = H(j\omega)X(j\omega)$};
+		\path[->] (x) edge  (h);
+		\draw[->] (h) edge (y) ;		
+	\end{scope}
+\end{tikzpicture} 

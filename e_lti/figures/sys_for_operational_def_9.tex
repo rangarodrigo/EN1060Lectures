@@ -1,0 +1,11 @@
+\begin{tikzpicture}[start chain, system/.style={draw, fill=pink!60, minimum size=2em, align=center}]
+	\node (a) [on chain, text width=2em] {$x(t)$\\ $\delta(t)$};
+	\node (b) [system, on chain, text width=2em] {$\int$};
+	\node (c) [ on chain, text width=2em, align=center] {$\cdots$};	
+	\node (d) [system, on chain, text width=2em] {$\int$};	
+	\node (e) [on chain, text width=2em] {$y(t)$ \\ $u_{-m}(t)$};	
+	\draw[-latex] (a) -- (b);
+	\draw[-latex] (b) -- (c);
+	\draw[-latex] (c) -- (d);	
+	\draw[-latex] (d) -- (e);		
+\end{tikzpicture}

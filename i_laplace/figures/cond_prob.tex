@@ -1,0 +1,22 @@
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\begin{tikzpicture}
+
+    \begin{scope}[shift={(0cm,0cm)}, fill opacity=0.3]
+        \draw \firstcircle;
+	\draw[fill=blue] \secondcircle;
+    \end{scope}
+\draw[latex-]  (1,0) -- ++ (45:3) node[fill=white] {$A \wedge B$};
+    \begin{scope}[shift={(0cm,0cm)}]
+       \draw \firstcircle node[] {$A$};
+        \draw \secondcircle node [] {$B$};
+    \end{scope}
+    \pause
+  \draw [clip] \secondcircle;
+  \draw [pattern=north west lines, pattern color=blue] \firstcircle;
+
+
+
+\end{tikzpicture} 

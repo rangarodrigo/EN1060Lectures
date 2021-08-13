@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  block/.style={rectangle,draw=EntcMaroonDef,thick, fill=EntcBaigeDef,rounded corners=.8ex},
+  grandchild/.style={grow=down,xshift=1em,anchor=west,
+    edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}},
+  first/.style={level distance=6ex},
+  second/.style={level distance=12ex},
+  third/.style={level distance=18ex},
+  level 1/.style={sibling distance=10em}]
+    % Parents
+    \node[block] {Systems}
+      child[level distance=2ex]
+    [edge from parent fork down]
+    % Children and grandchildren
+    child{node[block] {Linear}
+      child[grandchild,first] {node[block]{Time-invariant}}
+      child[grandchild,second] {node[block]{Time-variant}}}
+    child{node[block] {Non-Linear}
+      child[grandchild,first] {node[block]{Time-invariant}}
+      child[grandchild,second] {node[block]{Time-variant}}};
+\end{tikzpicture} 

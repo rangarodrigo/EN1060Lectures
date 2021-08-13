@@ -1,0 +1,75 @@
+\begin{tikzpicture}[scale=0.8, every node/.append style={font=\scriptsize}]
+
+
+    \begin{axis}[
+    		name=axis1,
+		y=0.25cm,
+		x=0.5cm,
+		 clip=false,
+		 xmin=-10,xmax=10,
+		 xlabel= $\omega$,
+		 ylabel={$X(e^{j\omega})$},
+		 ymin=-1.5,ymax=7,
+		 axis lines=middle,
+         	xtick={-3.1416, 3.1416, 6.2832},
+         	xticklabels={$-\pi$, $\pi$, $2\pi$},
+		%ytick={},
+		 %yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+		\addplot [red, smooth, very thick, mark=none] table [x={omega}, y={X}] {h_dtft/figures/dtft_square_pulse_N1_2.dat};
+		%\addplot [red, smooth, very thick, mark=none] table [x={omega}, y={X}] {./dtft_square_pulse_N1_2.dat};
+		\node at (axis cs:10, 3) [anchor=east] { $N_1=2$ };
+    \end{axis}
+
+    \pause
+    \begin{axis}[
+    		name=axis2,
+    		at={($(axis1.south)+(0cm,-1cm)$)},anchor= north,
+		y=0.25cm,
+		x=0.5cm,
+		 clip=false,
+		 xmin=-10,xmax=10,
+		 xlabel= $\omega$,
+		 ylabel={$X(e^{j\omega})$},
+		 ymin=-1.5,ymax=9,
+		 axis lines=middle,
+         	xtick={-3.1416, 3.1416, 6.2832},
+         	xticklabels={$-\pi$, $\pi$, $2\pi$},
+		%ytick={},
+		 %yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+		\addplot [red, smooth, very thick, mark=none] table [x={omega}, y={X}] {h_dtft/figures/dtft_square_pulse_N1_3.dat};
+		%\addplot [red, smooth, very thick, mark=none] table [x={omega}, y={X}] {./dtft_square_pulse_N1_3.dat};
+		\node at (axis cs:10, 3) [anchor=east] { $N_1=3$ };
+    \end{axis}
+
+    \pause
+    \begin{axis}[
+    		name=axis3,
+    		at={($(axis2.south)+(0cm,-1cm)$)},anchor= north,
+		y=0.25cm,
+		x=0.5cm,
+		 clip=false,
+		 xmin=-10,xmax=10,
+		 xlabel= $\omega$,
+		 ylabel={$X(e^{j\omega})$},
+		 ymin=-1.5,ymax=11,
+		 axis lines=middle,
+         	xtick={-3.1416, 3.1416, 6.2832},
+         	xticklabels={$-\pi$, $\pi$, $2\pi$},
+		%ytick={},
+		 %yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+		\addplot [red, smooth, very thick, mark=none] table [x={omega}, y={X}] {h_dtft/figures/dtft_square_pulse_N1_4.dat};
+		%\addplot [red, smooth, very thick, mark=none] table [x={omega}, y={X}] {./dtft_square_pulse_N1_4.dat};
+		\node at (axis cs:10, 3) [anchor=east] { $N_1=4$ };
+    \end{axis}
+
+
+\end{tikzpicture} 

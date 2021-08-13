@@ -1,0 +1,29 @@
+\begin{tikzpicture}[xscale=0.579, yscale=1.818]
+	\def\piv{3.1416}
+	\coordinate (o) at (0,0);
+	\draw (o) ++(-6.5,0) -- ++(13, 0) node [anchor=west] {\scriptsize $t$};
+	\draw (o) ++(0,-0.1) -- ++(0, 1.3);% node [anchor=south] {\scriptsize $x(t)$};	
+	
+	\foreach \y in {0, 0.1, ..., 1}
+	{
+		\draw[thin, gray, densely dotted] (-2*\piv, \y) -- ++(4*\piv, 0);
+	}	
+
+	\foreach \x in {- 6.2832, -5.9690, ...,  6.2832}
+	{
+		\draw[thin, gray, densely dotted]  (\x, 0) -- ++(0,1);
+	}		
+	
+	
+	\foreach \x/\v in {-2*\piv/-2, -1.5*\piv/-\frac{3}{2}, -1*\piv/-, -0.5*pi/{-\frac{1}{2}},  0.5*\piv/\frac{1}{2}, 1*\piv/, 1.5*\piv/\frac{3}{2}, 2*\piv/2}
+	{
+		\draw (\x, 0) -- ++(0,1);
+		\node at (\x, 0) [anchor=north, minimum height=0.4cm] {\scriptsize $ \v\pi$};
+	}
+	\foreach \y in {0, 0.5, 1}
+	{
+		\draw (-2*\piv, \y) -- ++(4*\piv, 0);
+		\node  at (0, \y) [anchor=north east] {\scriptsize $ \y $};
+	}
+
+\end{tikzpicture} 

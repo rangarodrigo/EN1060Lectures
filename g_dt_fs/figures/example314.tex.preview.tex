@@ -1,0 +1,116 @@
+%& C:\Users\RANGAR~1\AppData\Roaming\TikzEdt\TikzEdt\023~1.0\TEMP_H~1
+\begin{document}
+\begin{tikzpicture}[scale=1]	
+
+
+\begin{filecontents}{example314.dat}
+o    xo
+-2 0.5
+-1 0.1667
+0 0.5
+1 0.1667
+2 0.5
+3 0.1667
+\end{filecontents}
+
+    \begin{axis}[
+    		name=axis1,
+		y=2cm,
+		x=0.7cm,
+		 clip=false,
+		 xmin=-3.5,xmax=4.5,
+		 xlabel= $n$,
+		 ylabel={$x[n]$},
+		 ymin=0,ymax=0.75,
+		 axis lines=middle,
+         %xtick={-3.1416, -2.513, -1.885, -1.257, -0.6283, 0, 0.6283, 1.257, 1.885, 2.513, 3.1416, 6.2832},
+         %xticklabels={-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 10 },
+		 ytick={1},
+		 yticklabels={1},
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+		%\addplot [red, smooth, mark=none] table [x={o}, y={xo}] {example313.dat;%
+		\addplot [blue, ycomb, mark=*] table [x={o}, y={xo}] {example314.dat};%
+
+		\node at (axis cs:-3.5, 0.5) [anchor=west] { $\cdots$ };
+		\node at (axis cs:4.5, 0.5) [anchor=east] { $\cdots$ };		
+		\node at (axis cs:0, 0.5) [anchor=east] { $\frac{1}{2}$ };		
+		\node at (axis cs:1, 0.2) [anchor=east] { $\frac{1}{6}$ };			
+    \end{axis}
+
+%
+% %\pause
+%     \begin{axis}[
+%     	name=axis2,
+%         	at={($(axis1.south east)+(0,-0.5cm)$)},anchor=north east,
+% 		y=0.25cm,
+% 		x=0.8cm,
+% 		 clip=false,
+% 		 xmin=-3.5,xmax=10,
+% 		 xlabel= $k$,
+% 		 ylabel={$Na_k$},
+% 		 ymin=-1.5,ymax=6,
+% 		 axis lines=middle,
+%          xtick={-3.1416, -2.513, -1.885, -1.257, -0.6283, 0, 0.6283, 1.257, 1.885, 2.513, 3.1416, 6.2832},
+%          xticklabels={-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 20 },
+% 		 %ytick={-1, 1},
+% 		 yticklabels=\empty,
+% 		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+% 		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+%      ]
+% 		\addplot [red, smooth, mark=none] table [x={o}, y={xo}] {g_dt_fs/figures/dtfs_square_N20.dat};%.
+% 		\addplot [blue, ycomb, mark=*] table [x={o}, y={xo}] {g_dt_fs/figures/dtfs_square_stem_N20.dat};%.
+%
+% 		\node at (axis cs:10, 3) [anchor=east] { $N=20$ };
+%     \end{axis}
+%
+% %\pause
+%         \begin{axis}[
+%     	name=axis3,
+%     	at={($(axis2.south east)+(0,-0.5cm)$)},anchor=north east,
+% 		y=0.25cm,
+% 		x=0.8cm,
+% 		 clip=false,
+% 		 xmin=-3.5,xmax=10,
+% 		 xlabel= $k$,
+% 		 ylabel={$Na_k$},
+% 		 ymin=-1.5,ymax=6,
+% 		 axis lines=middle,
+%          xtick={-3.1416, -2.513, -1.885, -1.257, -0.6283, 0, 0.6283, 1.257, 1.885, 2.513, 3.1416, 6.2832},
+%          xticklabels={-20, -16, -12, -8, -4, 0, 4, 8, 12, 16, 20, 40 },
+% 		 %ytick={-1, 1},
+% 		 yticklabels=\empty,
+% 		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+% 		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+%      ]
+% 		\addplot [red, smooth, mark=none] table [x={o}, y={xo}] {g_dt_fs/figures/dtfs_square_N40.dat};
+% 		\addplot [blue, ycomb, mark=*] table [x={o}, y={xo}] {g_dt_fs/figures/dtfs_square_stem_N40.dat};
+%
+% 		\node at (axis cs:10, 3) [anchor=east] { $N=40$ };
+%     \end{axis}
+
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture} 
+
+\end{document}
+
+
+}

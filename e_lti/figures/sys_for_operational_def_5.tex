@@ -1,0 +1,52 @@
+\begin{tikzpicture}
+	\begin{axis}
+	[
+		name=axis1,
+	       width=6cm,
+	       height=3cm,	
+		axis y line=middle,
+		axis x line=bottom,
+		ymin=0,ymax=1.5,
+		xmin=-3,xmax=3,	
+		xlabel=$t$,
+		ylabel={$\delta_\Delta(t)$},	
+		xtick={0, 1},
+		xticklabels={0, $\Delta$},
+		ytick={1},
+		yticklabels={$\frac{1}{\Delta}$},
+		every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+		every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=west},	
+		clip=false,
+	]
+	\addplot[red, very thick] coordinates {(0,0) (0,1) (1,1) (1,0)};
+	
+	\node at (axis cs:4, 0.5) [anchor=west] {$\delta(t) = \lim_{\Delta \rightarrow 0} \delta_\Delta(t)$};
+	
+	\end{axis}
+	
+	\begin{axis}
+	[
+		name=axis2,
+		at={($(axis1.south east)+(0,-1.1cm)$)},anchor=north east,		
+	       width=6cm,
+	       height=3cm,	
+		axis y line=middle,
+		axis x line=bottom,
+		ymin=0,ymax=1.5,
+		xmin=-3,xmax=3,	
+		xlabel=$t$,
+		ylabel={$r_\Delta(t)$},	
+		xtick={0, 1, 2},
+		xticklabels={0, $\Delta$,  $2\Delta$},
+		ytick={1},
+		yticklabels={$\frac{1}{\Delta}$},
+		every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+		every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=west},	
+		clip=false,
+	]
+	\addplot[red, very thick] coordinates {(0,0) (1,1) (2,0)};
+	
+	\node at (axis cs:4, 0.5) [anchor=west, text width=4cm] {$r_\Delta(t) = \delta_\Delta(t) \ast \delta_\Delta(t)$\\ $\delta(t) = \lim_{\Delta \rightarrow 0} r_\Delta(t)?$};
+	
+	\end{axis}	
+\end{tikzpicture}

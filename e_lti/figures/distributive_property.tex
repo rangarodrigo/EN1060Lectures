@@ -1,0 +1,33 @@
+\tikzstyle{int}=[draw, fill=pink!60, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[node distance=2.5cm,auto,>=latex']
+
+	\begin{scope}[node distance=0.5cm and 0.5cm,auto,>=latex']
+		\node (a) at (0,0) {$x(t)$};
+		\node (b) [right of=a, coordinate] {};
+		\node (c) [int, above right = of b] {$h_1(t)$};
+		\node (d) [int, below right = of b] {$h_2(t)$};		
+		\draw (a) -- (b);
+		\draw[-latex] (b) |- (c);
+		\draw[-latex] (b) |- (d);	
+		\node (e) [right = of b, xshift=2cm, circle, draw, fill=white] {$+$};
+		\draw[] (c) -| node[near start, above] {$y_1(t)$} (e.north);		
+		\draw[] (d) -|  node[near start, below] {$y_2(t)$} (e);	
+		\node (f) [right of=e, xshift=0.5cm] {$y(t)$};	
+		\draw[-latex] (e.east) |- (f);	
+	\end{scope}
+	
+	\begin{scope}[yshift=-2.5cm,
+		start chain,
+		node distance=5mm,
+		every node/.style={int, draw,on chain,join,inner sep=2mm},
+		every join/.style={->}
+		]
+		\node[draw=none, fill=none]  {$x(t)$};	
+		\node { $h_1(t) + h_2$};
+		\node[draw=none, fill=none]   {$y(t)$};
+	\end{scope}
+	
+	
+\end{tikzpicture} 

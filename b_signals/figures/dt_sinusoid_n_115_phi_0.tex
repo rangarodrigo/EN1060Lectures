@@ -1,0 +1,29 @@
+
+\begin{tikzpicture}
+\begin{axis}
+[%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    scale=1,
+    axis x line=middle,
+    axis y line=middle,
+    every axis plot post/.style={mark options={fill=black, mark size=1}},
+    y=0.5cm,
+    x=0.15cm,
+    xmin=-36,
+    xmax=36,
+    %xtick={1, 2, 3, 4},
+    %xticklabels={1, 2, 3, 4},
+    %extra x ticks={-4, -3, -2, -1},
+   % extra x tick labels={-4, -3, -2, -1},
+   % extra x tick style={ xticklabel style={yshift=0.5ex, anchor=south} },
+    xlabel={$n$},
+    ylabel={$x[n] = A\cos(2/3n)$},
+    %ytick={-2,-1, 0, 1, 2},
+    xticklabels=\empty,
+%    ymin=-1.5,
+%    ymax=1.5,
+        x label style={at={(current axis.right of origin)},anchor=west},
+        y label style={at={(current axis.above origin)}, anchor=south},
+]
+\addplot+[ycomb,blue, mark options={black, mark size=1}] table [x={n}, y={xn}] {b_signals/figures/dt_sinusoid_n_115_phi_0.dat};
+\end{axis}
+\end{tikzpicture} 

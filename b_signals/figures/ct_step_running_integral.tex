@@ -1,0 +1,75 @@
+\begin{tikzpicture}[
+  declare function={
+    unitstep(\x)= (\x>-0.1)*(1);
+  },
+    declare function={
+    unitstepdelayed(\x)= (\x>0.1)*(1);
+  },
+    declare function={
+    impulse(\x)= and(\x>-0.1, \x<0.1)*(1);
+  }
+]
+\begin{axis}
+[
+        scale=0.6,
+    axis x line=middle,
+    axis y line=middle,
+    every axis plot post/.style={mark options={fill=black}},
+    xmin=-12,
+    xmax=12,
+    xlabel={$\tau$},
+    ylabel={$$},
+    y=1.2cm,
+    x=0.3cm,
+    ymin=-0.2,
+    ymax=1.5,
+   ytick={1},
+   yticklabels={1},
+   xticklabels=\empty,
+    clip=false,
+        x label style={at={(current axis.right of origin)},anchor=west},
+        y label style={at={(current axis.above origin)}, anchor=south},
+]
+\draw[draw=none, pattern=north west lines, pattern color=red!80!blue!30] (axis cs:-12, 1.2) rectangle (axis cs:-3, 0);
+%\addplot+[ycomb,domain=-10:10, blue] {impulse(x)};
+\draw[red, dashed, thick] (axis cs:-12, 1.2) -| (axis cs:-3, 0) node [anchor=north, yshift=-3pt] {$t$};
+\draw[blue, thick, -latex] (axis cs: 0, 0) -| (axis cs:0, 1);
+\node at (axis cs: 0, 0)  [anchor=north, yshift=-3pt] {0};
+\node at (axis cs:4, 1)  [] {$t<0$};
+\end{axis}
+
+\pause
+
+\begin{scope}[yshift=-3cm]
+	\begin{axis}
+[
+        scale=0.6,
+    axis x line=middle,
+    axis y line=middle,
+    every axis plot post/.style={mark options={fill=black}},
+    xmin=-12,
+    xmax=12,
+    xlabel={$\tau$},
+    ylabel={$$},
+    y=1.2cm,
+    x=0.3cm,
+    ymin=-0.2,
+    ymax=1.5,
+   ytick={1},
+   yticklabels={1},
+   xticklabels=\empty,
+    clip=false,
+        x label style={at={(current axis.right of origin)},anchor=west},
+        y label style={at={(current axis.above origin)}, anchor=south},
+]
+%\addplot+[ycomb,blue] table [x={n}, y={xn}] {step.dat};
+\draw[draw=none, pattern=north west lines, pattern color=red!80!blue!30] (axis cs:-12, 1.2) rectangle (axis cs:3, 0);
+%\addplot+[ycomb,domain=-10:10, blue] {impulse(x)};
+\draw[red, dashed, thick] (axis cs:-12, 1.2) -| (axis cs:3, 0) node [anchor=north, yshift=-3pt] {$t$};
+\draw[blue, thick, -latex] (axis cs: 0, 0) -| (axis cs:0, 1);
+\node at (axis cs: 0, 0)  [anchor=north, yshift=-3pt] {0};
+\node at (axis cs:4, 1)  [] {$t>0$};
+\end{axis}
+\end{scope}
+
+\end{tikzpicture} 

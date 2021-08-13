@@ -1,0 +1,113 @@
+
+\begin{tikzpicture}[scale=0.6]	
+
+
+	
+	\begin{axis}[
+		name=axis1,
+		%at={($(axis1.east)+(10cm,0)$)},anchor= east,
+		% 		y=1cm,
+		% 		x=1cm,
+		clip=false,
+		xmin=-10,xmax=10,
+		xlabel= $\omega$,
+		ylabel={$|X(e^{j\omega})|$},
+		ymin=0,ymax=2.5,
+		axis lines=middle,
+		xtick={-6.2832, -3.1416, 0, 3.1416, 6.2832},
+		xticklabels={$-2\pi$, $-\pi$, 0, $\pi$, $2\pi$},
+		ytick={0.5,1, 1.5, 2},
+		%yticklabels=\empty,
+		every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+		]
+		\def\a{0.5};
+		\addplot [red, very thick, smooth, domain=-2*pi:2*pi, samples=201]
+		{
+		1/sqrt(1  + \a*\a*cos(deg(x))*cos(deg(x)) -2*\a*cos(deg(x)) - \a*\a*sin(deg(x))*sin(deg(x)))
+		};
+		\node at (axis cs:7, 1) {$a>0$};
+	\end{axis}	
+	\pause
+	
+	\begin{axis}[
+		name=axis2,
+		at={($(axis1.east)+(10cm,0)$)},anchor= east,
+		 %		y=0.1cm,
+		% 		x=1cm,
+		clip=false,
+		xmin=-10,xmax=10,
+		xlabel= $\omega$,
+		ylabel={$\angle X(e^{j\omega})$},
+		ymin=-2,ymax=2,
+		axis lines=middle,
+		xtick={-6.2832, -3.1416, 0, 3.1416, 6.2832},
+		xticklabels={$-2\pi$, $-\pi$, 0, $\pi$, $2\pi$},
+		ytick={-1.5708, -0.5236, 0.5236,1.5708},
+		yticklabels={$-\pi/2$,$-\pi/6$, $\pi/6$, $\pi/2$},
+		every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+		]
+		\def\a{0.5};
+		\addplot [red, very thick, smooth, domain=-2*pi:2*pi, samples=201]
+		{
+		atan(-\a*sin(deg(x))/(1 - \a*cos(deg(x))))/180*pi
+		};
+		\node at (axis cs:7, 1) {$a>0$};
+	\end{axis}		
+	\pause
+
+	\begin{axis}[
+		name=axis3,
+		at={($(axis1.south) + (0, -1.5cm)$)}, anchor= north,
+		% 		y=1cm,
+		% 		x=1cm,
+		clip=false,
+		xmin=-10,xmax=10,
+		xlabel= $\omega$,
+		ylabel={$|X(e^{j\omega})|$},
+		ymin=0,ymax=2.5,
+		axis lines=middle,
+		xtick={-6.2832, -3.1416, 0, 3.1416, 6.2832},
+		xticklabels={$-2\pi$, $-\pi$, 0, $\pi$, $2\pi$},
+		ytick={0.5,1, 1.5, 2},
+		%yticklabels=\empty,
+		every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+		]
+		\def\a{-0.5};
+		\addplot [red, very thick, smooth, domain=-2*pi:2*pi, samples=201]
+		{
+		1/sqrt(1  + \a*\a*cos(deg(x))*cos(deg(x)) -2*\a*cos(deg(x)) - \a*\a*sin(deg(x))*sin(deg(x)))
+		};
+		\node at (axis cs:7, 1) {$a<0$};
+	\end{axis}	
+	\pause	
+	
+	\begin{axis}[
+		name=axis4,
+		at={($(axis2.south) + (0, -1.5cm)$)}, anchor= north,
+		 %		y=0.1cm,
+		% 		x=1cm,
+		clip=false,
+		xmin=-10,xmax=10,
+		xlabel= $\omega$,
+		ylabel={$\angle X(e^{j\omega})$},
+		ymin=-2,ymax=2,
+		axis lines=middle,
+		xtick={-6.2832, -3.1416, 0, 3.1416, 6.2832},
+		xticklabels={$-2\pi$, $-\pi$, 0, $\pi$, $2\pi$},
+		ytick={-1.5708, -0.5236, 0.5236,1.5708},
+		yticklabels={$-\pi/2$,$-\pi/6$, $\pi/6$, $\pi/2$},
+		every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+		]
+		\def\a{-0.5};
+		\addplot [red, very thick, smooth, domain=-2*pi:2*pi, samples=201]
+		{
+		atan(-\a*sin(deg(x))/(1 - \a*cos(deg(x))))/180*pi
+		};
+		\node at (axis cs:7, 1) {$a<0$};
+	\end{axis}		
+
+\end{tikzpicture} 

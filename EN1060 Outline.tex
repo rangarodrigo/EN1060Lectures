@@ -1,0 +1,164 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[colorlinks=true,linkcolor=magenta,urlcolor=magenta]{hyperref}
+\usepackage{fourier}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+
+\usepackage[margin=0.75in]{geometry}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\renewcommand{\refname}{}
+\renewcommand{\arraystretch}{1.2}
+
+\title{\Large Department of Electronic and Telecommunication Engineering\\The University of Moratuwa, Sri Lanka\\{\LARGE \bf \textsc{EN1060 Signals and Systems}}\\
+{\large Course Outline---October 2020}}
+\date{\vspace{-0.5in}}
+
+
+
+\begin{document}
+
+\maketitle
+
+\noindent \tikz \draw (0,0) -- (\textwidth,0);
+
+\section{Introduction}
+Signals and systems find many application in communications, automatic control, and form the basis for signal processing, communication, machine vision, and pattern recognition.   Electrical signals (voltages and currents in circuits, electromagnetic communication signals), acoustic signals, image and video signals, and biological signals are all example of signals that we encounter. They are functions of independent variables and carry information. We define a system as a mathematical relationship between an input signal and an output signal. We can use systems to analyze and modify signals. Signals and systems have brought about revolutionary changes. In this course we will study the fundamentals of signals and systems. Types of signals in continuous time and discrete time, linear time-invariant (LTI) systems, Fourier analysis, sampling, Laplace transform, $z$-transform, and stability of systems are the core components of the course.
+
+\section{Learning Outcomes}
+After completing this course you will be able to do the following:
+\begin{itemize}
+    \item Differentiate between continuous-time, discrete-time, and digital signals, and techniques applicable to the analysis of each type.
+    \item Apply appropriate theoretical principles to characterize the behavior of linear time invariant (LTI) Systems.
+    \item Use Fourier techniques to understand frequency-domain characteristics of signals.
+    \item Use appropriate theoretical principles for sampling and reconstruction of analog signals.
+    \item Use the Laplace transform and the $z$-transform to treat a class of signals and systems broader than what Fourier techniques can handle.
+\end{itemize}
+
+\section{Contents}
+\begin{multicols}{2}
+\begin{enumerate}
+  \item Introduction to signals and systems
+  \begin{enumerate}
+    \item Continuous-time and discrete-time signals
+    \item Building block signals (e.g., sinusoid, exponential signal, pulse, impulse)
+    \item Use of software tools to represent signals
+    \item Continuous and discrete system modeling using block diagrams
+    \item Continuous and discrete system classification (e.g., causal vs. noncausal, linear vs. nonlinear)
+    \item Computing Fourier series and transforms
+    %\item Carrying out convolutions
+  \end{enumerate}
+  \item Linear time-invariant systems
+  \begin{enumerate}
+    \item Continuous- and discrete-time impulse
+    \item Convolution
+    \item Properties of LTI systems
+    \item Differential- and difference-equation system representations
+  \end{enumerate}
+  \item Frequency domain analysis methods
+  \begin{enumerate}
+    \item Continuous-time Fourier series
+    \item Continuous-time Fourier transform
+    \item Fourier transform properties
+    \item Discrete-time Fourier series
+    \item Discrete-time Fourier transform
+    \item Applications of Fourier transform
+  \end{enumerate}
+  \item Sampling and reconstruction
+  \begin{enumerate}
+    \item Sampling
+    \item Interpolation
+    \item Discrete-time processing of continuous-time signals [if time permits]
+  \end{enumerate}
+  \item The Laplace transform and the $z$-transform
+  \begin{enumerate}
+    \item The Laplace transform
+    \item Continuous-time second-order systems
+    \item The $z$-transform
+    \item Stability
+    \item Mapping of continuous-time filters to discrete-time filters [if time permits]
+  \end{enumerate}
+\end{enumerate}
+\end{multicols}
+\section{Prerequisites}
+Calculus.
+
+
+\section{Contact Hours, Course Material, Etc.}
+\begin{tabbing}
+  \hspace{2in}\= Ranga Rodrigo \kill
+  % \> for next tab, \\ for new line...
+  Instructors: \>  Dr. Ranga Rodrigo.\\
+  \> Electronics Building, Room 111.\\
+                \> ranga@uom.lk, 011 264 0422.\\
+                \\
+                 \>  Mr. Ashwin De Silva.\\
+  \> Electronics Building, Compter Vision Laboratory.\\
+                \> ashwind@uom.lk.\\
+                \\
+  Lectures: \> 2 hours per week: Tuesdays 8:00 am. to 10:00 am.\\
+  Tutorials: \> Every Wednesday from 1:00 pm. to 3:00 pm.\\
+  Labs: \> As scheduled in EN1093.\\
+  \\
+  Office hours (drop in): \> Please call me to set up an online appointment due to the current situation.\\
+  \> Set up an appointment if you wish to meet outside office hours.\\
+  \\
+  %Website: \> \href{http://www.ent.mrt.ac.lk/~ranga/courses/en4620_2010.html}{http://www.ent.mrt.ac.lk/\texttildelow %ranga/courses/en4620\_2010.html} and\\
+  Moodle page \>
+  \href{https://online.uom.lk/course/view.php?id=14237}{https://online.uom.lk/course/view.php?id=14237}
+
+\end{tabbing}
+
+\section{Evaluation Scheme}
+\begin{table}[h!]
+\begin{tabular}{@{}lllr@{}}
+  \toprule
+  Item   & Date& Weight& Minimum\\
+  \midrule
+  In-class quizzes (5 out of 8) & Surprise & 10\% & 50\%\\
+
+  Mid-semester examination  &  To be decided& 20\% & 50\%\\
+
+  Final examination & to be scheduled & 70\% & 50\%\\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Schedule}
+
+ 
+\begin{tabular}{@{}llp{2in}p{3in}@{}}
+\toprule
+Event 	&	Date 	&	Description	&						Material	\\
+\midrule
+Lecture 1	&	15-Dec	&	Introduction to signals and systems	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/a\%20Signals\%20and\%20Systems\%20Introduction.pdf}{	a Signals and Systems Introduction}, \par	Oppenheim 1.0, 1.1, 1.2	\\
+Lecture 2	&	16-Dec	&	Signals	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/b\%20Signals\%20and\%20Systems\%20Signals.pdf}{	b Signals and Systems Signals}, \par	Oppenheim 1.3, 1.4, 1.5, 1.6	\\
+Lecture 3	&	17-Dec	&	Continuous-time Fourier series	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/c\%20Signals\%20and\%20Systems\%20Fourier\%20Series.pdf	}{c Signals and Systems Fourier Series}, \par	Oppenheim 3.0, 3.1, 3.3	\\
+Lecture 4	&	18-Dec	&	Continuous-time Fourier series properties	&Oppenheim 3.5	\\
+Lecture 5	&	19-Dec	&	Continuous-time Fourier transform	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/d\%20Signals\%20and\%20Systems\%20Fourier\%20Transform.pdf	}{d Signals and Systems Fourier Transform}, \par	Oppenheim 4.3, 4.4, 4.4, 4.5, 4.6	\\
+Lecture 6	&	20-Dec	&	Fourier transform properties	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/e\%20Signals\%20and\%20Systems\%20Fourier\%20Transform\%20Properties.pdf	}{e Signals and Systems Fourier Transform Properties}, \par	Oppenheim 4.0, 4.1, 4.3	\\
+Lecture 7	&	21-Dec	&	Linear time-invariant systems	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/f\%20Signals\%20and\%20Systems\%20Linear\%20Time\%20Invariant\%20Systems.pdf	}{f Signals and Systems Linear Time Invariant Systems}, \par	Oppenheim 2.0	\\
+Lecture 8	&	22-Dec	&	Convolution	&	 \par	Oppenheim 2.1, 2.2, 3.3	\\
+Lecture 9	&	23-Dec	&	Properties of LTI systems	&	 \par	Oppenheim 2.3	\\
+Lecture 10	&	24-Dec	&	Discrete-time Fourier series	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/g\%20Signals\%20and\%20Systems\%20Discrete\%20Time\%20Fourier\%20Series.pdf	}{g Signals and Systems Discrete Time Fourier Series}, \par	Oppenheim 3.6	\\
+Lecture 11	&	25-Dec	&	Discrete-time Fourier transform	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/h\%20Signals\%20and\%20Systems\%20Discrete\%20Time\%20Fourier\%20Transform.pdf	}{h Signals and Systems Discrete Time Fourier Transform}, \par	Oppenheim 5.0, 5.1	\\
+Lecture 12	&	26-Dec	&	The Laplace transform	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/i\%20Signals\%20and\%20Systems\%20Laplace\%20Transforms.pdf	}{i Signals and Systems Laplace Transforms}, \par	Oppenheim 9.0, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7	\\
+Lecture 13	&	27-Dec	&	Systems with Laplace transform, z Transform	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/j\%20Signals\%20and\%20Systems\%20z\%20Transfroms.pdf	}{j Signals and Systems z Transfroms}, \par	Oppenheim 9.7,  10.0, 10.1, 10.4, 10.5, 10.6, 10.7	\\
+Lecture 14	&	28-Dec	&	Systems with z Transform, Sampling and reconstruction	&	\href{https://github.com/rangarodrigo/EN1060Lectures/blob/master/k\%20Signals\%20and\%20Systems\%20Sampling.pdf}{	k Signals and Systems Sampling}, \par	Oppenheim 10.6, 10.7 , 7.0, 7.1	\\
+\bottomrule
+\end{tabular}
+
+\section{Text Books}
+\nocite{OPPENH97}
+\nocite{HSUHWE95}
+\vspace{-0.5in}
+\bibliographystyle{IEEEtran}
+\bibliography{../../../../Research/ranga_bib/ranga_bib}
+\end{document}

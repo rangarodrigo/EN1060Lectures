@@ -1,0 +1,375 @@
+\section{Discrete-Time Fourier Series}
+
+\begin{frame}{Introduction}
+    \begin{itemize}[<+->]
+        \item Now, we have studied Fourier series and Fourier transform for CT signals.
+        \item In this lesson we will develop a similar tool for discrete time.
+        \item Specifically, we consider the representation of discrete-time signals through a decomposition as a linear combination of complex exponentials.
+            \begin{itemize}
+                \item DT periodic signals $\rightarrow$ DT Fourier series
+                \item DT aperiodic signals $\rightarrow$ DT Fourier transform
+            \end{itemize}
+        \item Fourier series representation of a DT periodic signal is a \alert{finite} series, as opposed to the infinite series representation required for CT periodic signals.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Philosophy}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[thick] (0,0)  -- ++(2,0)node[near start, above] {$x(t)$} node[near start, below] {$x[n]$} node (s) [rectangle, draw=black, thick, fill=blue!20, minimum width=0.4in, minimum height = 0.4in,anchor=west] {LTI} (s.east) -- ++(2,0) node[near end, above] {$y(t)$} node[near end, below] {$y[n]$};
+            \end{tikzpicture}
+        \end{center}
+        Decompose the input as
+            \begin{equation*}
+                x = a_1\phi_1 + a_2\phi_2 + \cdots \quad \text{linear combination of basic inputs}
+            \end{equation*}
+        Then
+            \begin{equation*}
+                y = a_1\psi_1 + a_2\psi_2 + \cdots \quad \text{linear combination of corresponding outputs}
+            \end{equation*}
+
+        Choose $\phi_k(t)$ or $\phi_k[n]$ such that
+        \begin{itemize}
+            \item Broad class of signals can be constructed, and
+            \item Response to $\phi_k$s easy to compute.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}{Eigenfunction Property}
+    \textbf{Continuous-Time}:\par
+    $\phi_k(t) = e^{j\omega_k t}$:
+    \begin{equation*}
+        e^{j\omega_k t} \longrightarrow H(j\omega_k) e^{j\omega_k t} \quad \text{(a scaled-version of the input)}
+    \end{equation*}
+    \textbf{``Discrete-Time'':}\pause
+    \mode<beamer>
+    {
+        $\phi_k[n] = e^{j\omega_k n}$\par
+        \begin{equation*}
+            e^{j\omega_k n} \longrightarrow
+            \underset{\mathclap{\tikz \node {$\uparrow$} node [below=3ex, text=red] {eigenfunction};}}{
+            e^{j\omega_k n}
+            }
+            \underbrace{
+            \sum_{r=-\infty}^{\infty} h[r]e^{-j\omega_k r}
+            }_{\textcolor{red}{\text{eigenvalue}}}
+        \end{equation*}
+    }
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Lin. Comb. of Harmonically Related Comp. Exponentials}
+       Consider $x[n]$ to be periodic with period $N$, i.e.,
+        \begin{equation*}
+            x[n] = x[n+N]
+        \end{equation*}
+        Fundamental frequency: $\omega_0 = \frac{2\pi}{N}$\par
+        E.g.,  the complex exponential $e^{j (2\pi/N)n}$ is periodic with  period $N$. Furthermore, the set of all DT complex exponential signals that are periodic with period $N$ given by
+        \begin{equation}
+            \label{eq:dt_complex_exponentials}
+            \phi_k[n] = e^{jk\omega_0n} = e^{j(k+N)\omega_0n}, k=0, \pm1, \pm2, \dots .
+        \end{equation}
+        All these signals have fund. frequencies that are multiples of $2\pi/N$ and thus are harmonically related. There are only $N$ distinct signals in the set given by eq. \ref{eq:dt_complex_exponentials}. This is a consequence of of DT complex exponentials which differ in frequency by $2\pi$ are identical, e.g., $\phi_0[n] =\phi_N[n] $, $\phi_1[n] =\phi_{N+1}[n] $, and, in general,
+        \begin{equation*}
+            \phi_k[n] =\phi_{k + rN}[n].
+        \end{equation*}
+        %\pause
+        I.e., when $k$ is changed by any integer multiple of $N$, the identical sequence is generated.         %\pause
+        This is different in CT, in which signals
+        $ \phi_k(t) = e^{jk\omega_0 t} = e^{jk(2\pi/T)t}, k = 0, \pm 1, \pm 2, \dots$
+        are all different from one another.
+\end{frame}
+
+
+\begin{frame}{Discrete-Time Fourier Series}
+    Consider the representation of more general periodic sequences in terms of linear combination of sequences $\phi_k[n]$
+    \begin{equation*}
+        x[n] = \sum_k a_k\phi_k[n] =  \sum_k a_k e^{jk\omega_0 n} = \sum_k a_k e^{jk(2\pi/N) n},
+    \end{equation*}
+    %\quad k = 0,1, 2, \dots, N-1.
+    As the sequence $\phi_k[n]$ are distinct only over a ragen of $N$ successive values of $k$, the above summation need only include terms over this range.
+    \begin{equation}
+        \label{eq:dtfs_initial}
+        x[n] = \sum_{k=<N>} \phi_k[n] =  \sum_{k=<N>} a_k e^{jk\omega_0 n}=  \sum_{k=<N>} a_k e^{jk(2\pi/N) n}
+    \end{equation}
+    E.g., $k$ could take values $ k = 0,1, 2, \dots, N-1$, or $k = 3,4, 5, \dots, N + 2$. Eq. \ref{eq:dtfs_initial} is referred to as the \alert{discrete-time Fourier series} and the coefficients $a_k$ as the \alert{Fourier series coefficients}.
+%    $N$ equations in $N$ unknowns.
+%    \begin{equation*}
+%        a_k = \frac{1}{N}\sum_{<N>} x[n]e^{-jk\omega_0 n}.
+%    \end{equation*}
+%    $k = <N>$: $k$ ranges over one period (as $a_k$ periodically repeats).
+\end{frame}
+
+
+\begin{frame}{Discrete-Time Fourier Series}
+    %\mode<beamer>
+    %{
+        \begin{columns}[t,totalwidth=\textwidth]
+            \column{0.4\textwidth}
+            \textbf{Continuous-Time}\par
+            \begin{align*}
+                x(t) &= \sum_{k=-\infty}^{\infty}a_k e^{jk\omega_0 t}\\
+                a_k &= \frac{1}{T} \int_{T} x(t)e^{-jk\omega_0 t}dt
+            \end{align*}
+            \column{0.6\textwidth}
+
+            \textbf{Discrete-Time Fourier Series}
+            \mode<beamer>
+            {
+
+            \begin{align*}
+                \text{Synthesis} &\\
+                x[n] &= \sum_{k=<N>} a_k e^{jk\omega_0 n} = \sum_{k=<N>} a_k e^{jk(2\pi/N) n} .\\
+                \text{Analysis} &\\
+                a_k &= \frac{1}{N}\sum_{n=<N>} x[n]e^{-jk\omega_0 n}  = \frac{1}{N}\sum_{n=<N>} x[n]e^{-jk(2\pi/N) n}.
+            \end{align*}
+            \pause
+            Note the duality.
+            }
+        \end{columns}
+    %}
+\end{frame}
+
+
+
+\begin{frame}
+
+
+    \mode<beamer>
+    {
+        \begin{columns}
+            \column{0.48\textwidth}
+            \textbf{Periodicity}
+                \begin{equation*}
+                    \begin{array}{lll}
+                        x[n] & \text{periodic in } n, & \text{true for CT}\\
+                        e^{jk\omega_0 n} & \text{periodic in } n, &\text{true for CT}\\
+                        e^{jk\omega_0 n} & \text{periodic in } k, &\text{\alert{not true for CT}}\\
+                        a_k &  \text{periodic in } k, &\text{\alert{not true for CT}}
+                    \end{array}
+                \end{equation*}
+            \column{0.48\textwidth}
+            \textbf{Convergence}\par
+            Continuous-time:
+            \begin{itemize}
+                \item $x(t)$ square-integrable OR
+                \item Dirichlet condition
+            \end{itemize}
+            Discrete-time
+            \begin{equation*}
+                x[n] = \sum_{k=<N>} a_k e^{jk\omega_0 n}.
+            \end{equation*}
+            \begin{equation*}
+                \hat{x}[n] = \sum_{p \text{ terms}} a_k e^{jk\omega_0 n}.
+            \end{equation*}
+            $p = N$\par
+            \begin{equation*}
+                \hat{x}[n] \equiv x[n].
+            \end{equation*}
+            There is no issue of convergence in DT.
+        \end{columns}
+    }
+\end{frame}
+
+\begin{frame}
+    \begin{example}
+        Consider the signal $x[n] = \sin \omega_0 n$.
+        \begin{enumerate}
+            \item When is this signal periodic?
+            \item If it is periodic, what are discrete-time Fourier series coefficients?
+        \end{enumerate}
+    \end{example}
+    \pause
+    \mode<beamer>
+    {
+        This is the DT counterpart of $x(t) = \sin \omega_0 t$. $x[n]$ is periodic only if $2\pi/\omega_0$ is an integer or a ratio of integers. For the case when $2\pi/\omega_0$ is an integer $N$, i.e., when
+        \begin{equation*}
+            \omega_0 = \frac{2\pi}{N},
+        \end{equation*}
+        $x[n]$ is periodic with fundamental period $N$.
+    }
+    \pause
+    \mode<beamer>
+    {
+        Expanding the signal as a sum of two complex exponentials,
+        \begin{equation}
+            x[n] = \frac{1}{2j}e^{j(2\pi/N)n} - \frac{1}{2j}e^{-j(2\pi/N)n}.
+        \end{equation}
+        \pause
+        \begin{equation*}
+            a_1 = \frac{1}{2j}, \quad a_{-1} = -\frac{1}{2j}.
+        \end{equation*}
+    }
+
+\end{frame}
+
+\begin{frame}{Fourier Coefficients for $x[n] = \sin(2\pi/N)n$ for $N=5$ }
+    \begin{figure}
+        \centering
+        \input{figures/example31}
+        \caption{Fourier coefficients for $x[n] = \sin(2\pi/5)n$.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Example}
+    Determine and sketch the DTFS of
+    \begin{equation*}
+        x[n] = 1 + \sin \omega_0 n + 3 \cos \omega_0 n + \cos\left(2\omega_0 n + \frac{\pi}{2}\right).
+    \end{equation*}
+    \pause
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \centering
+        \input{figures/example52}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Example}
+    Determine and sketch the DTFS of $x[n]$ of which is shown in the figure.
+    \begin{figure}
+        \centering
+        \input{figures/example53}
+    \end{figure}
+    \pause
+\end{frame}
+
+
+\begin{frame}
+    \mode<beamer>
+    {
+        \begin{align*}
+                a_k &= \frac{1}{N}\sum_{n=-N_1}^{N_1}e^{-jk(2\pi/N)n}\\
+                \text{Letting~} m = n+N_1&\\
+                &= \frac{1}{N}\sum_{m=0}^{2N_1}e^{-jk(2\pi/N)/(m- N_1)}\\
+                2N_1 + 1\text{~terms in a geometric series}&\\
+                &= \frac{1}{N}e^{jk(2\pi/N)N_1}\left[\frac{1 - e^{-jk(2\pi/N)(2N_1 + 1)}}{1 - e^{-jk(2\pi/N)}}\right]\\
+                &=  \frac{1}{N} e^{jk(2\pi/N)N_1} \cdot
+                \frac{
+                    e^{-j\frac{k(2\pi/N)(2N_1+1)}{2}}
+                }{
+                e^{-j\frac{k(2\pi/N)}{2}}
+                } \left[
+                \frac{e^{j\frac{k(2\pi/N)(2N_1+1)}{2}}  - e^{-j\frac{k(2\pi/N)(2N_1+1)}{2}} }
+                {e^{j\frac{k(2\pi/N)}{2}} - e^{-j\frac{k(2\pi/N)}{2}}}\right]\\
+                &=  \frac{1}{N} \frac{\sin\left[ \frac{k(2\pi/N)(2N_1+1)}{2} \right]}{\sin\left[\frac{k(2\pi/N)}{2}\right]}\\
+        \end{align*}
+    }
+\end{frame}
+
+\begin{frame}
+    \mode<beamer>
+    {
+        \begin{align*}
+                a_k &=  \frac{1}{N} \frac{\sin\left[ 2\pi k(N_1+1/2)/N \right]}{\sin(\pi k/N)}\quad k \neq 0, \pm N, \pm 2N, \dots\\
+                a_k &= \frac{2N_1+1}{N}\quad k = 0, \pm N, \pm 2N, \dots.
+        \end{align*}
+    }
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \centering
+        \input{figures/dtfs_square_wave}
+    \end{figure}
+\end{frame}
+
+
+
+\subsection{Properties of Discrete-Time Fourier Series}
+
+
+\begin{frame}{Example}
+    Find the Fourier series coefficients $a_k$ of $x[n]$.
+    \begin{figure}
+        \centering
+        \input{figures/example313a}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}<beamer>
+        Denoting the Fourier series coefficients of $x_1[n]$ by $b_k$ and those of $x_2[n]$ by $c_k$. We use the linearity property of to conclude that
+        \begin{equation*}
+            a_k = b_k + c_k.
+        \end{equation*}
+    \begin{figure}
+        \centering
+        \input{figures/example313b}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \input{figures/example313c}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+    \mode<beamer>
+    {
+        From the previous work, (with $N_1 = 1$ and $N = 5$), the Fourier series coefficients $b_k$ corresponding to $x_1[n]$ can be expressed as
+        \begin{equation*}
+            b_k = \begin{cases}\frac{1}{5}\frac{\sin(3\pi k/5)}{\sin(\pi k/5)}, & \text{for~} k \neq 0, \pm 5, \pm 10, \dots\\\frac{3}{5}, & \text{for~} k = 0, \pm 5, \pm 10, \dots\end{cases}
+        \end{equation*}
+        \pause
+        The sequence $x_2[n]$ has only a de value, which is captured by its zeroth Fourier series coefficient:
+        \begin{equation*}
+            c_0 = \frac{1}{5}\sum_{n=0}^{4}x_2[n] = 1.
+        \end{equation*}
+        Since the discrete-time Fourier series coefficients are periodic, it follows that $c_k = 1$ whenever $k$ is an integer multiple of 5. The remaining coefficients of $x_2[n]$ must be zero, because $x_2[n]$ contains only a de component.
+        \pause
+        So,
+        \begin{equation*}
+            a_k = \begin{cases}b_k = \frac{1}{5}\frac{\sin(3\pi k/5)}{\sin(\pi k/5)}, & \text{for~} k \neq 0, \pm 5, \pm 10, \dots\\\frac{8}{5}, & \text{for~} k = 0, \pm 5, \pm 10, \dots\end{cases}
+        \end{equation*}
+
+    }
+\end{frame}
+
+\begin{frame}{Example}
+    Suppose that we are given the following facts about a sequence $x[n]$:
+    \begin{enumerate}
+        \item $x[n]$ is periodic with period $n=6$.
+        \item $\sum_{n=0}^{5}x[n] = 2$.
+        \item $\sum_{n=2}^{7}(-1)^nx[n] = 1$.
+        \item $x[n]$ has the minimum power per period among the set of signals satisfying the proceeding three conditions.
+    \end{enumerate}
+    Determine the sequence $x[n]$.
+\end{frame}
+
+\begin{frame}
+    \mode<beamer>
+    {
+        We denote the Fourier series coefficients of $x[n]$ by $a_k$. From Fact 2, we conclude that $a_0 = 1/3$.\par \pause
+        Noting that $(-1)^n  = e^{-j\pi n}= e^{-j(2\pi/6)3n}$, we see from Fact 3 that $a_3 = 1/6$.\par\pause From Parseval's relation, the average power in $x[n]$ is
+        \begin{equation*}
+            P = \sum_{k=0}^{5}|a_k|^2.
+        \end{equation*}
+        Since each nonzero coefficient contributes a positive amount to $P$, and since the values of $a_0$ and $a3$ are pre-specified, the value of $P$ is minimized by choosing $a_1 = a_2 = a_4 = a5 = 0$. It then follows that
+        \begin{equation*}
+            x[n] = a_0 + a_3 e^{j\pi n} = (1/3) + (1/6)(-1)^n.
+        \end{equation*}
+        \pause
+        \begin{figure}
+            \centering
+            \input{figures/example314}
+        \end{figure}
+    }
+\end{frame}
+
+
+
+%\begin{frame}{}
+%    \begin{enumerate}
+%        \item
+%    \end{enumerate}
+%
+%    \mode<beamer>
+%    {
+%        \begin{columns}
+%            \column{0.48\textwidth}
+%            \column{0.48\textwidth}
+%        \end{columns}
+%    }
+%\end{frame} 

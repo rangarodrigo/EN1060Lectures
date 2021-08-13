@@ -1,0 +1,7 @@
+\begin{tikzpicture}
+	\node (x) at (0,0) [anchor=east] {$x(t)$};
+	\node (s) [draw, right=of x, minimum height=1cm, minimum width = 2cm] {System};
+	\node (y) [right=of s] {$y(t)$};	
+	\draw [-latex] (x) -- (s);
+	\draw [-latex] (s) -- (y);
+\end{tikzpicture} 

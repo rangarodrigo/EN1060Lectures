@@ -1,0 +1,21 @@
+\begin{tikzpicture}[scale=1.2]
+	\def\al{3}
+   	 \def\pole{++(135:0.1) -- ++(-45:0.2) ++(135:0.1) -- ++(45:0.1) -- ++(-135:0.2) ++(45:0.1)}
+    	\def\zero{circle (0.1)}
+	\tikzstyle{helper} = [orange,thick, dashed]    	
+	\coordinate (o) at (0,0);
+	\draw (-\al,0) -- (\al,0) node[anchor=west] {$\mathrm{Re}$};
+	\draw (0, -\al) -- (0,\al) node[anchor=south] {$\mathrm{Im}$};
+\mode<beamer>
+{
+	\draw[red, thick] (-0.2,0) \pole ;
+
+	\node at (2.5, 2) [anchor=south] {$\zeta>1$};	
+	\draw[red, thick] (-1.8, 0) \pole;
+	
+	\draw[helper] (-0.2, 0) -- ++(0, 1);
+	\draw[helper] (-1.8, 0) -- ++(0, 1);	
+	\draw[helper, latex-latex] (-0.2, 0.9) -- ++(-1.6, 0) node[midway, above, text=black] {$2\omega_n\sqrt{\zeta^2 - 1}$};	
+	\draw (-1, 0.1) -- ++(0, -0.2)  ++(0,0.1) node[anchor=north] {$-\zeta\omega_n$};
+}
+\end{tikzpicture} 

@@ -1,0 +1,29 @@
+\pgfplotstableread{e_lti/figures/ct_signal.dat}{\signal}
+\pgfplotstableread{e_lti/figures/ct_signal_step.dat}{\signalst}
+%\pgfplotstableread{ct_signal.dat}{\signal}
+%\pgfplotstableread{ct_signal_step.dat}{\signalst}
+\pgfplotsset{every axis/.append style={font=\scriptsize}}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+	name=axis1,
+       width=12cm,
+       height=3cm,
+	axis y line=middle,
+	axis x line=bottom,
+	ymin=0,ymax=1.2,
+	xlabel=$t$,
+	ylabel= $x(t)$,	
+	xtick={-2, -1, 0, 1, 2},	
+	xticklabels={$-2\Delta$, $-\Delta$, 0, $\Delta$, $2\Delta$ },
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+		every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=south},	
+	clip=false,
+]
+\addplot [black, thick, smooth] table [x={t}, y={xt}] {\signal};
+\addplot +[red, very thick, mark=none] table [x=t, y=xt] {\signalst};
+\draw[pink, thin] (axis cs:-2, 1) -- (axis cs:-2, -10);
+\draw[pink, thin] (axis cs:-1, 1) -- (axis cs:-1, -10);
+\draw[pink, thin] (axis cs:1, 1) -- (axis cs:1, -10);
+\draw[pink, thin] (axis cs:2, 1) -- (axis cs:2, -10);
+\end{axis}
+\end{tikzpicture} 

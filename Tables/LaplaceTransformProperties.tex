@@ -1,0 +1,36 @@
+\renewcommand{\arraystretch}{2}
+\begin{table}
+    \centering
+    \caption{Properties of the Laplace Transform}\label{ta:lt_properties}
+        \begin{tabular}{@{}p{3cm}p{4cm}lp{5cm}@{}}
+            \toprule
+                Property & \text{Signal} & \text{Laplace transform} & ROC\\
+                            \midrule
+                Linearity & $ax_1(t) + bx_2(t)$ & $aX_1(s) + bX_2(s)$ & At least $R_1 \cap R_2$\\
+                Time shifting & $x(t-t_0)$ & $e^{-st_0}X(s)$ & $R$\\
+                Shifting in $s$ domain & $e^{s_0t}x(t)$ & $X(s-s_0)$ & Shifted version of $R$ (i.e., $s$ is in ROC if $s-s_0$ is in $R$)\\
+                Time scaling & $x(at)$ & $\frac{1}{|a|}X\left(\frac{s}{a}\right)$ & Scaled ROC (i.e., $s$ is in ROC if $s/a$ is in $R$)\\
+                Conjugation & $x^\ast(t)$ & $X^\ast(s^\ast)$ & $R$\\
+                Convolution & $x_1(t) \ast x_2(t)$ & $X_1(s)X_2(s)$ & At least $R_1 \cap R_2$\\
+                Differentiation in the time domain & $\frac{dx(t)}{dt}$ & $sX(s)$ & At least $R$\\
+                Differentiation in the $s$-domain & $-tx(t)$ & $\frac{dX(s)}{ds}$ & $R$\\
+                Integration in the time domain & $\int_{-\infty}^{t}x(\tau)d\tau$ & $\frac{1}{s}X(s)$ & At least $R \cap \{\mathfrak{Re}\{s\}>0\}$\\
+                \multicolumn{4}{p{\textwidth}}
+                {
+                    Initial- and final-value theorems:                      
+                    If $x(t) = 0$ for $t<0$ and $x(t)$ contains no impulses or higher-order singularities at $t=0$, then
+                }\\
+                \multicolumn{4}{l}
+                {    
+                    $x(0^+) = \lim_{s \rightarrow \infty} sX(s)$
+                }\\
+                \multicolumn{4}{l}
+                {    
+                    $\lim_{t \rightarrow \infty} x(t) = \lim_{s \rightarrow 0} sX(s) $
+                }\\
+            \bottomrule
+        \end{tabular}
+\end{table}
+
+
+

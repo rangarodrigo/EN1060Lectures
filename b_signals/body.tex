@@ -1,0 +1,728 @@
+\section{Real Signals}
+
+\subsection{Sinusoids}
+
+\begin{frame}[plain]{Continuous-Time Sinusoidal Signal}
+    \begin{equation}\label{eq:cosine}
+        x(t) = A\cos(\omega_0 t + \phi).
+    \end{equation}
+
+
+    \begin{figure}
+        \centering
+        \input{figures/cosine}
+        \caption{Continuous-time sinusoidal signal.}\label{fi:cosine}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[plain]{Periodicity of a Sinusoidal}
+    Sinusoidal signal is \alert{periodic}.\\
+    A periodic continuous-time signal $x(t)$ has the property that  there is a positive value $T$ for which
+    \begin{equation}\label{eq:period}
+        x(t) = x(t+T)
+    \end{equation}
+    for all values of $t$. Under an appropriate time-shift the signal repeats itself. In this case we say that $x(t)$ is periodic with period $T$.\\
+    \alert{Fundamental period $T_0$} = smallest positive value of $T$ for which \ref{eq:period} holds.\\
+    A signal that is not periodic is referred to as \alert{aperiodic}. \\
+    E.g.: Consider $A\cos(\omega_0t + \phi)$\\
+    \begin{equation*}
+        \begin{split}
+            A\cos(\omega_0t + \phi) &= A\cos(\omega_0(t + T) + \phi)\quad \text{ here } \omega_0T = 2\pi m \quad \text{an integer multiple of } 2\pi\\
+                                    &= A\cos(\omega_0t + \phi)\\
+        \end{split}
+    \end{equation*}
+    \fillblank{$T = \frac{2\pi m}{\omega_0} \Rightarrow $ fundamental period $T_0 = \frac{2\pi}{\omega_0}$.}
+
+\end{frame}
+
+
+\begin{frame}[plain]{Phase of a Sinusoidal}
+    A time-shift in a CT sinusoid is equivalent to a phase shift.\\
+    E.g.: Show that a time-shift of a sinusoid is equal to a phase shift.
+    \mode<beamer>
+    {
+        \begin{equation*}
+            A\cos[\omega_0(t + t_0)] = A\cos(\omega_0t + \omega_0t_0) = A\cos(\omega_0t + \Delta\phi),\quad \Delta\phi \text{ is a change in phase}.
+        \end{equation*}
+
+        \begin{equation*}
+            A\cos[\omega_0(t + t_0) + \phi] = A\cos(\omega_0t + \omega_0t_0 + \phi) = A\cos(\omega_0(t + t_1)),\quad t_1 = t_0 + \phi/\omega_0.
+        \end{equation*}
+    }
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Even and Odd Signals}
+    A signal $x(t)$ or $x[n]$ is referred to as an \alert{even} signal if it is identical to its time-reversed counterpart, i.e., with its reflection about the origin:
+    \begin{align*}
+        x(-t) &= x(t)\\
+        x[-n] &= x[n]
+    \end{align*}
+    A is referred to as an \alert{odd} if
+    \begin{align*}
+        x(-t) &= -x(t)\\
+        x[-n] &= -x[n]
+    \end{align*}
+    An odd signal must be ) at $t=0$ or $n=0$.
+
+    A signal can be broken into a sum of two signals, one of which is even and one for which is odd.
+    Even part of $x(t)$ is
+    \begin{equation*}
+        \mathfrak{Ev}\{x(t)\} = \frac{1}{2}[x(t)+x(-t)]
+    \end{equation*}
+    Odd part of $x(t)$ is
+    \begin{equation*}
+        \mathfrak{Od}\{x(t)\} = \frac{1}{2}[x(t)-x(-t)]
+    \end{equation*}
+\end{frame}
+
+\begin{frame}[t]{Even and Odd Signals Contd.}
+    \begin{example}
+        Show that $\mathfrak{Ev}\{x(t)\} = \frac{1}{2}[x(t)+x(-t)]$.
+    \end{example}
+    Notation: $x_e(t)$ is even part of $x(t)$, $x_o(t)$ is odd part of $x(t)$.
+    \mode<beamer>
+    {
+        \begin{equation*}
+            x(t) = x_e(t) + x_o(t).
+        \end{equation*}
+        \pause
+        \begin{equation*}
+            x(-t) = x_e(-t) + x_o(-t).
+        \end{equation*}
+        \pause
+        \begin{equation*}
+            x(-t) = x_e(t) - x_o(t).
+        \end{equation*}
+        \pause
+        Adding,
+        \begin{equation*}
+            x(t) + x(-t) = x_e(t) + x_o(t) + x_e(t) - x_o(t).
+        \end{equation*}
+        \pause
+        \begin{equation*}
+            \mathfrak{Ev}\{x(t)\} =  x_e(t) = \frac{1}{2}[x(t)+x(-t)]
+        \end{equation*}
+    }
+\end{frame}
+
+
+\begin{frame}[plain]\frametitle{Phase of a Sinusoidal: $\phi = 0$}
+    \mode<beamer>
+    {
+        \begin{columns}[t]
+            \column{0.5\textwidth}
+            {
+                \centering
+                \input{figures/cosine_phi_0}
+            }
+            \column{0.4\textwidth}
+            {
+                This signal is \alert{even}. If we mirror an even signal about the time origin, it would look exactly the same.\\[12pt]
+                Periodic: $x(t) = x(t+ T)$.\\
+                Even: $x(t) = x(-t)$.
+            }
+        \end{columns}
+    }
+\end{frame}
+
+\begin{frame}[plain]{Phase of a Sinusoidal: $\phi = -\pi/2$}
+    \mode<beamer>
+    {
+        \begin{columns}[t]
+            \column{0.5\textwidth}
+            {
+                \centering
+                \input{figures/cosine_phi_90}
+            }
+            \column{0.4\textwidth}
+            {
+                This signal is \alert{odd}. If we flip an odd signal about the time origin, we also multiply it by a ($-$) sign to get the original signal.\\[12pt]
+                Periodic: $x(t) = x(t+ T)$.\\
+                Odd: $x(t) = -x(-t)$.
+            }
+        \end{columns}
+    }
+\end{frame}
+
+\subsection{Discrete-Time Sinusoidal Signal}
+
+\begin{frame}[plain]{$x[n] = A\cos(\omega_0n+\phi)$ with $\phi = 0$}
+    \mode<beamer>
+    {
+        \begin{columns}[t]
+            \column{0.5\textwidth}
+            {
+                \centering
+                \input{figures/dt_sinusoid_n_16}
+            }
+            \column{0.4\textwidth}
+            {
+                The independent variable is an integer.\\
+                The sequence takes values only at integer values of the argument.\\
+                This signal is \alert{even}. \\[12pt]
+                Even: $x[n] = x[-n]$.\\
+                Periodic: $x[n] = x[n+N]$. Here, $N=16$\\
+                $\omega_0 = \frac{2\pi}{N} = \frac{\pi}{8}$.
+
+
+            }
+        \end{columns}
+    }
+\end{frame}
+
+
+\begin{frame}[plain]{$x[n] = A\cos(\omega_0n+\phi)$ with $\phi = -\pi/2$}
+    \mode<beamer>
+    {
+        \begin{columns}[t]
+            \column{0.5\textwidth}
+            {
+                \centering
+                \input{figures/dt_sinusoid_n_16_phi_90}
+            }
+            \column{0.4\textwidth}
+            {
+                \noindent The independent variable is an integer.\\
+                The sequence takes values only at inter values of he argument.\\
+                This signal is \alert{odd}. \\[12pt]
+                Odd: $x[n] = -x[-n]$.\\
+                Periodic: $x[n] = x[n+N]$. Here, $N=16$\\
+                $\omega_0 = \frac{2\pi}{N} = \frac{\pi}{8}$.
+                $\phi= -\pi/2$, $x[n] = A\cos(\omega_0n+\phi) = A\cos(\omega_0(n+n_0))$. $n_0$ must be an integer.\\
+                $n_0 = \frac{\phi}{\omega_0} = \frac{\pi/2}{\pi/8} = 4$.
+
+
+            }
+        \end{columns}
+    }
+\end{frame}
+
+
+
+
+\begin{frame}{Phase Change and Time Shift in DT}
+    \begin{block}{Question}
+        Does a phase change always correspond to a time shift in discrete-time signals?
+    \end{block}
+    \pause
+    \mode<beamer>
+    {
+        Answer: No.\\
+        \begin{align*}
+          A\cos[\omega_0n+ \phi)] &\stackrel{?}{=}  A\cos[\omega_0(n+n_0)]\\
+          \omega_0n + \omega_0n_0 &= \omega_0n + \phi \\
+          \omega_0n_0 &= \phi,\quad n_0 \text{ is an integer}.
+        \end{align*}
+
+        \begin{itemize}
+          \item Depending on $\phi$ and $\omega_0$, $n_0$ many not come out to be an \alert{integer}.
+          \item In discrete time, the amount of time shift must be an integer.
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Periodicity of a DT Signal}
+    All continuous-time sinusoids are  periodic. However, discrete-time sinusoids are not necessarily so.
+    \begin{equation}
+        x[n] = x[n+N], \quad \text{smallest integer $N$ is the fundamental period}.
+    \end{equation}
+    \mode<beamer>
+    {
+        \begin{equation*}
+            A\cos[\omega_0(n+N) + \phi] = A\cos[\omega_0n+ \omega_0N + \phi]
+        \end{equation*}
+        $ \omega_0N$ must be an integer multiple of $2\pi$.\\
+        Periodic $\Rightarrow$ $\omega_0N = 2\pi m$
+        \begin{equation}\label{eq:dt_period}
+            N = \frac{2\pi m}{\omega_0}
+        \end{equation}
+        $N$ and $m$ must be integers.\\
+        Smallest $N$, if any, is the fundamental period.\\
+        $N$ may not be an integer. In this case, the signal is not periodic.
+    }
+\end{frame}
+
+
+\begin{frame}{Periodicity of a DT Signal Cntd.}
+    \centering
+    \input{figures/dt_sinusoid_n_12_phi_0}
+    %
+    \input{figures/dt_sinusoid_n_6_phi_0}
+    %
+    \input{figures/dt_sinusoid_n_831_phi_0}
+    %
+    \input{figures/dt_sinusoid_n_115_phi_0}
+\end{frame}
+
+\subsection{Exponentials}
+
+\begin{frame}[plain]{CT Real Exponentials}
+    \begin{equation*}
+        \begin{split}
+            x(t) &= Ce^{a(t+t_0)}, \quad C \text{ and } a \text{ are real numbers}\\
+            &=   Ce^{at_0}e^{at}.\\
+        \end{split}
+    \end{equation*}
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/real_exp}
+        }
+    }
+\end{frame}
+
+\begin{frame}[plain]{DT Real Exponentials}
+    \begin{equation*}
+        x[n] = Ce^{\beta n} = C\alpha^n, \quad C \text{ and } \alpha \text{ are real numbers}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}[plain]
+    %\mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/dt_exp_2}
+        }
+    }
+\end{frame}
+
+\begin{frame}[plain]
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/dt_exp_1}
+        }
+    }
+\end{frame}
+
+
+\import{b_signals/}{complex_numbers}
+
+\section{Complex Signals}
+\subsection{CT Complex Exponentials}
+\begin{frame}[plain]{CT Complex Exponentials}
+    \tikzstyle{na} = [baseline=-.5ex]
+    \tikzstyle{every picture}+=[remember picture]
+    \begin{align*}
+            x(t) &= Ce^{at} \quad C \text{ and } a \text{ are complex numbers}.\\
+            C &= |C|e^{j\theta}\\
+            a &= r + j\omega_0\\
+            x(t) &= |C|e^{j\theta}e^{(r + j\omega_0)t}\\
+            &= |C|e^{rt}
+            \tikz[baseline]{
+            \node[fill=blue!20,anchor=base] (t1)
+            {$e^{j(\omega_0t + \theta)}$};
+            }
+            \\
+            &=
+            \tikz[baseline]{
+            \node[fill=red!20,anchor=base] (t2)
+            {
+                $|C|e^{rt}$
+            };
+            }
+            \left[\cos(\omega_0t + \theta)\right. +
+            \tikz[baseline]{
+            \node[fill=green!20,anchor=base] (t3)
+            {
+                $j$
+            };
+            }
+            \left.\sin(\omega_0t + \theta)\right]\\
+    \end{align*}
+
+    \mode<beamer>
+    {
+        \pause
+        \begin{itemize}[<+-| alert@+>]
+            \item $e^{j(\omega_0t + \theta)} = \cos(\omega_0t + \theta) + j\sin(\omega_0t + \theta)$
+                \tikz[na]\node [coordinate] (n1) {};
+            \item Real
+                \tikz[na]\node [coordinate] (n2) {};
+            \item $90^\circ$ out of phase
+                \tikz[na]\node [coordinate] (n3) {};
+        \end{itemize}
+
+        % Now it's time to draw some edges between the global nodes. Note that we
+        % have to apply the 'overlay' style.
+        \begin{tikzpicture}[overlay]
+                \path[->]<1-> (n1) edge [bend right] (t1);
+                \path[->]<2-> (n2) edge [bend right] (t2);
+                \path[->]<3-> (n3) edge [bend right] (t3);
+        \end{tikzpicture}
+    }
+\end{frame}
+
+
+\begin{frame}[plain]
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/ct_complex_exp}
+        }
+    }
+\end{frame}
+
+
+\subsection{DT Complex Exponentials}
+\begin{frame}[plain]{DT Complex Exponentials}
+    \begin{align*}
+        x[n] &= C\alpha^n, \quad C \text{ and } \alpha \text{ are complex numbers.}\\
+        C &= |C|e^{j\theta}\\
+        \alpha &= |\alpha|e^{j\omega_0}\\
+        x[n] &= |C|e^{j\theta}\left(|\alpha|e^{j\omega_0}\right)^n\\
+        &= |C||\alpha|^n\cos(\omega_0n + \theta) + j|C||\alpha|^n\sin(\omega_0n + \theta)\\
+    \end{align*}
+    Comments:
+    \begin{itemize}
+      \item When $|\alpha| = 1$: sinusoidal real and imaginary parts.
+      \item $e^{j\omega_0 n}$ may or may not be periodic depending on the value of $\omega_0$.
+      \item Sinusoidal, exponential, step, and impulse signal form the cornerstones for signals and systems analysis.
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}[plain]{DT Complex Exponentials Plot}
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/dt_complex_exp}
+        }
+    }
+\end{frame}
+
+
+
+
+\begin{frame}{Periodicity Properties of Discrete-Time Complex Exponentials $e^{j\omega_0 n}$}
+    \begin{itemize}[<+-| alert@+>]
+      \item For the CT counterpart  $e^{j\omega_0 t}$,
+        \begin{enumerate}
+            \item The larger the magnitude of $\omega_0$, the higher is the rate of oscillation in the signal.
+            \item $e^{j\omega_0 t}$ is periodic for any value of $\omega_0$.
+        \end{enumerate}
+      \item In DT, as
+        \begin{equation*}
+            e^{j(\omega_0 + 2\pi)n} = e^{j2\pi n}e^{j\omega_0n} = e^{j\omega_0n}
+        \end{equation*}
+        the exponential at frequency $\omega_0 + 2\pi$ is the same as that at frequency $\omega_0$ .
+      \item Although in CT  $e^{j\omega_0 t}$ are all distinct for distinct values of $\omega_0$, In DT, these signals are not distinct, as the signal with frequency $\omega_0$ is identical to the signals with frequencies $\omega_0 + 2\pi$, $\omega_0 + 4\pi$, and so on. Therefore, in considering DT complex exponentials, we need only consider a frequency interval of length $2\pi$ in which to choose $\omega_0$.
+      \item In DT, as we increase $\omega_0$ from 0, we obtain signals that oscillate more and more rapidly until we reach $\omega_0 = \pi$. As we continue to increase $\omega_0$, we decrease the rate of oscillation until we reach $\omega_0 = 2\pi$. Note: $e^{j\pi n} = \left(e^{j\pi}\right)^n = (-1)^n$.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Comparison of the Signals $e^{j\omega_0 t}$ and $e^{j\omega_0 n}$}
+    \begin{tabular}{@{}p{2.5in}p{2.7in}@{}}
+        \toprule
+        $e^{j\omega_0 t}$ & $e^{j\omega_0 n}$\\
+        \midrule
+        Distinct signals for distinct values of $\omega_0$ & Identical signals for values of $\omega_0$ separated by multiples of $2\pi$\\
+        \midrule
+        Periodic for any choice of $e^{j\omega_0 t}$ & Periodic only if $\omega_0 = 2\pi m/N$ for some integers $N>0$ and $m$.\\
+        \midrule
+        Fundamental frequency $\omega_0$ & Fundamental frequency $\omega_0/m$\\
+        \midrule
+        Fundamental period\par
+        $\omega_0 = 0$: undefined\par
+        $\omega_0 \neq 0$: $2\pi/\omega_0$
+        &
+        Fundamental period\par
+        $\omega_0 = 0$: undefined\par
+        $\omega_0 \neq 0$: $m(2\pi/\omega_0)$
+        \\
+        \bottomrule
+    \end{tabular}
+\end{frame}
+
+\section{Step and Impulse Functions}
+\begin{frame}[plain]{Discrete-Time Unit Step  $u[n]$}
+    \begin{equation}
+        u[n] = \begin{cases}
+                 1, & n \geq 0,\\
+                 0, & n<0.
+               \end{cases}
+    \end{equation}
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/dt_step}
+        }
+    }
+\end{frame}
+
+\begin{frame}[plain]{Discrete-Time Unit Impulse (Unit Sample) $\delta[n]$}
+    \begin{equation}
+        \delta[n] = \begin{cases}
+                 1, & n = 0,\\
+                 0, & n \neq 0.
+               \end{cases}
+    \end{equation}
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/dt_impulse}
+        }
+    }
+\end{frame}
+
+
+
+\begin{frame}[plain]{DT Step and Impulse}
+    Unit impulse is the first backward difference of the unit step sequence.
+    \begin{equation}
+        \delta[n] = u[n] - u[n-1].
+    \end{equation}
+    \mode<handout>
+    {
+        \vspace{1in}
+    }
+
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/dt_impulse_step}
+        }
+    }
+\end{frame}
+
+\begin{frame}[plain]{DT Step and Impulse}
+    The unit step sequence is the running sum of the unit impulse.
+    \begin{equation}
+        u[n] = \sum_{m=-\infty}^{n}\delta[m].
+    \end{equation}
+    \mode<handout>
+    {
+        \vspace{1in}
+    }
+    \pause
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/dt_step_running_sum}
+        }
+    }
+\end{frame}
+
+
+
+
+\begin{frame}[plain]{DT Step and Impulse}
+    The unit step sequence is a superposition of delayed unit impulses.
+    \begin{equation}
+        u[n] = \sum_{k=0}^{\infty}\delta[n-k].
+    \end{equation}
+    \mode<handout>
+    {
+        \vspace{1in}
+    }
+    \pause
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/dt_step_superposition}
+        }
+    }
+\end{frame}
+
+
+
+
+
+\begin{frame}[plain]{Continuous-Time Unit Step Function $u(t)$}
+    \begin{equation}
+        u(t) = \begin{cases}
+                 0, & t < 0,\\
+                 1, & t>0.
+               \end{cases}
+    \end{equation}
+    \mode<beamer>
+    {
+        {
+            \centering
+            \input{figures/ct_step}
+        }
+    }
+\end{frame}
+
+
+
+\begin{frame}[plain]{Continuous-Time Unit Impulse Function $\delta(t)$}
+    \begin{columns}[t]
+        \column{0.6\textwidth}
+        {
+            \mode<beamer>
+            {
+                {
+                    \centering
+                    \input{figures/ct_step_approx}
+                }
+            }
+        }
+        %\pause
+        \column{0.4\textwidth}
+        {
+            \begin{equation}
+                \delta(t) = \frac{du(t)}{dt}.
+            \end{equation}
+            \mode<beamer>
+            {
+                {
+                    \centering
+                    \input{figures/ct_impulse}
+                }
+                %\pause
+                \begin{equation*}
+                    x(t)\delta(t) = x(0)\delta(t)
+                \end{equation*}
+                \begin{equation*}
+                    x(t)\delta(t -t_0) = x(t_0)\delta(t-t_0)
+                \end{equation*}
+
+            }
+        }
+    \end{columns}
+
+
+
+
+\end{frame}
+
+\begin{frame}[plain]{CT Unit Step Function and Unit Impulse Function}
+    \begin{equation}
+        u(t) = \int_{-\infty}^{t}\delta(\tau)d\tau.
+    \end{equation}
+        \mode<beamer>
+        {
+            {
+                \centering
+                \input{figures/ct_step_running_integral}
+            }
+        }
+\end{frame}
+
+
+
+\section{Signal Energy and Power}
+
+\begin{frame}[allowframebreaks]{Energy}
+    The total energy over a time interval $t_1 \leq t \leq t_2$ in a continuous-time signal $x(t)$ is
+    \begin{equation*}
+        \int_{t_1}^{t_2}|x(t)|^2dt
+    \end{equation*}
+    The total energy over a time interval $n_1 \leq n \leq n_2$ in a discrete-time signal $x[n]$ is
+    \begin{equation*}
+        \sum_{n= n_1}^{n_2}|x[n]|^2dt
+    \end{equation*}
+    Total energy  over an infinite interval in a CT signal:
+    \begin{equation}
+        E_\infty \triangleq \lim_{T \rightarrow \infty} \int_{-T}^{T}|x(t)|^2dt =  \int_{-\infty}^{+\infty}|x(t)|^2dt.
+    \end{equation}
+    Total energy  over an infinite interval in a DT signal:
+    \begin{equation}
+      E_\infty \triangleq \lim_{N \rightarrow \infty} \sum_{n = -N}^{+N}|x[n]|^2 =  \sum_{n=-\infty}^{+\infty}|x[n]|^2.
+    \end{equation}
+    Note that this integral and may not converge for some signals. Such signals have infinite energy, while signals with $E_\infty < \infty$ have finite energy.
+\end{frame}
+
+
+\begin{frame}{Power}
+
+    Time-averaged power over an infinite interval in a CT signal:
+    \begin{equation}
+        P_\infty \triangleq \lim_{T \rightarrow \infty} \frac{1}{2T}\int_{-T}^{T}|x(t)|^2dt.
+    \end{equation}
+    Total energy in a DT signal:
+    \begin{equation}
+      P_\infty \triangleq \lim_{N \rightarrow \infty} \frac{1}{2N+1}\sum_{n = -N}^{+N}|x[n]|^2.
+    \end{equation}
+    With these definitions, we can identify three important classes of signals:
+    \mode<beamer>
+    {
+    \begin{enumerate}
+        \item Energy signals: Signals with finite total energy $E_\infty < \infty$. These have zero average power.
+        \item Power signals: Signals with finite average power $0 < P_\infty < \infty$. As $P_\infty > 0$, $E_\infty = \infty$.
+        \item Signals with neither $E_\infty$ nor $P_\infty$ are finite.
+    \end{enumerate}
+    }
+\end{frame}
+
+
+\begin{frame}{Examples}
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            Determine whether the following signals are energy signals, power signals, or neither.
+            \begin{enumerate}[<alert@+>]
+                \item $x(t) = e^{-at}u(t), \quad a>0$
+                \item $x(t) = A\cos(\omega_0t+\theta)$
+                \item $x(t) = tu(t)$
+            \end{enumerate}
+            \vspace{-0.2in}
+            \begin{overprint}
+                \onslide<1>
+                \begin{align*}
+                    x(t) &= e^{-at}u(t), \quad a>0\\
+                    E_\infty &=  \lim_{T\rightarrow \infty}\int_{-T}^{T}|x(t)|^2dt\\
+                    E_\infty &=  \int_{-\infty}^{\infty}|x(t)|^2dt =  \int_{0}^{\infty}e^{-2at}dt\\
+                    &= \frac{-1}{2a}\left[e^{-at}\right]_0^\infty = \frac{-1}{2a}[0 -1] = \frac{1}{2a}\\
+                \end{align*}
+                This is an energy signal.
+                \onslide<2>
+                \begin{align*}
+                    x(t) &= A\cos(\omega_0t+\theta)\\
+                    E_\infty &=  \lim_{T\rightarrow \infty}\int_{-T}^{T}|x(t)|^2dt\\
+                    &=  \lim_{T\rightarrow \infty}\int_{-T}^{T}A^2\cos^2(\omega_0t+\theta)dt\\
+                    &= \frac{A^2}{2}\lim_{T\rightarrow \infty}\int_{-T}^{T}[1+ \cos(2\omega_0t+2\theta)]dt\\
+                    &= \frac{A^2}{2}\lim_{T\rightarrow \infty}\left[t - \frac{\cos(2\omega_0t+2\theta)}{2\omega_0}\right]_{-T}^{T}\\
+                \end{align*}
+                \onslide<3>
+                \begin{align*}
+                    x(t) &= tu(t)\\
+                    E_\infty &=  \lim_{T\rightarrow \infty}\int_{-T}^{T}|x(t)|^2dt\\
+                    &= \lim_{T\rightarrow \infty}\int_{0}^{T} tdt
+                    = \lim_{T\rightarrow \infty} \left[\frac{t^2}{2}\right]_0^T\\
+                    &= \lim_{T\rightarrow \infty}\frac{T^2}{2} \rightarrow \infty.
+                \end{align*}
+                This is not an energy signal.
+            \end{overprint}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{overprint}
+                \onslide<2>
+                Considering $T$ as an integer multiple of $2\pi/\omega_0$
+                \begin{align*}
+                    E_\infty &= A^2\lim_{T\rightarrow \infty}T \rightarrow \infty.
+                \end{align*}
+                This is not an energy signal.
+                \begin{align*}
+                    P_\infty &= \lim_{T\rightarrow \infty} \frac{1}{2T}\int_{-T}^{T}|x(t)|^2dt\\
+                    &= A^2\lim_{T\rightarrow \infty}\frac{1}{2T}T  = \frac{A^2}{2} < \infty\\
+                \end{align*}
+                This is a power signal.
+                \onslide<3>
+                \begin{align*}
+                    x(t) &= tu(t)\\
+                    P_\infty &=  \lim_{T\rightarrow \infty}\frac{1}{2T}\int_{-T}^{T}|x(t)|^2dt\\
+                    &= \lim_{T\rightarrow \infty}\frac{1}{2T}\frac{T^2}{2}\\
+                    &= \lim_{T\rightarrow \infty}\frac{T}{4} \rightarrow \infty.
+                \end{align*}
+                This is not a power signal either.
+            \end{overprint}
+        \end{column}
+    \end{columns}
+\end{frame} 

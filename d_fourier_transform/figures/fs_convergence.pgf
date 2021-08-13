@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+\begin{axis}[
+             xlabel = $t$,
+             xtick = {-.5,.5},
+             xticklabels = {$-\frac{T}{2}$, $\frac{T}{2}$},
+             ytick = {-1,-.5,.5,1},
+             yticklabels = {$-A$, $-\frac{A}{2}$, $\frac{A}{2}$, $A$},
+             domain = -.75:.75,
+             samples = 200,
+             legend style = {%
+               at = {(0.5,1.02)},
+               anchor = south},
+             ]
+  \addplot[mark = none] gnuplot {(x - floor(x +.5)) < 0 ? -1 : 1};
+  \addlegendentry{Signal}
+  \foreach \i in {2,4,6,8}{%
+    \addplot+[mark = none] gnuplot[raw gnuplot] {%
+      set samples 200;
+      fourier(k, x) = 4/((2*k+1)*pi) * cos(2*(2*k+1)*pi*x - pi/2);
+      plot[-.75:.75] sum [k=0:\i] fourier(k,x)
+    };
+    \addlegendentryexpanded{\number\numexpr 2*\i+1\relax{} first terms}
+}
+\end{axis}
+\end{tikzpicture}

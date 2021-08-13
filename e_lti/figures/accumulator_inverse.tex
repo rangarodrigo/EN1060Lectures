@@ -1,0 +1,22 @@
+\tikzstyle{int}=[draw, fill=pink!60, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[node distance=3cm,auto,>=latex']
+	
+	\begin{scope}[yshift=-2cm,
+		start chain,
+		node distance=10mm,
+		every node/.style={int, draw,join,inner sep=2mm},
+		every join/.style={->}
+		]
+		\node (a) [draw=none, on chain, fill=none]  {$\delta[n]$};	
+		\node (b) [on chain] {$h[n]$};
+		\node (c) [on chain] {$h^{-1}[n]$};
+		\node(d) [draw=none, on chain, fill=none]   {$\delta[n]$};
+		\draw[->] (b) -- node[midway, above, fill=none, draw=none]   {$u[n]$}  node[midway, below, fill=none, draw=none]  {$x_2[n]$} (c);
+		\draw[->] (c)-- node[midway, below, fill=none, draw=none]   {$y_2[n]$}  (d);
+	\end{scope}
+	
+	
+\end{tikzpicture}
+

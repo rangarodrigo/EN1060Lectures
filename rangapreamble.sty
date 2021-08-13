@@ -1,0 +1,212 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{rangapreamble}
+[2016/04/15 v0.01 Preamble for slides. Ranga Rodrigo]
+\RequirePackage[l2tabu, orthodox]{nag}
+
+%\usetheme{default}
+%\usecolortheme{dove}
+%\usetheme{metropolis}
+
+
+\AtBeginSection[]
+{
+%    \begin{frame}
+%        \frametitle{Outline}
+%        \tableofcontents[currentsection,currentsubsection]
+%    \end{frame}
+    \frame{\sectionpage}
+}
+
+\AtBeginSubsection[]
+{
+    \begin{frame}<beamer>
+        \frametitle{Outline}
+        \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+    \frame<handout>{\subsectionpage}
+}
+
+
+
+
+%\usepackage[lf]{venturis} %% lf option gives lining figures as default;
+%			  %% remove option to get oldstyle figures as default
+%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[sfdefault,light]{roboto}  %% Option 'sfdefault' only if the base font of the document is to be sans serif
+
+\usepackage[heuristica,vvarbb,bigdelims]{newtxmath}
+\usepackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usefonttheme[onlymath]{serif}
+
+\usepackage{amsmath, amssymb}
+%\usepackage{kerkis} % Kerkis roman and sans
+%\usepackage{kmath} % Kerkis math
+%\usepackage{fourier}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{ifthen}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\usepackage{tikz, pgfmath, pgfplots, filecontents}
+\usepackage{mathtools}
+%\usepackage{gnuplottex}
+
+
+%\usepackage{microtype}
+\usepackage{extarrows}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[american]{circuitikz}
+\usepackage{esint}
+\usepackage{caption,subcaption}
+\usepackage{environ}
+
+
+\usetikzlibrary{positioning}
+\usetikzlibrary{trees}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{chains}
+\usetikzlibrary{calc}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{math}
+\usetikzlibrary{tikzmark}
+
+
+    \lstset{
+    language=python,
+    basicstyle=\ttfamily,
+    tabsize=3,
+    %frame=lines,
+    caption=Test,
+    label=code:sample,
+    frame=single,
+    rulesepcolor=\color{gray},
+    xleftmargin=20pt,
+    framexleftmargin=15pt,
+    keywordstyle=\color{blue}\bf,
+    commentstyle=\color{OliveGreen},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt,
+    breaklines=true,
+    showstringspaces=false,
+    basicstyle=\footnotesize,
+    escapeinside={esc<@}{@>},
+    emph={str},emphstyle={\color{magenta}}}
+
+\tikzset{every picture/.style={font issue=\footnotesize},
+         font issue/.style={execute at begin picture={#1\selectfont}}
+        }
+%\pgfplotsset{compat=newest,compat/show suggested version=false}
+
+\everymath{\displaystyle}
+
+
+\newcommand\ft{Fourier transform}
+\newcommand\ftr{Fourier transform representation}
+\newcommand\ftrs{Fourier transform representations}
+\newcommand\fs{Fourier series}
+\newcommand\fsr{Fourier series representation}
+\newcommand\fsrs{Fourier series representations}
+
+\newcommand{\credit}[1]{\par\hfill \scriptsize Source:~\itshape#1}
+
+
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\renewcommand\vec[1]{\mathbf{\mathrm{#1}}}
+
+
+\mode<beamer|second|trans|article>{\newcommand\fillblank[1]{#1}}
+\mode<handout>{\newcommand\fillblank[1]{{\color{white} #1}}}
+
+
+\def\fern{407428}
+\def\charcoal{4D4944}
+\definecolor{DarkFern}{HTML}{\fern}
+\definecolor{DarkCharcoal}{HTML}{\charcoal}
+\colorlet{Fern}{DarkFern!85!white}
+\colorlet{Charcoal}{DarkCharcoal!85!white}
+\colorlet{LightCharcoal}{Charcoal!50!white}
+\colorlet{AlertColor}{orange!80!black}
+\colorlet{DarkRed}{red!70!black}
+\colorlet{DarkBlue}{blue!70!black}
+\colorlet{DarkGreen}{green!70!black}
+
+
+\def\entcblue{2d2e83}
+\def\entcorange{f9b233}
+
+\def\entcgray{ADA9BB}
+\def\entcdarkgray{797586}
+\def\entcmaroon{7B0013}
+\def\entcred{B73F3D}
+\def\entcslate{79B5BC}
+\def\entcbaige{E8D5B5}
+\definecolor{EntcBaigeDef}{HTML}{\entcbaige}
+\definecolor{EntcMaroonDef}{HTML}{\entcmaroon}
+
+\definecolor{EntcBlue}{HTML}{\entcblue}
+
+\setbeamercolor{title}{fg=EntcBlue}
+\setbeamercolor{frametitle}{fg=EntcBlue}
+\setbeamercolor{normal text}{fg=Charcoal}
+
+%\defaultfontfeatures{
+%    Mapping=tex-text,
+%    Scale=MatchLowercase,
+%}
+%\setsansfont{Optima}
+%\setmonofont{Monaco}
+
+%\def\heading{%
+%  \large%
+%  \fontspec[
+%    Color=\fern,
+%    Contextuals={WordInitial,WordFinal},
+%    Alternate=1
+%  ]{Hoefler Text Italic}%
+%}
+
+\setbeamertemplate{frametitle}
+  {\begin{centering}\smallskip
+   \insertframetitle\par
+   \smallskip\end{centering}}
+
+\setbeamercolor{block title}{fg=black,bg=Fern!25!white}
+\setbeamercolor{block body}{fg=black,bg=Fern!25!white}
+\setbeamercolor{alerted text}{fg=AlertColor}
+%% \setbeamercolor{palette primary}{fg=white,bg=black}
+%% \setbeamercolor{palette secondary}{fg=white,bg=black}
+%% \setbeamercolor{palette tertiary}{fg=white,bg=black}
+\setbeamertemplate{itemize item}{$\bullet$}
+\setbeamercolor{itemize item}{fg=Charcoal}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[text line]{%
+    \hfill\strut{%
+        \scriptsize\sf\color{black!60}%
+        \quad\insertframenumber%
+    }%
+    \hfill%
+}
+
+
+\mode<handout>{
+\setbeamercolor{block title}{fg=black,bg=white}
+\setbeamercolor{block body}{fg=black,bg=white}
+\setbeamercolor{title}{fg=black,bg=white}
+\setbeamercolor{frametitle}{fg=black,bg=white}
+\setbeamercolor{normal text}{fg=black,bg=white}
+}

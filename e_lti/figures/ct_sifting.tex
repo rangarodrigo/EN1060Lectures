@@ -1,0 +1,133 @@
+\pgfplotstableread{e_lti/figures/ct_signal.dat}{\signal}
+\pgfplotstableread{e_lti/figures/ct_signal_step.dat}{\signalst}
+%\pgfplotstableread{ct_signal.dat}{\signal}
+%\pgfplotstableread{ct_signal_step.dat}{\signalst}
+\pgfplotsset{every axis/.append style={font=\scriptsize}}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+	name=axis1,
+       width=12cm,
+       height=3cm,
+	axis y line=middle,
+	axis x line=bottom,
+	ymin=0,ymax=1.2,
+	xlabel=$t$,
+	ylabel= $x(t)$,	
+	xtick={-2, -1, 0, 1, 2},	
+	xticklabels={$-2\Delta$, $-\Delta$, 0, $\Delta$, $2\Delta$ },
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+		every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=south},	
+	clip=false,
+]
+\addplot [black, thick, smooth] table [x={t}, y={xt}] {\signal};
+\addplot +[red!60!black, very thick, mark=none] table [x=t, y=xt] {\signalst};
+\draw[blue!20!white, thin] (axis cs:-2, 1) -- (axis cs:-2, -7);
+\draw[blue!20!white, thin] (axis cs:-1, 1) -- (axis cs:-1, -7);
+\draw[blue!20!white, thin] (axis cs:1, 1) -- (axis cs:1, -7);
+\draw[blue!20!white, thin] (axis cs:2, 1) -- (axis cs:2, -7);
+\end{axis}
+
+\pause
+
+\begin{axis}[
+	name=axis2,
+	at={($(axis1.south east)+(0,-1.1cm)$)},anchor=north east,
+       width=12cm,
+       height=2.5cm,	
+	minor tick num=1,
+	axis y line=middle,
+	axis x line=bottom,
+	xmin=-5,
+	xmax=15,
+	ymin=0,ymax=1,
+	xlabel=$t$,
+	ylabel=$x(-2\Delta)\delta_\Delta(t+2\Delta)\Delta$,
+	ytick=\empty,
+	xtick={-2, -1, 0, 1, 2},	
+	xticklabels={$-2\Delta$, $-\Delta$, 0, $\Delta$, $2\Delta$ },	
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+	every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=south},	
+		clip=false,
+]
+\addplot +[red!60!black, very thick, mark=none, restrict x to domain=-2:-1.005, ybar, bar width=0.5cm, xshift=0.25cm] table [x=t, y=xt] {\signal};
+\node at (axis cs:-2, 0.57) [anchor= east] {$x(-2\Delta)$};
+\end{axis}
+
+\pause
+
+\begin{axis}[
+	name=axis3,
+	at={($(axis2.south east)+(0,-1.1cm)$)},anchor=north east,
+       width=12cm,
+       height=2.5cm,	
+	minor tick num=1,
+	axis y line=middle,
+	axis x line=bottom,
+	xmin=-5,
+	xmax=15,
+	ymin=0,ymax=1,
+	xlabel=$t$,
+	ylabel=$x(-\Delta)\delta_\Delta(t + \Delta)\Delta$,
+	ytick=\empty,
+	xtick={-2, -1, 0, 1, 2},	
+	xticklabels={$-2\Delta$, $-\Delta$, 0, $\Delta$, $2\Delta$ },	
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+	every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=south},	
+		clip=false,
+]
+\addplot +[red!60!black, very thick, mark=none, restrict x to domain=-1: -.005, ybar, bar width=0.5cm, xshift=0.25cm] table [x=t, y=xt] {\signal};
+\node at (axis cs:-1, 0.7) [anchor= east] {$x(-\Delta)$};
+\end{axis}
+
+\pause
+
+\begin{axis}[
+	name=axis4,
+	at={($(axis3.south east)+(0,-1.1cm)$)},anchor=north east,
+       width=12cm,
+       height=2.5cm,	
+	minor tick num=1,
+	axis y line=middle,
+	axis x line=bottom,
+	xmin=-5,
+	xmax=15,
+	ymin=0,ymax=1,
+	xlabel=$t$,
+	ylabel=$x(0)\delta_\Delta(t)\Delta$,
+	ytick=\empty,	
+	xtick={-2, -1, 0, 1, 2},	
+	xticklabels={$-2\Delta$, $-\Delta$, 0, $\Delta$, $2\Delta$ },	
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+	every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=south},	
+		clip=false,
+]
+\addplot +[red!60!black, very thick, mark=none, restrict x to domain=0: .995, ybar, bar width=0.5cm, xshift=0.25cm] table [x=t, y=xt] {\signal};
+\node at (axis cs:1, 0.84) [anchor= west] {$x(0)$};
+\end{axis}
+
+\pause
+
+\begin{axis}[
+	name=axis5,
+	at={($(axis4.south east)+(0,-1.1cm)$)},anchor=north east,
+       width=12cm,
+       height=2.5cm,	
+	minor tick num=1,
+	axis y line=middle,
+	axis x line=bottom,
+	xmin=-5,
+	xmax=15,
+	ymin=0,ymax=1,
+	xlabel=$t$,
+	ylabel=$x(\Delta)\delta_\Delta(t-\Delta)\Delta$,
+	ytick=\empty,
+	xtick={-2, -1, 0, 1, 2},	
+	xticklabels={$-\Delta$, $-\Delta$, 0, $\Delta$, $2\Delta$ },	
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+	every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=south},	
+		clip=false,
+]
+\addplot +[red!60!black, very thick, mark=none, restrict x to domain=1: 1.995, ybar, bar width=0.5cm, xshift=0.25cm] table [x=t, y=xt] {\signal};
+\node at (axis cs:2, 0.98) [anchor= west] {$x(\Delta)$};
+\end{axis}
+\end{tikzpicture} 

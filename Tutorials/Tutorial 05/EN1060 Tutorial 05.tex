@@ -1,0 +1,89 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{multicol}
+\usepackage{graphicx}
+%\usepackage{fixltx2e}
+%\usepackage{amsmath}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{fourier}
+\usepackage[inline]{enumitem}
+\usepackage{subcaption}
+
+
+
+%\everymath{\displaystyle}
+
+\newcommand\ft{Fourier transform}
+\newcommand\ift{inverse Fourier transform}
+\newcommand\ftr{Fourier transform representation}
+\newcommand\fs{Fourier series}
+\newcommand\fsr{Fourier series representation}
+\newcommand\xt{$x(t)$}
+\newcommand\xo{$X(j\omega)$}
+\newcommand\dtfs{discrete-time Fourier series}
+
+\title{\Large Department of Electronic and Telecommunication Engineering\\University of Moratuwa\\Sri Lanka\\{\LARGE \bf \textsc{EN1060 Signals and Systems: Tutorial 05 \footnote{All the questions are from Oppenheim \emph{et al.} chapter 4.}}}}
+
+\date{\vspace{-0.2in}\today}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+
+
+\maketitle
+\noindent \tikz \draw (0,0) -- (\textwidth,0);
+
+\begin{enumerate}
+    % Q01 Oppenheim et al. 3.2
+    \item A discrete-time periodic signal $x[n]$ is real valued and has a fundamental period $N = 5$. The nonzero Fourier series coefficients for $x[n]$ are
+    \begin{equation*}
+        a_0 = 1, a_2 = a^\ast_2 = e^{j\pi/4}, a_4 = a^\ast_4 = 2e^{j\pi/3}.
+    \end{equation*}
+    Express $x[n]$ in the form
+    \begin{equation*}
+        x[n] = A_0 + \sum_{k=1}^{\infty}A_k \sin(\omega_k n + \phi_k)
+    \end{equation*}
+
+    % Q02 Oppenheim et al. 3.9
+    \item Use the \dtfs~analysis equation to evaluate the numerical values of one period of the Fourier series coefficients of the periodic signal
+    \begin{equation*}
+        x[n] = \sum_{m=-\infty}^{\infty}\left\{ 4\delta[n-4m] + 8\delta[n-1-4m]\right\}
+    \end{equation*}
+
+    % Q03 Oppenheim et al. 3.10
+    \item Let $x[n]$ be a real and odd periodic signal with period $N = 7$ and Fourier coefficients $a_k$. Given that
+    \begin{equation*}
+        a_{15} = j, a_{16} = 2j, a_{17} = 3j,
+    \end{equation*}
+    determine the values of $a_0$, $a_1$, $a_{-2}$,  and $a_{-3}$.
+
+    % Q03 Oppenheim et al. 3.11
+    \item Suppose we are given the following information about a signal $x[n]$:
+    \begin{enumerate}
+        \item $x[n]$ is a real and even signal.
+        \item $x[n]$ has period $N = 10$ and Fourier coefficients $a_k$.
+        \item $a_{11} = 5$.
+        \item $\frac{1}{10}\sum_{n=0}^{9}|x[n]|^2 = 50.$
+    \end{enumerate}
+    Show that $x[n] = A \cos(Bn +C)$, and specify numerical values for the constants $A$, $B$, and $C$.
+
+    % Q03 Oppenheim et al. 3.12, 3.13, 3.14, 3.16, 3.31, 3.36, 3.48
+
+    % Q03 Oppenheim et al. 5.1 5.3 5.4 5.6 5.7 5.8 5.9 5.12 5.13 5.14 5.19 5.21 5.22 5.26 5.29 5.35 5.50
+
+
+\end{enumerate}
+
+\end{document} 

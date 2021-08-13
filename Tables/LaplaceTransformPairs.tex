@@ -1,0 +1,26 @@
+\renewcommand{\arraystretch}{2}
+\begin{table}
+    \centering
+    \caption{Basic Laplace Transform Pairs}\label{ta:ft_properties}
+        \begin{tabular}{@{}LLL@{}}
+            \toprule
+            x(t) & X(s) & \text{ROC}\\
+            \midrule
+            \delta(t) & {1} & \text{All } s\\
+            u(t) & {\dfrac{1}{s}} & \mathrm{Re}(s) > 0\\
+            -u(-t) & {\dfrac{1}{s}} & \mathrm{Re}(s) < 0\\
+            tu(t) & {\dfrac{1}{s^2}} & \mathrm{Re}(s) > 0\\
+            \dfrac{t^{n-1}}{(n-1)!}u(t) & {\dfrac{1}{s^{n}}} & \mathrm{Re}(s) > 0\\
+            -\dfrac{t^{n-1}}{(n-1)!}u(-t) & {\dfrac{1}{s^{n}}} & \mathrm{Re}(s) < 0\\                       
+            e^{-at}u(t) & {\dfrac{1}{s+a}} & \mathrm{Re}(s) > - a\\
+            -e^{-at}u(-t) & {\dfrac{1}{s+a}} & \mathrm{Re}(s) < - a\\
+            te^{-at}u(t) & \dfrac{1}{(s+a)^2} & \mathrm{Re}(s) > - a\\
+            -te^{-at}u(-t) & \dfrac{1}{(s+a)^2} & \mathrm{Re}(s) < - a\\
+            (\cos \omega_0t)u(t) & \dfrac{s}{s^{2}+\omega^2} & \mathrm{Re}(s) > 0\\
+            (\sin \omega_0t) u(t) & \dfrac{\omega_0}{s^{2}+\omega^2} & \mathrm{Re}(s) > 0\\
+            (e^{-at}\cos \omega_0t) u(t) & \dfrac{s+a}{(s+a)^{2}+\omega^2} & \mathrm{Re}(s) >  - a\\
+            (e^{-at}\sin \omega_0t) u(t) & \dfrac{\omega_0}{(s+a)^{2}+\omega^2} & \mathrm{Re}(s) >  - a\\
+            \bottomrule
+        \end{tabular}
+\end{table}
+

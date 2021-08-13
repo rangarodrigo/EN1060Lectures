@@ -1,0 +1,36 @@
+\renewcommand{\arraystretch}{2}
+\begin{table}
+    \centering
+    \caption{Properties of the Discrete-Time Fourier Series}\label{ta:dtfs_properties}
+        \begin{tabular}{@{}p{5cm}LL@{}}
+            \toprule
+                Property & \text{Periodic signal} & \text{Fourier series coefficients}\\
+            \midrule
+                $\left.\parbox{2em}{$x[t]$\\$y[t]$} \right\}$    & \parbox{17em}{Periodic with period $N$\\fundamental frequency $\omega_0 = 2\pi/N$} & \left.\parbox{2em}{$a_k$\\ $b_k$}\right\} \parbox{15em}{Periodic with\\period $N$} \\
+            \midrule
+                Linearity & Ax[n] + By[n]& Aa_k + Bb_k\\
+                Time shifting & x[n-n_0] & a_ke^{-jk(2\pi/N)n_0}\\
+                Frequency shifting & e^{jM(2\pi/N)n}x[n] & a_{k-M}\\
+                Conjugation & x^\ast[n] & a^\ast_{-k}\\
+                Time reversal & x[-n] & a_{-k}\\
+                Time scaling & x_{(m)}[n] = \begin{cases}x[n/m], & \text{if $n$ is a multiple of $m$}\\0, & \text{if $n$ is not a multiple of $m$}\end{cases} & \frac{1}{m}a_k \quad \left(\parbox{10em}{viewed as periodic\\with period $mN$}\right)\\
+                Periodic convolution& \sum_{r=<N>}x[r]y[n-r] & Na_kb_k\\
+                Multiplication & x[n]y[n] & \sum_{l=<N>}a_lb_{k-l} \\
+                First difference & x[n] - x[n-1] & (1-e^{-jk(2\pi/N)})a_k\\
+                Running sum & \sum_{k=-\infty}^{\infty}x[k]\left(\parbox{15em}{finite valued and periodic only\\if $a_0 = 0$}\right) & \left(\frac{1}{(1-e^{-jk(2\pi/N)})}\right)a_k\\
+                Conjugate symmetry for real signals & x[n]\quad \text{real} & \left\{\begin{aligned}&a_k = a^\ast_{-k}\\
+                                                                                                    &\mathfrak{Re}\{a_k\} = \mathfrak{Re}\{a_{-k}\}\\
+                                                                                                    &\mathfrak{Im}\{a_k\} = -\mathfrak{Im}\{a_{-k}\} \\
+                                                                                                    &|a_k| = |a_{-k}|\\
+                                                                                                    &\sphericalangle a_k = -\sphericalangle a_{-k}                            \end{aligned}\right.\\
+                Real and even signals & x[n]\quad \text{real and even} & a_k\quad \text{real and even}\\
+                Real and odd signals & x[n]\quad \text{real and odd} & a_k\quad \text{purely imaginary and odd}\\
+                Even-odd decomposition of real signals & \begin{aligned}&x_e[n] = \mathfrak{Ev}\{x[n]\}, \quad [x[n]\:\text{real}]\\
+                                                                          &x_o[n] = \mathfrak{Od}\{x[n]\}, \quad [x[n]\:\text{real}] \end{aligned}  & \begin{aligned}&\mathfrak{Re}\{a_k\}\\  &j\mathfrak{Im}\{a_k\} \end{aligned}\\
+            \midrule
+            \multicolumn{2}{l}{Parseval's relation for aperiodic signals}&\\
+                & \frac{1}{N}\sum_{n=<N>}^{}|x[n]|^2 = \sum_{k=<N>}^{}|a_k|^2 & \\
+            \bottomrule
+        \end{tabular}
+\end{table}
+

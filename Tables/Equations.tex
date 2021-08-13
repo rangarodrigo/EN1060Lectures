@@ -1,0 +1,51 @@
+\section*{Equations}
+\subsection*{Fourier}
+{\centering
+{\renewcommand{\arraystretch}{4}%
+    \begin{tabular}{lcc}
+
+    & CT & DT\\
+        \cline{2-3}
+    & Series (CT) & Series (DT)\\
+    \cline{2-3}
+    Periodic &
+    $\begin{aligned}
+        x(t) &= \sum_{k=-\infty}^{+\infty}a_k e^{jk\omega_0 t}\\
+        a_k &= \frac{1}{T} \int_{T}x(t)e^{-jk\omega_0 t}dt
+    \end{aligned}$\par
+
+    &
+    $\begin{aligned}
+        x[n] &= \sum_{k=<N>}a_k e^{jk\left(\frac{2\pi}{N}\right) n}\\
+        a_k &= \frac{1}{N} \sum_{n=<N>}x[n]e^{-jk\left(\frac{2\pi}{N}\right)n}
+    \end{aligned}$\par
+    \\[4ex]
+        \cline{2-3}
+     & Transform (CT) & Transform (DT)\\
+    \cline{2-3}
+    Aperiodic &
+    $\begin{aligned}
+        x(t) &= \frac{1}{2\pi}\int_{-\infty}^{+\infty} X(j\omega)e^{j\omega t}d\omega\\
+        X(j\omega) &=  \int_{-\infty}^{+\infty}x(t)e^{-j\omega t}dt
+    \end{aligned}$\par
+
+    &
+
+
+    $\begin{aligned}
+        x[n] &= \frac{1}{2\pi}\int_{2\pi} X(e^{j\omega})e^{j\omega n}d\omega\\
+        X(e^{j\omega}) &= \sum_{n=-\infty}^{+\infty}x[n]e^{-j\omega n}
+    \end{aligned}$\par
+    \\[4ex]
+        \cline{2-3}
+    \end{tabular}
+    }
+}
+    \subsection*{Trigonometric Fourier Series}
+
+    \begin{align*}
+        x(t) &= a_0 + \sum_{k=1}^{\infty}a_k \cos(k\omega_0 t) + \sum_{k=1}^{\infty}b_k \sin(k\omega_0 t).\\
+        a_0 &= \frac{1}{T}\int_T x(t)dt.\\
+        a_k &= \frac{2}{T}\int_T x(t)\cos(k\omega_0 t)dt.\\
+        b_k &= \frac{2}{T}\int_T x(t)\sin(k\omega_0 t)dt.
+    \end{align*}

@@ -1,0 +1,13 @@
+\begin{tikzpicture}[every node/.style={font=\scriptsize}, x=1cm, y=1cm]
+	\draw (-2, 0) -- (6,0)  node [anchor=west] {$\omega$};
+	\draw (0, -0.1) -- (0, 3.5) node [anchor=west] {$X(j\omega)e^{j\omega t}$};
+
+% \draw (-3.5,1.5) .. controls (-2,3) and (-0.5,2) ..  .. controls (2, 2) and (2, 3) .. (3,1) ;
+
+
+\draw[pattern=north west lines, pattern color=red!20!white] (2, 0)  node [anchor=north] {$k\omega_0$} rectangle (3, 2.5) ++(0,-2.5) node [anchor=north] {$(k+1)\omega_0$} ;
+\draw  plot[smooth, tension=.7] coordinates {(-1.5,2.8) (0,3) (2,2.5) (4.5,1) (5.5,1)};
+
+\draw[dashed] (2, 2.5) -- ++(-2,0) node[anchor=east] {$X(kj\omega_0)^{jk\omega_0 t}$};
+\draw[latex-] (2.5,1) -- ++(0.6,-0.4) node [anchor=west, text width=2cm] {Area =\\$X(kj\omega_0)^{jk\omega_0 t}\omega_0$};
+\end{tikzpicture}

@@ -1,0 +1,41 @@
+\begin{tikzpicture}[xscale=0.5]
+
+
+
+
+	\def\nmin{-12}
+	\def\nmax{14}	
+	
+	\begin{scope}	
+		\def\x{{0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 1, 2, 1, 0, 1, 2, 1, 0, -1, 0, 0, 0, 0, 0, 0, 0}}	
+		\draw (\nmin-1, 0) -- (\nmax+1, 0) node[anchor=west] {\scriptsize $n$};
+		\draw (0,0) -- ++(0, 2.5) node [anchor=south] {\scriptsize $x[n]$};
+% 		\foreach \n/\l in {-1/{-N_1}, 1/0, 3/{N_1}}
+% 		{
+% 			\node at (\n/4, 0) [anchor=north] {\scriptsize $\l$};
+% 		}
+		\foreach \n in {-3, -2, ..., 8}
+		{
+			\node at (\n, 0) [anchor=north] {\scriptsize $\n$};
+		}
+		\node at (-0.75,1) [anchor=west] {\scriptsize $1$};
+		\node at (-0.75,2) [anchor=west] {\scriptsize $2$};
+		
+		\foreach \n in {0,1, ..., 26}
+		{
+			\pgfmathsetmacro\xn{\x[\n]}
+			\pgfmathparse{\xn == 0 ? 1 : 0}	
+			\ifthenelse{\pgfmathresult>0}
+			{
+				\draw[brown, fill=brown] (\n+ \nmin,  0) circle (1pt);
+
+			}
+			{
+				\draw[brown, thick, fill=brown]  (\n + \nmin, 0) -- ++(0, \xn) circle (1pt);% node[anchor=east] {\scriptsize $\xn$};			
+				
+			}
+		}
+	\end{scope}		
+	
+	
+\end{tikzpicture}

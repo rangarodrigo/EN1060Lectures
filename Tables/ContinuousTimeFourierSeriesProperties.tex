@@ -1,0 +1,41 @@
+\renewcommand{\arraystretch}{2}
+\begin{table}
+    \centering
+    \caption{Properties of Continuous Time Fourier Series}\label{ta:ct_fs_properties}
+        \begin{tabular}{@{}p{5cm}LL@{}}
+            \toprule
+                Property & \text{Periodic signal} & \text{Fourier series coefficients}\\
+            \midrule
+                     &\left.\begin{aligned}& x(t)\\&y(t) \end{aligned}\right\}\quad \text{\parbox[]{4cm}{periodic with period $T$ and fundamental frequency $\omega_0 =2\pi/T$}}& \begin{aligned}& a_k\\ & b_k\end{aligned}\\
+            \midrule
+                Linearity & Ax(t) + By(t)& Aa_k + Bb_k\\
+                Time shifting & x(t-t_0) & a_ke^{-jk\omega_0 t_0} =  a_ke^{-jk(2\pi/T) t_0}\\
+                Frequency shifting & e^{jM\omega_0 t}x(t)= e^{jM(2\pi/T) t}x(t) & a_{k-M}\\
+                Conjugation & x^\ast(t) & a^\ast_{-k}\\
+                Time reversal & x(-t) & a_{-k}\\
+                Time scaling & x(\alpha t), \: \alpha > 0\quad \text{\parbox[]{4cm}{ (periodic with period $T/\alpha$)}} & a_k\\
+                Periodic convolution& \int_T x(\tau) y(t-\tau)d\tau & Ta_k b_k\\
+                Multiplication & x(t) y(t) & \sum_{l=-\infty}^{\infty}a_lb_{k-l} \\
+                Differentiation  & \frac{d}{dt}x(t)& jk\omega_0 a_k\\
+                Integration & \int_{-\infty}^{t}x(\tau)d\tau \quad \text{\parbox[]{4cm}{finite valued and periodic only if $a_0 = 0$}}& \frac{1}{jk\omega_0}a_k\\
+                Conjugate symmetry for real signals & x(t)\quad \text{real} & \left\{\begin{aligned}&a_k = a^\ast_{-k}\\
+                                                                                                    &\mathfrak{Re}\{a_k\} = \mathfrak{Re}\{a_{-k} \}\\
+                                                                                                    &\mathfrak{Im}\{a_k \} = -\mathfrak{Im}\{a_{-k} \} \\
+                                                                                                    &|a_k | = |a_{-k} |\\
+                                                                                                    &\sphericalangle a_k  = -\sphericalangle a_{-k}                             \end{aligned}\right.\\
+                Real and even signals & x(t)\quad \text{real and even} & a_k\quad \text{real and even}\\
+                Real and odd signals & x(t)\quad \text{real and odd} & a_k\quad \text{purely imaginary and odd}\\
+                Even-odd decomposition for real signals & \begin{aligned}&x_e(t) = \mathfrak{Ev}\{x(t)\}, \quad [x(t)\:\text{real}]\\
+                                                                          &x_o(t) = \mathfrak{Od}\{x(t)\}, \quad [x(t)\:\text{real}] \end{aligned}  & \begin{aligned}&\mathfrak{Re}\{a_k\}\\  &j\mathfrak{Im}\{a_k\} \end{aligned}\\
+            \midrule
+            \multicolumn{2}{l}{Parseval's relation for periodic signals}\par
+            %\text{
+            %\begin{equation*}
+                $\frac{1}{T}\int_{T}|x(t)|^2dt = \sum_{k=-\infty}^{\infty} |a_k|^2$
+            %\end{equation*}}
+            &\\
+            %& &\\
+            \bottomrule
+        \end{tabular}
+\end{table}
+

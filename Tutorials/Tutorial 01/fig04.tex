@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+	\begin{scope}
+	    \draw[-latex] (-3*0.4,0) -- (8*0.4,0) node[anchor=west] {$n$};
+	    \draw[-latex] (0, -0.1) -- ++(0,3.5) node[anchor=south] {$x_1[n]$};
+	    \foreach \x/\y in {-2/0, -1/0, -1/0, 0/1, 1/2, 2/3, 3/0, 4/0, 5/2, 6/2, 7/0}
+	        {
+	            \draw[fill=black] (\x*0.4, 0) -- ++(0,\y) circle (1pt);
+	        }
+	
+	    \foreach \x in {-2, -1, ..., 7}
+	    {
+	        \draw (\x*0.4, 2pt) -- ++(0, -4pt) node[anchor=north]{\scriptsize \x};
+	    }
+	    \foreach \y in {1,2, 3}
+	    {
+	    	\node at (0,\y) [anchor=east] {\scriptsize \y};
+	    }
+    \end{scope}
+
+    	\begin{scope}[xshift=6cm]
+	    \draw[-latex] (-4*0.4,0) -- (5*0.4,0) node[anchor=west] {$n$};
+	    \draw[-latex] (0, -2.1) -- ++(0,5.5) node[anchor=south] {$x_2[n]$};
+	    \foreach \x/\y in {-3/0, -2/-2, -1/-2, 0/2, 1/2, 2/0, 3/-2, 4/0}
+	        {
+	            \draw[fill=black] (\x*0.4, 0) -- ++(0,\y) circle (1pt);
+	        }
+	
+	    \foreach \x in {-2, -1, ..., 4}
+	    {
+	        \draw (\x*0.4, 2pt) -- ++(0, -4pt) node[anchor=north]{\scriptsize \x};
+	    }
+	    \foreach \y in {-2, -1, 1,2, 3}
+	    {
+	    	\node at (0,\y) [anchor=east] {\scriptsize \y};
+	    }
+    \end{scope}
+\end{tikzpicture} 

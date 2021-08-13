@@ -1,0 +1,80 @@
+\pgfplotsset{every axis/.append style={font=\scriptsize}}
+\begin{tikzpicture}[scale=1]
+
+
+\begin{axis}[
+	name=axis1,
+       width=8cm,
+       height=3cm,	
+	axis y line=middle,
+	axis x line=bottom,
+	ymin=0,ymax=1.2,
+	xmin=-3,xmax=4,	
+	xlabel=$\tau$,
+	ylabel= $x(\tau)h(t-\tau)$,	
+	xtick={-2.5, -0.5, 0},
+	xticklabels={$t-2T$, $t$, 0},
+	ytick={0.25, 1},
+	yticklabels={$t$, $2T$},
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+	every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=west},	
+	clip=false,
+]
+	\addplot [dashed, blue] coordinates {(-3,0) (0,0) (0,1) (1,1) (1,0) (4,0)};
+	\addplot [thick, red!60!black] coordinates {(-3,0) (0,0) (0,0.25) (0.5, 0) (4,0)};
+
+	\node at (axis cs:3,0.8) {$0<t<T$};	
+	\node at (axis cs:3,0.4) {$y(t) = \frac{1}{2}t^2$};	
+\end{axis}
+
+\begin{axis}[
+	name=axis2,
+	at={($(axis1.south east)+(0,-0.8cm)$)},anchor=north east,
+       width=8cm,
+       height=3cm,	
+	axis y line=middle,
+	axis x line=bottom,
+	ymin=0,ymax=1.2,
+	xmin=-3,xmax=4,	
+	xlabel=$\tau$,
+	ylabel= $x(\tau)h(t-\tau)$,	
+	xtick={-1.5, 0.5, 0, 1},
+	xticklabels={$t-2T$, $t$, 0, $T$},
+	ytick={0.25,  0.75, 1},
+	yticklabels={$t-T$, $t$, $2T$},
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+	every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=west},	
+	clip=false,
+]
+	\addplot [dashed, blue] coordinates {(-3,0) (0,0) (0,1) (1,1) (1,0) (4,0)};
+	\addplot [thick, red!60!black] coordinates {(-3,0) (0,0) (0,0.75) (1,0.25) (1, 0) (4,0)};
+	\node at (axis cs:3,0.8) {$T<t<2T$};
+	\node at (axis cs:3,0.4) {$y(t) = Tt - \frac{1}{2}T^2$};	
+\end{axis}
+
+\begin{axis}[
+	name=axis3,
+	at={($(axis2.south east)+(0,-0.8cm)$)},anchor=north east,
+       width=8cm,
+       height=3cm,	
+	axis y line=middle,
+	axis x line=bottom,
+	ymin=0,ymax=1.2,
+	xmin=-3,xmax=4,	
+	xlabel=$\tau$,
+	ylabel= $x(\tau)h(t-\tau)$,	
+	xtick={.5},
+	xticklabels={$t-2T$},
+	ytick={0.75, 1},
+	yticklabels={$t-T$, $2T$},	
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+	every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=west},	
+	clip=false,
+]
+	\addplot [dashed, blue] coordinates {(-3,0) (0,0) (0,1) (1,1) (1,0) (4,0)};
+	\addplot [thick, red!60!black] coordinates {(-3,0) (.5,0) (.5,1) (1, 0.75) (1,0) (4,0)};
+	\node at (axis cs:3,0.8) {$2T<t<3T$};	
+		\node at (axis cs:3,0.4) {$y(t) = - \frac{1}{2}t^2 + Tt + \frac{3}{2}T^2$};
+\end{axis}
+
+\end{tikzpicture} 

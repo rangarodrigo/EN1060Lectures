@@ -1,0 +1,7 @@
+\begin{tikzpicture}[start chain, system/.style={draw, fill=pink!60, minimum size=2em, align=center}]
+	\node (a) [on chain, text width=2em] {$x(t)$\\ $x[n]$};
+	\node (b) [system, on chain, text width=2em] {$I$};
+	\node (c) [on chain, text width=2em] {$x(t)$ \\ $x[n]$};	
+	\draw[-latex] (a) -- (b);
+	\draw[-latex] (b) -- (c);
+\end{tikzpicture}

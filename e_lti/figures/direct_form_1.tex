@@ -1,0 +1,62 @@
+\begin{tikzpicture}
+[
+	scale=0.8,
+	delay/.style={draw=black, fill=orange!40, minimum width=1.6em, minimum height=1.6em},
+	adder/.style={circle, draw=black, fill=pink!40, minimum width=1.2em, minimum height=1.2em, inner sep=0},	
+	br/.style={circle, draw=black, fill=black, minimum width=0.2em, minimum height=0.2em, inner sep=0},		
+]
+
+      \matrix (m) [row sep=5mm, column sep=10mm]{
+      \node [delay] (m00) {$D$}; & \node[adder] (m01)  {$+$}; & \node[adder] (m02)  {$+$}; & \node [delay] (m03) {$D$}; \\
+      \node [br] (m10) {}; & \node[adder] (m11)  {$+$};  & \node[adder] (m12)  {$+$};   & \node [br] (m13) {};\\
+      \node [delay] (m20) {$D$}; &  & & \node [delay] (m23) {$D$}; \\
+      \node [br] (m30) {}; & \node[adder] (m31)  {$+$};  & \node[adder] (m32)  {$+$};   & \node [br] (m33) {};\\
+      \node [] (m40) {$\vdots$}; & \node [] (m41) {$\vdots$};   & \node [] (m42) {$\vdots$};  & \node [] (m43) {$\vdots$}; \\
+      \node [br] (m50) {}; & \node[adder] (m51)  {$+$};  & \node[adder] (m52)  {$+$};   & \node [br] (m53) {};\\
+      \node [delay] (m60) {$D$}; & &  & \node [delay] (m63) {$D$}; \\
+      \coordinate (m70) {}; & \node[adder] (m71)  {$+$};  & \node[adder] (m72)  {$+$};   & \coordinate (m73) {};\\
+      };
+
+
+%
+%
+      \foreach \i/\j in {1/0, 3/1, 4/3, 5/4, 7/5}
+    {
+		\draw[-latex] (m\i 1) -- (m\j 1);
+		\draw[-latex] (m\i 2) -- (m\j 2);		
+    }
+
+      \foreach \i/\j in {0/2, 2/4, 4/6}
+    {
+		\draw[-latex] (m\i 0) -- (m\j 0);
+		\draw[-latex] (m\i 3) -- (m\j 3);		
+    }
+
+
+      \foreach \i/\j in {6/7}
+    {
+		\draw (m\i 0) -- (m\j 0);
+		\draw (m\i 3) -- (m\j 3);		
+    }
+
+    \draw[-latex] (m00) -- node[midway, above] {$b_0$} (m01);
+    \draw[-latex] (m02) -- node[midway, above] {$1/a_0$} (m03);
+
+    \draw[-latex] (m10) node[anchor=east] {$x[n-1]$} -- node[midway, above] {$b_1$} (m11);
+    \draw[latex-] (m12)  -- node[midway, above] {$-a_1$} (m13) node[anchor=west] {$y[n-1]$};
+
+    \draw[-latex] (m30) node[anchor=east] {$x[n-2]$} -- node[midway, above] {$b_2$} (m31);
+    \draw[latex-] (m32) -- node[midway, above] {$-a_2$} (m33)  node[anchor=west] {$y[n-2]$};
+
+    \draw[-latex] (m50) node[anchor=east] {$x[n-N + 1]$}  -- node[midway, above] {$b_{N-1}$} (m51);
+    \draw[latex-] (m52) -- node[midway, above] {$-a_{N-1}$} (m53)  node[anchor=west] {$y[n-N + 1]$};
+
+    \draw[-latex] (m70) node[anchor=east] {$x[n-N]$}  -- node[midway, above] {$b_{N}$} (m71);
+    \draw[latex-] (m72) -- node[midway, above] {$-a_{N}$} (m73)  node[anchor=west] {$y[n-N]$};
+
+    \draw[latex-] (m00) |- ++(-2, 1) node[anchor=east] {$x[n]$};
+    \draw[-latex] (m03) |- ++(2, 1) node[anchor=west] {$y[n]$};
+
+    \pause
+    \draw[-latex] (m01) -- node[midway, above] {$w[n]$} (m02);
+\end{tikzpicture}

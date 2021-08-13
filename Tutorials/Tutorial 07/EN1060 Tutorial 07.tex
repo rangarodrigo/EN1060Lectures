@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{multicol}
+\usepackage{graphicx}
+%\usepackage{fixltx2e}
+%\usepackage{amsmath}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{heuristica}
+\usepackage[heuristica,vvarbb,bigdelims]{newtxmath}
+\usepackage[T1]{fontenc}
+\usepackage[inline]{enumitem}
+\usepackage{subcaption}
+
+
+
+%\everymath{\displaystyle}
+
+\newcommand\ft{Fourier transform}
+\newcommand\ift{inverse Fourier transform}
+\newcommand\ftr{Fourier transform representation}
+\newcommand\fs{Fourier series}
+\newcommand\fsr{Fourier series representation}
+\newcommand\xt{$x(t)$}
+\newcommand\xo{$X(j\omega)$}
+\newcommand\dtfs{discrete-time Fourier series}
+\newcommand\lt{Laplace transform}
+
+
+\title{\Large Department of Electronic and Telecommunication Engineering\\University of Moratuwa\\Sri Lanka\\{\LARGE \bf {EN1060 Signals and Systems: Tutorial 07 LaplaceTransfrom \footnote{Most of the questions are from Oppenheim \emph{et al.} chapter 9.}}}}
+
+\date{\vspace{-0.2in}\today}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+
+
+\maketitle
+\noindent \tikz \draw (0,0) -- (\textwidth,0);
+
+\begin{enumerate}
+    \item 
+    	\begin{enumerate}
+    		\item Express the \lt of  a general signal $x(t)$.
+    		\item Express the \ft of the signal in terms of its \lt.
+    	\end{enumerate}
+
+      	\item
+        \begin{enumerate}
+            \item Show that the Laplace transform of
+                \begin{equation*}
+                    x(t) = e^{-at}u(t)
+                \end{equation*}
+                is
+                \begin{equation*}
+                    X(s) = \frac{1}{s+a}, \quad\mathfrak{Re}\{s\} > -a .
+                \end{equation*}
+            \item Deduce the \ft~ of $x(t)$.
+            \item Deduce the \lt~ of the unit step funciton. 
+            \item Determine the inverse Laplace transform of
+                \begin{equation*}
+                    X(s) = \frac{7s+17}{(s+2)(s+3)}, \quad\mathfrak{Re}\{s\} > -2.
+                \end{equation*}
+        \end{enumerate}
+
+        \item Find the \lt of 
+        \begin{equation*}
+      		x(t) = -e^{-at}u(-t).
+        \end{equation*}
+        
+
+
+
+        \item Consider the following information of a particular LTI system:
+        \begin{align*}
+            X(s) &=  \frac{s+2}{s-2},\\
+            x(t) &= 0, \: t>0,\\
+            y(t) &= -\frac{2}{3}e^{2t}u(-t) + \frac{1}{3}e^{-t}u(t).
+        \end{align*}
+        \begin{enumerate}
+            \item Determine $H(s)$ and its region of convergence.
+            \item Determine $h(t)$.
+        \end{enumerate}
+
+        \item A causal LTI system is described by the differential equation
+        \begin{equation*}
+            \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = x(t).
+        \end{equation*}
+        Suppose that the system is at initial rest.
+        \begin{enumerate}
+            \item Find the system function $H(s)$.
+            \item Find the Laplace transform of the output $Y(s)$ if the input is $x(t) = \alpha u(t)$.
+            \item Find the output $y(t)$.
+        \end{enumerate}  
+
+
+
+        % Q4(b)
+        \item Consider the continuous-time linear time-invariant system for which the input $x(t)$ and the output $y(t)$ are related by the differential equation
+            \begin{equation*}
+                \frac{d^2 y(t)}{d t^2} - 2\frac{d y(t)}{d t} -3y(t) = x(t).
+            \end{equation*}
+            Assume initial rest.
+            \begin{enumerate}
+                \item Express the transfer function $H(s)$ as a ratio of two polynomials. 
+                \item Sketch the pole-zero pattern of $H(s)$.
+                \item Determine $h(t)$ if the system is neither stable nor causal. 
+            \end{enumerate}
+
+           \item Obtain the
+           \begin{enumerate}
+           		\item bilateral \lt~ $X(s)$, and 
+           		\item unilateral  \lt~ $\mathcal{X}(s)$
+           \end{enumerate}
+           of
+           \begin{equation*}
+           		x(t) = e^{-1(t+1)}u(t+1).
+           \end{equation*}
+           
+           % Oppenheim Q9.29
+           \item Consider the LTI system with input $x(t) = e^{-t}u(t)$  and impulse response $h(t) = e^{-2t}u(t)$.
+           \begin{enumerate}
+           	\item Determine the \lt~ of $x(t)$ and $h(t)$.
+           	\item \label{qu:ltconv} Using the convolution property, determine the \lt~ $Y(s)$ of the output $y(t)$.
+           	\item From the \lt~ of $y(t)$ as obtained in \ref{qu:ltconv} , determine $y(t)$.
+           	\item Verify the result in \ref{qu:ltconv} by explicitly convolving $x(t)$ and $y(t)$.
+           \end{enumerate}
+           
+           % Oppenheim Q9.31
+           \item Consider a continuous-time LTI system for which the input $x(t)$ and output $y(t)$ are related by the differential equation
+           \begin{equation}
+                \frac{d^2 y(t)}{d t^2} - \frac{d y(t)}{d t} -2y(t) = x(t).           	
+           \end{equation}
+           Let $X(s)$ and $Y(s)$ denote the \lt s of  $x(t)$ and $y(t)$, respectively, and $H(s)$ denote hte \lt~ of $h(t)$, the system impulse response.
+           \begin{enumerate}
+       			\item Determine $H(s)$ as a ratio of two polynomials in $s$. Sketch the pole-zero pattern of $H(s)$.
+       			\item Determine the $h(t)$ for each of the following cases:
+       			\begin{enumerate}
+       				\item The system is stable.
+       				\item The system is causal.
+       				\item The system is neither stable nor causal.
+       			\end{enumerate}
+       			
+           \end{enumerate}
+           
+
+\end{enumerate}
+
+\end{document} 

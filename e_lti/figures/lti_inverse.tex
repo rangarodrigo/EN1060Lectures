@@ -1,0 +1,27 @@
+\tikzstyle{int}=[draw, fill=pink!60, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[node distance=2.5cm,auto,>=latex']
+
+		\node (a) at (0,0) {$x(t)$};
+	\node (b)  [int, right of=a, node distance=2cm] {$h(t)$};
+	\node (c)  [int, right of=b, node distance=2cm] {$h_1(t)$};
+	\node (d)  [right of=c, node distance=2cm] {$w(t) = x(t)$};	
+	\path[->] (a) edge (b);
+	\path[->] (b) edge node {$y(t)$} (c);
+	\draw[->] (c) edge (d) ;
+	
+	\begin{scope}[yshift=-2cm,
+		start chain,
+		node distance=5mm, 
+		every node/.style={int, draw,on chain,join,inner sep=2mm}, 
+		every join/.style={->}
+		]
+		\node[draw=none, fill=none]  {$x(t)$};	
+		\node {Identity system $\delta(t)$};
+		\node[draw=none, fill=none]   {$x(t)$};
+	\end{scope}
+	
+	
+\end{tikzpicture}
+

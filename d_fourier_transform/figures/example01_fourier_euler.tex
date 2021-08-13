@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+	\def\w{{-3, -2, -1,0,1, 2, 3}}
+	\def\akmag{{0, 0.5, 1.1180,  1, 1.1180, 0.5, 0}}
+	\def\akarg{{0, -0.7854, 0.4636, 0, -0.4636, 0.7854, 0}}
+
+	\begin{scope}	
+		\draw (-4, 0) -- (4,0) node[anchor=west] {\small $k$};
+		\foreach \k in {-3,-2, ..., 3}
+		{
+			\node at (\k, 0) [anchor=north] {\small $\k$};
+		}
+		\node at (0,1.5) [anchor=south] {\small $|a_k|$};
+		
+		\foreach \k in {0,1, 2, 3, 4,5,6}
+		{
+			\pgfmathparse{\w[\k]}
+			\edef\wk{\pgfmathresult}
+			\pgfmathparse{\akmag[\k]}
+			\edef\akmagk{\pgfmathresult}	
+			\draw[thick] (\wk, 0) -- ++(0,\akmagk) node [anchor=south] {\small $\akmagk$};
+			\ifthenelse{\lengthtest{0 pt = \akmagk pt}}{\draw[fill=black]  (\wk,0) circle (2pt);}{}
+		}
+	\end{scope}
+
+	\begin{scope}[yshift=-1in]
+		\draw (-4, 0) -- (4,0) node[anchor=west] {\small $k$};
+		\foreach \k in {0,1, ..., 6}
+		{			
+			\pgfmathparse{\w[\k]}
+			\edef\wk{\pgfmathresult}
+			\pgfmathparse{\akarg[\k]}
+			\edef\akargk{\pgfmathresult}	
+			\pgfmathint{\wk}
+			\edef\km3int{\pgfmathresult}
+			\pgfmathsign{\akargk}
+            \def\argsign{\pgfmathresult}		
+			%\ifthenelse{-1=\argsign}{\node at (\wk, 0) [anchor=south] {\small $\km3int$};}{\node at (\wk, 0) [anchor=north] {\small $\km3int$};}
+			\ifthenelse{-1=\argsign}{\edef\anchor{north}}{\edef\anchor{south}}			
+			\ifthenelse{-1=\argsign}{\edef\anchorr{south}}{\edef\anchorr{north}}	
+			\draw[thick] (\wk, 0) -- ++(0,\akargk) node[anchor=\anchor] {\small $\akargk$};
+			\path (\wk,0) node [anchor=\anchorr] {\small  $\wk$};
+			\ifthenelse{\lengthtest{0 pt = \akargk pt}}{\draw[fill=black]  (\wk,0) circle (2pt);}{}			
+		}
+		\node at (0,1.2) [anchor=south] {\small $\sphericalangle a_k$};				
+	\end{scope}
+\end{tikzpicture} 

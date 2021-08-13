@@ -1,0 +1,31 @@
+\pgfplotsset{every axis/.append style={font=\scriptsize}}
+\begin{tikzpicture}[scale=1]
+
+
+\begin{axis}[
+	name=axis1,
+       width=8cm,
+       height=4cm,	
+	axis y line=middle,
+	axis x line=bottom,
+	ymin=0,ymax=2,
+	xmin=-3,xmax=4,	
+	xlabel=$t$,
+	ylabel= $y(t)$,	
+	xtick={0, 1, 2, 3},
+	xticklabels={0, $T$, $2T$, $3T$},
+	ytick={0.25, 1},
+	yticklabels=\empty,
+	every axis x label/.style={at={(ticklabel* cs:1.05)},    anchor=west},
+	every axis y label/.style={at={(ticklabel* cs:1.05)},    anchor=west},	
+	clip=false,
+]
+	\addplot [dashed, blue] coordinates {(-3,0) (0,0) (0,1) (1,1) (1,0) (4,0)};
+	\addplot [thick, red!60!black, domain=-3:0]  {0};
+	\addplot [thick, red!60!black, domain=0:1]  {0.5*x*x};
+	\addplot [thick, red!60!black, domain=1:2]  {x - 0.5};
+	\addplot [thick, red!60!black, domain=2:3]  {-0.5*x*x + x +1.5};	
+	\addplot [thick, red!60!black, domain=3:4]  {0};	
+\end{axis}
+
+\end{tikzpicture} 

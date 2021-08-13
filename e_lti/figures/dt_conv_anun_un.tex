@@ -1,0 +1,68 @@
+\begin{tikzpicture}
+	\begin{axis}
+	[
+		name=xn,
+		scale=1,
+		y = 1.5cm,
+		axis x line=middle,
+		axis y line=middle,
+		ymin = -0.1,
+		ymax  = 1.2,
+		xmin = -11,
+		xmax = 11,
+		x label style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)}, anchor=west},
+		every axis plot post/.style={mark options={fill=red!80!black, mark size=2}},
+		ylabel = {$x[n] = \alpha^n u[n]$},	
+		xlabel = {$n$},
+	]
+		\addplot+[ycomb, red!80!black, domain=-10:-1, samples=10] {(0)};
+		\addplot+[ycomb, red!80!black, domain=0:10, mark=*, samples=11] {(0.9^x)};		
+	\end{axis}
+	\begin{axis}
+	[
+		name= un,
+		at={($(xn.south east) + (0, -0.5cm)$)},
+		anchor=north  east,
+		scale=1,
+		y = 1.5cm,		
+		axis x line=middle,
+		axis y line=middle,
+		ymin = -0.1,
+		ymax  = 1.2,		
+		xmin = -11,
+		xmax = 11,
+		x label style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)}, anchor=west},   	
+		every axis plot post/.style={mark options={fill=red!80!black, mark size=2}},
+		ylabel = {$u[n]$},	
+		xlabel = {$n$},
+	]
+		\addplot+[ycomb,  red!80!black, domain=-10:-1, samples=10] {(0)};
+		\addplot+[ycomb,  red!80!black, domain=0:10, mark=*, samples=11] {(1)};		
+	\end{axis}	
+	\begin{axis}
+	[
+		name= hnmiusk,
+		at={($(un.south east) + (0, -0.5cm)$)},
+		anchor=north  east,
+		scale=1,
+		y = 1.5cm,		
+		axis x line=middle,
+		axis y line=middle,
+		ymin = -0.1,
+		ymax  = 1.2,		
+		xmin = -11,
+		xmax = 11,
+		xtick = {0, 4},
+		xticklabels = {0, $n$},
+		x label style={at={(current axis.right of origin)},anchor=west},
+		y label style={at={(current axis.above origin)}, anchor=west},   	
+		every axis plot post/.style={mark options={fill=red!80!black, mark size=2}},
+		ylabel = {$h[n-k]$},	
+		xlabel = {$k$},
+	]
+		\addplot+[ycomb,  red!80!black, domain=-10:4, samples=15] {(1)};
+		\addplot+[ycomb,  red!80!black, domain=5:10, mark=*, samples=6] {(0)};		
+	\end{axis}	
+\end{tikzpicture}

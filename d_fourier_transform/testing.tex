@@ -1,0 +1,59 @@
+\begin{frame}
+
+
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \input{figures/xt_atildet}     
+%            \vspace{-0.5cm}
+            \begin{align*}
+                \tilde{x}(t) &= \sum_{k=-\infty}^{\infty}a_ke^{jk\omega_0 t},\quad \omega_0 =\frac{2\pi}{T}\\
+                a_k &= \frac{1}{T}\int_{-T/2}^{T/2}\tilde{x}(t)e^{-jk\omega_0 t}dt.
+            \end{align*}
+            As $\tilde{x}(t) = x(t)$ for $|t| < T/2$, and also, as $x(t) = 0$ outside this interval,
+            \begin{equation*}
+                a_k = \frac{1}{T}\int_{-T/2}^{T/2}x(t)e^{-jk\omega_0 t}dt = \frac{1}{T}\int_{-\infty}^{\infty}x(t)e^{-jk\omega_0 t}dt.
+            \end{equation*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            Defining the envelope $X(j\omega)$ of $Ta_k$ as        
+            \begin{equation*}
+                X(j\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}dt,
+            \end{equation*}
+            we have, for the coefficients $a_k$, 
+            \begin{equation*}
+                a_k = \frac{1}{T}X(jk\omega_0).
+            \end{equation*}
+            Combining and expressing $\tilde{x}(t)$ in terms of $X(j\omega)$
+            \begin{equation*}
+                \tilde{x}(t) = \sum_{k=-\infty}^{\infty} \frac{1}{T}X(jk\omega_0)e^{jk\omega_0 t},
+            \end{equation*}        
+            or, as $\omega_0 =2\pi/T$    
+            \begin{equation}
+                \label{eq:xtildet_with_ft}
+                \tilde{x}(t) = \frac{1}{2\pi}\sum_{k=-\infty}^{\infty} X(jk\omega_0)e^{jk\omega_0 t}\omega_0.
+            \end{equation}             
+        \end{column}        
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}
+    \input{figures/fs_to_ft_integral}\par
+    As $T\rightarrow \infty$, $\tilde{x}(t)$ approaches $x(t)$, and consequently, Eq.~\ref{eq:xtildet_with_ft} becomes a representation of $x(t)$. Furthermore, as $\omega_0 \rightarrow 0$ as $T \rightarrow \infty$, and the right-hand side of  Eq.~\ref{eq:xtildet_with_ft} passes to an integral. As $\omega_0 \rightarrow 0$, the summation converges to the integral of $X(j\omega)e^{j\omega t}$.
+    
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[draw=blue!50, fill=blue!10, inner sep=2pt,outer sep=2pt, rounded corners=0.1cm, anchor=north east, yshift=0cm, xshift=-1cm, text width=5cm]  at (current page.north east) {
+            \begin{equation*}
+                \tilde{x}(t) = \frac{1}{2\pi}\sum_{k=-\infty}^{\infty} X(jk\omega_0)e^{jk\omega_0 t}\omega_0.
+            \end{equation*}
+        Inverse Fourier transform:
+        \begin{equation*}\label{eq:ift}
+            x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}X(j\omega)e^{j\omega t} d\omega.
+        \end{equation*}
+        Fourier transform or Fourier integral:
+        \begin{equation*}\label{eq:ft}
+            X(j\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t} dt.
+        \end{equation*}
+        } ;
+    \end{tikzpicture}
+\end{frame}

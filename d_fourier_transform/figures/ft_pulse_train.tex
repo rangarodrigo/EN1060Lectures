@@ -1,0 +1,84 @@
+\begin{tikzpicture}
+	
+    \begin{axis}[
+    		name = xt,
+		y=1cm,
+		x=1cm,
+		 clip=false,
+		 xmin=-3.5,xmax=3.5,
+		 xlabel= $t$,
+		 ylabel={$x(t)$},
+		 ymin=0,ymax=1.5,
+		 axis y line=middle,
+		 axis x line=bottom,
+		%ticks=none,
+		ytick = {1},
+		xtick = {-2, -1, 0, 1, 2},
+		xticklabels={$-2T$, $-T$, $0$, $T$, $2T$},
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]		
+		\addplot [mark=*, thick, mark size=1, y filter/.expression={y!=0 ? nan : y}] table[x=w,y=xw] {
+w  xw
+-2       1
+-1        1
+0         1
+1         1
+2         1
+};		
+		\addplot+[red!70!black, thick, mark=none, y filter/.expression={y==0 ? nan : y}, quiver={u=0,v=-\thisrow{xw}}, stealth-] table[x=w,y=xw] {
+w  xw
+-2       1
+-1        1
+0         1
+1         1
+2         1
+};
+		\node at (axis cs:3, 0.5) [] {\scriptsize $\cdots$ };	
+		\node at (axis cs:-3, 0.5) [] {\scriptsize $\cdots$ };			
+    \end{axis}
+    \pause
+
+    \begin{axis}[
+    		name = xw,
+    		at = (xt.south), anchor=north, yshift=-1.5cm,
+		y=1cm,
+		x=2cm,
+		 clip=false,
+		 xmin=-2.75,xmax=2.75,
+		 xlabel= $\omega$,
+		 ylabel={$X(j\omega)$},
+		 ymin=0,ymax=1.5,
+		 axis y line=middle,
+		 axis x line=bottom,
+		%ticks=none,
+		ytick={1},
+		yticklabels={$\dfrac{2\pi}{T}$},
+		xtick = {-2, -1, 0, 1, 2},
+		xticklabels={$-\dfrac{4\pi}{T}$, $-\dfrac{2\pi}{T}$, $0$, $\dfrac{2\pi}{T}$, $\dfrac{4\pi}{T}$},
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]		
+		\addplot [mark=*, thick, mark size=1, y filter/.expression={y!=0 ? nan : y}] table[x=w,y=xw] {
+w  xw
+-2       1
+-1        1
+0         1
+1         1
+2         1
+};		
+		\addplot+[red!70!black, thick, mark=none, y filter/.expression={y==0 ? nan : y}, quiver={u=0,v=-\thisrow{xw}}, stealth-] table[x=w,y=xw] {
+w  xw
+-2       1
+-1        1
+0         1
+1         1
+2         1
+};
+		\node at (axis cs:2.5, 0.5) [] {\scriptsize $\cdots$ };	
+		\node at (axis cs:-2.5, 0.5) [] {\scriptsize $\cdots$ };			
+    \end{axis}
+
+
+
+\end{tikzpicture} 

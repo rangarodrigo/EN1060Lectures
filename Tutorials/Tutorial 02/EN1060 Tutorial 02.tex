@@ -1,0 +1,171 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{multicol}
+\usepackage{graphicx}
+%\usepackage{fixltx2e}
+%\usepackage{amsmath}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{fourier}
+\usepackage[inline]{enumitem}
+
+
+
+\title{\Large Department of Electronic and Telecommunication Engineering\\University of Moratuwa\\Sri Lanka\\{\LARGE \bf \textsc{EN1060 Signals and Systems: Tutorial 02 \footnote{All the questions are from Oppenheim \emph{et al.} chapter 3.}}}}
+
+\date{\vspace{-0.2in}\today}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+
+
+\maketitle
+\noindent \tikz \draw (0,0) -- (\textwidth,0);
+
+\begin{enumerate}
+% Q01 Oppenheim et al. 3.21
+\item A continuous-time periodic signal $x(t)$ is real valued and has a fundamental period $T=8$. The non-zero Fourier series coefficients for $x(t)$ are specified as
+    \begin{equation*}
+        a_1 = a^\ast_{-1} = j, \quad a_5 = a^\ast_{-5} = 2.
+    \end{equation*}
+    Express $x(t)$ in the form
+    \begin{equation*}
+        x(t) = \sum_{k=0}^{\infty}\cos(\omega_k t + \phi_k).
+    \end{equation*}
+    %\flushright [Oppenheim \emph{et al.} 3.21]\par
+
+
+% Q02 Oppenheim et al. 3.22
+\item Determine the Fourier series representation of the following signals:
+    \begin{enumerate}
+        \item Each $x(t)$ illustrated in Figure \ref{fi:fig1}.
+        \item $x(t)$ periodic with period 2 and
+        \begin{equation*}
+            x(t) = e^{-t}\quad \text{for } \quad -1 < t < 1.
+        \end{equation*}
+        \item $x(t)$ periodic with period 4 and
+        \begin{equation*}
+            x(t) = \begin{cases}
+                     \sin \pi t, & 0 \leq t \leq 2, \\
+                     0, & 2 < t \leq 4.
+                   \end{cases}
+        \end{equation*}
+    \end{enumerate}
+    \begin{figure}
+      \centering
+      \input{fig1}
+      \caption{Figure Q02}\label{fi:fig1}
+    \end{figure}
+
+    %\flushright [Oppenheim \emph{et al.} 3.22]
+
+%Q03 Oppenheim et al. 3.23
+\item In each of the following, we specify the Fourier series coefficients of a continuous-time signal that is periodic with period 4. Determine the signal $x(t)$ in each case.
+    \begin{enumerate}
+        \item $a_k = \begin{cases}0, & k =0,\\ (j)^k \frac{\sin k \pi/4}{k\pi}, & \text{otherwise}.        \end{cases}$
+        \item $a_k = (-1)^k \frac{\sin k \pi/8}{2k\pi}$
+        \item $a_k = \begin{cases} jk, & |k| < 3,\\ 0, & \text{otherwise}.        \end{cases}$
+        \item $a_k = \begin{cases} 1, &  k \text{ even},\\ 2, & k \text{ odd}.        \end{cases}$
+    \end{enumerate}
+
+
+%Q04 Oppenheim et al. 3.24
+\item Let
+    \begin{equation*}
+        x(t) = \begin{cases} t, &  0 \leq t \leq 1,\\ 2-t, & 1 \leq t \leq 2,        \end{cases}
+    \end{equation*}
+    be a periodic signal with fundamental period $T=2$ and Fourier coefficients $a_k$.
+    \begin{enumerate}
+        \item Determine the value of $a_0$.
+        \item Determine the Fourier series representation of $dx(t)/dt$.
+        \item Use this result and the differentiation property of the continuous-time Fourier series to help determine the Fourier series coefficients of $x(t)$.
+    \end{enumerate}
+
+
+%Q05 Oppenheim et al. 3.25
+\item Consider the following three continuous-time signals with a fundamental period of $T=1/2$:
+    \begin{eqnarray*}
+    % \nonumber % Remove numbering (before each equation)
+      x(t) &=& \cos(4\pi t), \\
+      y(t) &=& \sin(4\pi t), \\
+      z(t) &=& x(t)y(t).
+    \end{eqnarray*}
+
+    \begin{enumerate}
+        \item Determine the Fourier series coefficients of $x(t)$.
+        \item Determine the Fourier series coefficients of $y(t)$.
+        \item \label{qu:5c} Use these results along with the multiplication property of the continuous-time Fourier series to determine the Fourier series coefficients of $z(t)$.
+        \item Determine the Fourier series coefficients of $z(t)$ through direct expansion of $z(t)$ in trigonometric from, and compare the result with that of part \ref{qu:5c}.
+    \end{enumerate}
+
+
+%Q06 Oppenheim et al. 3.26
+\item Let $x(t)$ be a periodic signal whose Fourier series coefficients are
+    \begin{equation*}
+        a_k = \begin{cases} 2, &  k=0 ,\\ j\left(\frac{1}{2}\right)^{|k|}, & \text{otherwise}.       \end{cases}
+    \end{equation*}
+    Use Fourier series properties to answer the Following questions:
+    \begin{enumerate}
+        \item Is $x(t)$ real?
+        \item Is $x(t)$ even?
+        \item Is $dx(t)/dt$ even?
+    \end{enumerate}
+
+%Q07 Oppenheim et al. 3.40
+\item Let $x(t)$ be a periodic signal with fundamental period $T$ and Fourier series coefficients $a_k$. Derive the Fourier series coefficients of each of the following signals in terms of $a_k$:
+    \begin{enumerate}
+        \item $x(t-t_0) + x(t+t_0)$
+        \item $\mathfrak{Ev}\left\{x(t)\right\}$
+        \item $\mathfrak{Re}\left\{x(t)\right\}$
+        \item $\dfrac{d^2 x(t)}{dt^2}$
+        \item $x(3t -1)$ [for this part, first determine the period of $x(3t -1)$]
+    \end{enumerate}
+
+
+%Q08 Oppenheim et al. 3.41
+\item Suppose we are given the following information about a continuous-time periodic signal with period 3 and Fourier coefficients $a_k$.
+    \begin{enumerate}
+      \item $a_k = a_{k+2}$.
+      \item $a_k = a_{-k}$.
+      \item $\int_{-0.5}^{0.5}x(t)dt = 1$.
+      \item $\int_{0.5}^{1.5}x(t)dt = 2$.
+    \end{enumerate}
+    Determine $x(t)$.
+
+%Q09 Oppenheim et al. 3.42
+\item Let $x(t)$ be a real-valued signal with fundamental period $T$ and Fourier series coefficients $a_k$.
+    \begin{enumerate}
+      \item Show that $a_k = a^\ast_{-k}$ and $a_0$ must be real.
+      \item Show that if $x(t)$ is even, then its Fourier series coefficients must be real and even.
+      \item Show that if $x(t)$ is odd, then its Fourier series coefficients are imaginary and odd and $a_0 = 0$.
+      \item Show that the Fourier series coefficients of the even part of $x(t)$ are equal to $\mathfrak{Re}\left\{a_k\right\}$.
+      \item Show that the Fourier series coefficients of the odd part of $x(t)$ are equal to $j\mathfrak{Im}\left\{a_k\right\}$.
+    \end{enumerate}
+
+%Q10 Oppenheim et al. 3.45
+\item Let $x(t)$ be a real periodic signal with Fourier series representation given in the sine-cosine form
+    \begin{equation}\label{eq:sinecosine}
+        x(t) = a_0 + 2\sum_{k=1}^{\infty}[B_k \cos k\omega_0 t - C_k \sin k\omega_0 t].
+    \end{equation}
+    \begin{enumerate}
+      \item Find the exponential Fourier series representation of the even and odd parts of $x(t)$, that is, find the coefficients $\alpha_k$ and $\beta_k$ in terms of the coefficients in eq. \ref{eq:sinecosine} so that
+          \begin{eqnarray*}
+          % \nonumber % Remove numbering (before each equation)
+            \mathfrak{Ev}\left\{x(t)\right\} &=& \sum_{k=-\infty}^{\infty} \alpha_k e^{jk\omega_0 t},\\
+            \mathfrak{Od}\left\{x(t)\right\} &=&  \sum_{k=-\infty}^{\infty} \beta_k e^{jk\omega_0 t}.\\
+          \end{eqnarray*}
+      \item What is the relationship between $\alpha_k$ and $\alpha_{-k}$? What is the relationship between $\beta_k$ and $\beta_{-k}$?
+    \end{enumerate}
+\end{enumerate}
+\end{document} 

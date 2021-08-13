@@ -1,0 +1,258 @@
+\section{Introduction to Signals and Systems}
+
+\subsection{Introduction}
+
+\begin{frame}{Introduction to the Course}
+    \begin{itemize}[<+->]
+        \item Signals and systems find many application in communications, automatic control, and form the basis for signal processing, machine vision, and pattern recognition.
+        \item Electrical signals (voltages and currents in circuits, electromagnetic communication signals), acoustic signals, image and video signals, and biological signals are all example of signals that we encounter.
+        \item They are functions of independent variables and carry information.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction to Course Contd.}
+    \begin{itemize}[<+->]
+        \item We define a system as a mathematical relationship between an input signal and an output signal.
+        \item We can use systems to analyze and modify signals.
+        \item Signals and systems have brought about revolutionary changes.
+        \item In this course we will study the fundamentals of signals and systems.
+        \item Types of signals in continuous time and discrete time, linear time-invariant (LTI) systems, Fourier analysis, sampling, Laplace transform, $z$-transform, and stability of systems are the core components of the course.
+    \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Learning Outcomes}
+    After completing this course you will be able to do the following:
+    \begin{itemize}[<+->]
+        \item Differentiate between continuous-time, discrete-time, and digital signals, and techniques applicable to the analysis of each type.
+        \item Apply appropriate theoretical principles to characterize the behavior of linear time-invariant (LTI) Systems.
+        \item Use Fourier techniques to understand frequency-domain characteristics of signals.
+        \item Use appropriate theoretical principles for sampling and reconstruction of analog signals.
+        \item Use the Laplace transform and the $z$-transform to treat a class of signals and systems broader than what Fourier techniques can handle.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Categories of Signals}
+    \begin{itemize}[<+->]
+        \item In this course we study signals and systems that process these signals.
+        \item Categories of signals:
+            \begin{itemize}
+                \item Continuous-time signals: independent variable is continuous, \fillblank{$x(t)$}
+                \item Discrete-time signals:independent variable is an integer,  \fillblank{$x[n]$}
+            \end{itemize}
+        \item There are some very strong similarities and also some very important differences between discrete-time signals and systems and continuous-time signals and systems.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Continuous-Time Signals $x(t)$}
+    \begin{itemize}
+        \item The independent variable is continuous.
+        \item E.g., sound pressure at a microphone as a function of time (one-dimensional signal).
+        \item E.g., image brightness as a function of two spatial variables (two-dimensional signal).
+        \item For convenience, we refer to the independent variable as time.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \input{figures/ct_func_audio}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            A function of a continuous variable\\
+            A speech signal: a continuous-time, one-dimensional signal\\
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}[plain]
+
+
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{tikzpicture}
+                \begin{axis}[
+                    axis x line*=top,
+                    axis y line*=left,
+                    %x dir=reverse,
+                    y dir=reverse,
+                    enlargelimits=false,
+                    y axis line style = {-stealth},
+                    x axis line style = {-stealth},
+                    xlabel= {$y$},
+                    ylabel={$x$},
+                    %x label style = {at={(ticklabel cs:1)}, anchor=south west, },
+                    %y label style = {at={(ticklabel cs:0)}, anchor=north, rotate=-90,},
+                    ylabel=\empty,
+                    xticklabels={,,},
+                    yticklabels={,,},
+                    xmin=0,xmax=295,
+                    ymin=0,ymax=350,
+                    axis on top,
+                    axis equal image,
+                    width=6cm,
+                    clip=false,
+                    ]
+                    \addplot graphics [xmin=0,xmax=268,ymin=0,ymax=326] {figures/joseph_fourier.jpg};
+                    \node at (axis cs: 134, 360 ) {$f(x,y)$};
+                    \node at (axis cs: 0, 370 ) {$x$};
+                \end{axis}
+            \end{tikzpicture}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            An image on a film: a continuous-time, two-dimensional signal\\
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+%\begin{frame}[plain]
+%    \begin{tikzpicture}
+%    \begin{axis}[
+%    	title={Mesh on top of patches (i): obscured}]
+%
+%    \addplot3[patch,patch type=biquadratic,shader=interp,
+%    	patch refines=3]
+%    coordinates {
+%    	(0,0,1) (6,1,1.6) (5,5,1.3) (-1,5,0)
+%    	(3,1,0) (6,3,0.4) (2,6,1.1) (0,3,0.9)
+%    	(3,3.75,0.5)
+%    };
+%    \addplot3[patch,patch type=biquadratic,mesh,black,
+%    	patch refines=3]
+%    coordinates {
+%    	(0,0,1) (6,1,1.6) (5,5,1.3) (-1,5,0)
+%    	(3,1,0) (6,3,0.4) (2,6,1.1) (0,3,0.9)
+%    	(3,3.75,0.5)
+%    };
+%    \end{axis}
+%    \end{tikzpicture}
+%\end{frame}
+
+
+
+% Topics to cover
+% 1. Periodic vs. aperiodic
+% 2. CT vs. DT
+% 3. Energy vs. power signals
+
+\begin{frame}[plain]{Discrete-Time Signals $x[n]$}
+    \begin{itemize}
+        \item Function of an integer variable.
+        \item Takes on values at integer values of the argument of $x[n]$.
+    \end{itemize}
+    \begin{figure}
+      \centering
+      \input{figures/dt_signal}
+      \caption{DT Signal}\label{fi:dt_signal}
+    \end{figure}
+    \begin{itemize}
+        \item E.g., weekly stock market index: a DT one-dimensional signal.
+        \item E.g., image brightness,  $x[n,m]$,  as a function of the two spatial variables is a two-dimensional DT signal.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Digital Signals}
+    \begin{itemize}
+      \item What is a digital signal?
+        \begin{itemize}
+            \item A quantized discrete-time signal. I.e., \fillblank{$x[n,m]$}. The signal can take only a value from a finite set of values.
+        \end{itemize}
+
+      \item What is a digital image?
+        \begin{itemize}
+            \item A two-dimensional, quantized, discrete-time signal.
+            \item A $600 \times 800$ image: $n \in [0, 599]$, $m \in [0, 799]$, $x[n,m] \in [0,255]$. 8-bit image.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection{Systems}
+
+\begin{frame}{Systems}
+    \begin{itemize}[<+->]
+        \item A system processes signals.
+        \item Examples of systems:
+            \begin{itemize}
+                \item Dynamics of an aircraft.
+                \item An algorithm for analyzing financial and economic factors to predict bond prices.
+                \item An algorithm for post-flight analysis of a space launch.
+                \item An edge detection algorithm for medical images.
+            \end{itemize}
+    \end{itemize}
+    \pause
+    \begin{figure}
+        \centering
+        %\begin{subfigure}[t]{0.5\textwidth}
+            %\centering
+            \input{figures/ct_system}
+            %\caption{CT system}
+        %\end{subfigure}%
+        %~
+        %\begin{subfigure}[t]{0.5\textwidth}
+            %\centering
+            \input{figures/dt_system}
+            %\caption{DT system}
+        %\end{subfigure}
+        \caption{CT and DT Systems.}\label{fi:ct_dt_systems}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}[plain]{Types of Systems}
+    \begin{figure}
+        \centering
+        \input{figures/system_types}
+        \caption{System types.}\label{fi:system_types}
+    \end{figure}
+    This course is focused on the class of linear, time-invariant (LTI) systems.
+\end{frame}
+
+
+%\begin{frame}{Examples of Systems}
+%    \begin{itemize}
+%      \item Dynamics of an aircraft.
+%      \item An algorithm for analyzing financial and economic factors to predict bond prices.
+%      \item An algorithm for post-flight analysis of a space launch.
+%      \item An edge detection algorithm for medical images.
+%    \end{itemize}
+%\end{frame}
+
+\begin{frame}{Systems Interconnections}
+    \begin{itemize}
+      \item To build more complex systems by interconnecting simpler subsystems.
+      \item To modify the response of a system.
+      \item E.g.: amplifier design, stabilizing unstable systems.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Signal-Flow (Block) Diagrams}
+    \begin{figure}
+        \centering
+        \input{figures/sys_interconnections}
+        \caption{System interconnections.}\label{fi:sys_interconnections}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}[plain]{Domains}
+    \begin{figure}
+        \centering
+        \input{figures/domains}
+        \caption{Domains.}\label{fi:domains}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}[plain]{Domains}
+    \begin{figure}
+        \centering
+        \input{figures/square_wave_approx}
+        \caption{Square wave: time and frequency domains.}\label{fi:square_wave_approx}
+    \end{figure}
+\end{frame}

@@ -1,0 +1,25 @@
+\tikzstyle{int}=[draw, fill=pink!60, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[node distance=2.5cm,auto,>=latex']
+
+	\node (a) at (0,0) {$u(t)$};
+	\node (b)  [int, right of=a, node distance=2cm] {$\dfrac{d}{dt}$};
+	\node (c)  [int, right of=b, node distance=2cm] {$h(t)$};
+	\node (d)  [right of=c, node distance=2cm] {$h(t)$};	
+	\path[->] (a) edge (b);
+	\path[->] (b) edge node {$\delta(t)$} (c);
+	\draw[->] (c) edge (d) ;
+	
+	\begin{scope}[yshift=-1.5cm]
+		\node (a) at (0,0) {$u(t)$};
+		\node (b)  [int, right of=a, node distance=2cm] {$h(t)$};
+		\node (c)  [int, right of=b, node distance=2cm] {$\dfrac{d}{dt}$};
+		\node (d)  [right of=c, node distance=2cm] {$h(t)$};	
+		\path[->] (a) edge (b);
+		\path[->] (b) edge node {$s(t)$} (c);
+		\draw[->] (c) edge (d) ;	
+	\end{scope}
+	
+	
+\end{tikzpicture}

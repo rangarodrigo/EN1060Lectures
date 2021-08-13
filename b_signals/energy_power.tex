@@ -1,0 +1,65 @@
+\begin{frame}{Examples}
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            Determine whether the following signals are energy signals, power signals, or neither.
+            \begin{enumerate}[<alert@+>]
+                \item $x(t) = e^{-at}u(t), \quad a>0$
+                \item $x(t) = A\cos(\omega_0t+\theta)$
+                \item $x(t) = tu(t)$
+            \end{enumerate}
+            \vspace{-0.2in}
+            \begin{overprint}
+                \onslide<1>
+                \begin{align*}
+                    x(t) &= e^{-at}u(t), \quad a>0\\
+                    E_\infty &=  \lim_{T\rightarrow \infty}\int_{-T}^{T}|x(t)|^2dt\\
+                    E_\infty &=  \int_{-\infty}^{\infty}|x(t)|^2dt =  \int_{0}^{\infty}e^{-2at}dt\\
+                    &= \frac{-1}{2a}\left[e^{-at}\right]_0^\infty = \frac{-1}{2a}[0 -1] = \frac{1}{2a}\\
+                \end{align*}
+                This is an energy signal.
+                \onslide<2>
+                \begin{align*}
+                    x(t) &= A\cos(\omega_0t+\theta)\\
+                    E_\infty &=  \lim_{T\rightarrow \infty}\int_{-T}^{T}|x(t)|^2dt\\
+                    &=  \lim_{T\rightarrow \infty}\int_{-T}^{T}A^2\cos^2(\omega_0t+\theta)dt\\
+                    &= \frac{A^2}{2}\lim_{T\rightarrow \infty}\int_{-T}^{T}[1+ \cos(2\omega_0t+2\theta)]dt\\
+                    &= \frac{A^2}{2}\lim_{T\rightarrow \infty}\left[t - \frac{\cos(2\omega_0t+2\theta)}{2\omega_0}\right]_{-T}^{T}\\
+                \end{align*}
+                \onslide<3>
+                \begin{align*}
+                    x(t) &= tu(t)\\
+                    E_\infty &=  \lim_{T\rightarrow \infty}\int_{-T}^{T}|x(t)|^2dt\\
+                    &= \lim_{T\rightarrow \infty}\int_{0}^{T} tdt
+                    = \lim_{T\rightarrow \infty} \left[\frac{t^2}{2}\right]_0^T\\
+                    &= \lim_{T\rightarrow \infty}\frac{T^2}{2} \rightarrow \infty.
+                \end{align*}
+                This is not an energy signal.
+            \end{overprint}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{overprint}
+                \onslide<2>
+                Considering $T$ as an integer multiple of $2\pi/\omega_0$
+                \begin{align*}
+                    E_\infty &= A^2\lim_{T\rightarrow \infty}T \rightarrow \infty.
+                \end{align*}
+                This is not an energy signal.
+                \begin{align*}
+                    P_\infty &= \lim_{T\rightarrow \infty} \frac{1}{2T}\int_{-T}^{T}|x(t)|^2dt\\
+                    &= A^2\lim_{T\rightarrow \infty}\frac{1}{2T}T  = \frac{A^2}{2} < \infty\\
+                \end{align*}
+                This is a power signal.
+                \onslide<3>
+                \begin{align*}
+                    x(t) &= tu(t)\\
+                    P_\infty &=  \lim_{T\rightarrow \infty}\frac{1}{2T}\int_{-T}^{T}|x(t)|^2dt\\
+                    &= \lim_{T\rightarrow \infty}\frac{1}{2T}\frac{T^2}{2}\\
+                    &= \lim_{T\rightarrow \infty}\frac{T}{4} \rightarrow \infty.
+                \end{align*}
+                This is not a power signal either.
+            \end{overprint}
+        \end{column}
+    \end{columns}
+\end{frame} 
+
+

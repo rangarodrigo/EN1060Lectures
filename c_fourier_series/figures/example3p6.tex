@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+	\draw (-4,0) -- (4,0) node [anchor=west] {\scriptsize $t$};
+	\draw (0, -1) -- (0,1) node [anchor=south] {\scriptsize $g(t)$};
+	\foreach \t in {-2, 2}
+	{
+		\draw (\t, 0.1) -- ++(0, -0.2) node[anchor=north, xshift=-1em] {\scriptsize $\t$}; 	
+	}
+	\foreach \t in {-1, 1}
+	{
+		\draw (\t, 0.1) -- ++(0, -0.2) node[anchor=north] {\scriptsize $\t$}; 
+	
+	}	
+	
+	\foreach \t in {0.5}
+	{
+		\draw (0.1, \t) -- ++(-0.2, 0) node[anchor=east] {\scriptsize $\t$}; 
+	
+	}	
+
+	\foreach \t in {-0.5}
+	{
+		\draw (0.1, \t) -- ++(-0.2, 0) node[anchor=west, xshift=1em] {\scriptsize $\t$}; 
+	
+	}
+	\draw[thick] (-3, 0.5) -| (-2, -0.5) -| (0,0.5) -| (2, -0.5) -- (3, -0.5);
+
+\end{tikzpicture}

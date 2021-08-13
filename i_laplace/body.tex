@@ -1,0 +1,905 @@
+\section{Laplace Transform}
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item Using the Fourier transform, we represented a signal as a linear combination of basic signals using the eigenfunctions $e^{j\omega t}$.
+        \item Then we could represent a given LTI system as a spectrum of eigenvalues as a function of $\omega$, which is the change in amplitude that the system applies to each of the basic inputs  $e^{j\omega t}$.
+        \item Now we study a generalization of the Fourier transform, referred to as the Laplace transform.
+        \item The Laplace transform converges for a broader class of signals than does the Fourier transform.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{The Laplace Transform}
+    \begin{itemize}
+        \item The general class of eigenfunctions for LTI systems consists of the complex exponential $e^{st}$, where $s$ is a complex number.  In particular, $s=\sigma + j\omega$.
+        \item When $s$ is purely imaginary, $s= j\omega$, the Laplace transform reduces to the Fourier transform.
+        \item The Laplace transform is the Fourier transform of an exponentially weighted signal. Therefore, the Laplace transform can converge for signals for which the Fourier transform does not converge.
+        \item The range of values of $s$  for which the Laplace transform converges is the \alert{region of convergence} (ROC).
+        \item Two different signals can have Laplace transforms with identical algebraic expressions and differing only in the ROC.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Recall: Continuous-Time Fourier Transform}
+    \begin{align*}
+        x(t) &= \frac{1}{2\pi}\int_{-\infty}^{+\infty}X(\omega)e^{j\omega t}d\omega\\
+        X(\omega) &= \int_{-\infty}^{+\infty}x(t)e^{-j\omega t}dt\\
+    \end{align*}
+    LTI systems: impulse response $h(t)$:
+    \begin{equation*}
+        \begin{matrix}
+            e^{j\omega t} & \rightarrow & \quad H(\omega)e^{j\omega t} \\
+            && \negthickspace\updownarrow{\mathcal{F}}\\
+            && \negthickspace h(t)\\
+        \end{matrix}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Laplace Transform: Eigenfunction Property}
+    \begin{align*}
+        e^{st} &\rightarrow \int_{-\infty}^{+\infty}h(\tau)e^{s(t-\tau)}d \tau\\
+        e^{st} &\rightarrow e^{st}\int_{-\infty}^{+\infty}h(\tau)e^{-s\tau}d \tau\\
+        s &= \sigma + j \omega\\
+        e^{st}   &\rightarrow H(s) e^{st}\\
+        H(s) &= \int_{-\infty}^{+\infty}h(\tau)e^{-s\tau}d \tau
+    \end{align*}
+\end{frame}
+
+
+\begin{frame}{Laplace Transform}
+    \begin{align*}
+        X(s) &= \int_{-\infty}^{+\infty}x(t)e^{-st}dt\\
+        x(t) &\xleftrightarrow{\mathcal{L}} X(s)
+    \end{align*}
+\end{frame}
+
+\begin{frame}{Laplace Transform and Fourier Transform Relationship}
+    \begin{align*}
+        X(s) &= \int_{-\infty}^{+\infty}x(t)e^{-st}dt\\
+        X(\omega) &= \int_{-\infty}^{+\infty}x(t)e^{-j\omega t}dt\\
+        s &= \sigma + j\omega\\
+        \left.X(s)\right|_{s=j\omega} &= \mathcal{F}\left\{ x(t)\right\}
+    \end{align*}
+    New notation:
+    \begin{equation*}
+        \mathcal{F}\left\{ x(t)\right\} = X(j\omega)
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Laplace Transform: Convergence Comparison}
+    \begin{align*}
+        \left.X(s)\right|_{s=j\omega} &= X(j\omega)\\
+        X(s) &= \int_{-\infty}^{+\infty}x(t)e^{-st}dt\\
+        X(\sigma + j\omega) &= \int_{-\infty}^{+\infty}x(t)e^{-(\sigma + j\omega)t}dt\\
+        &= \int_{-\infty}^{+\infty}x(t)e^{-\sigma t}e^{-j\omega t}dt\\
+        X(s) &= \mathcal{F}\left\{ x(t)e^{-\sigma t}\right\}
+    \end{align*}
+    \uncover<2->
+    {
+        LT may converge when FT does not.
+    }
+\end{frame}
+
+\begin{frame}[t,allowframebreaks]{}
+    \begin{example}
+        Find the LT of
+        \begin{equation*}
+            x(t) = e^{-at}u(t).
+        \end{equation*}
+    \end{example}
+
+    \mode<beamer>
+    {
+        %\begin{solution}\end{solution}
+            \begin{align*}
+                X(s) &= \int_{-\infty}^{+\infty}x(t)e^{-st}dt\\
+                &= \int_{0}^{+\infty}e^{-at}e^{-st}dt\\
+                X(s) &= \frac{1}{s+a}, \quad \mathrm{Re}\{s\} > -a\\
+            \end{align*}
+
+            \begin{equation*}
+                e^{-at}u(t) \xleftrightarrow{\mathcal{L}}   \frac{1}{s+a}, \quad \mathrm{Re}\{s\} > -a
+            \end{equation*}
+
+    }
+
+\end{frame}
+
+\begin{frame}[t,allowframebreaks]{}
+    \begin{example}
+        Find the LT of
+        \begin{equation*}
+            x(t) = -e^{-at}u(-t).
+        \end{equation*}
+    \end{example}
+
+    \mode<beamer>
+    {
+        %\begin{solution}
+            \begin{equation*}
+                -e^{-at}u(-t) \xleftrightarrow{\mathcal{L}}   \frac{1}{s+a}, \quad \mathrm{Re}\{s\} < -a
+            \end{equation*}
+        %\end{solution}
+        Note: Two time functions generate the same algebraic expression for the LT. The difference is only in the ROC.
+    }
+
+\end{frame}
+
+\begin{frame}[t]{}
+    \begin{example}
+        Find the LT of
+        \begin{equation*}
+            x(t) = e^{-t}u(t)+ e^{-2t}u(t).
+        \end{equation*}
+    \end{example}
+
+    \mode<beamer>
+    {
+
+    %    \mode<beamer>
+%    {
+%        \begin{columns}
+%            \column{0.48\textwidth}
+%            \column{0.48\textwidth}
+%        \end{columns}
+%    }
+
+        %\begin{solution}\end{solution}
+            \begin{columns}[t]
+                \column[T]{0.58\textwidth}
+                    \begin{align*}
+                        e^{-t}u(t) &\xleftrightarrow{\mathcal{L}}   \frac{1}{s+1}, \quad \mathrm{Re}\{s\} > -1\\
+                        e^{-2t}u(t) &\xleftrightarrow{\mathcal{L}}   \frac{1}{s+2}, \quad \mathrm{Re}\{s\} > -2\\
+                        e^{-t}u(t)+ e^{-2t}u(t) &\xleftrightarrow{\mathcal{L}}   \frac{2s+3}{(s+1)(s+2)}, \quad \mathrm{Re}\{s\} > -1
+                    \end{align*}
+                    \begin{align*}
+                        X(s) &= \frac{N(s)}{D(s)}\\
+                        N(s) &= 0\quad \text{zeros of } X(s)\\
+                        D(s) &= 0\quad \text{poles of } X(s)
+                    \end{align*}
+
+                \column[T]{0.4\textwidth}
+                    \input{Figures/pz01}
+            \end{columns}
+        %
+    }
+\end{frame}
+
+
+\begin{frame}{Properties of the Region of Convergence}
+    \begin{itemize}
+        \item The ROC contains no poles
+        \item The ROC of $X(S)$ consists of s trip parallel to the $j\omega$ axis in the $s$-plane.
+        \item $\mathcal{F}\{x(t)\}$ converges $\Leftrightarrow$ ROC includes the $j\omega$-axis in the $s$-plane.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{}
+    \begin{example}
+        Sketch the choices of the ROC associated with
+        \begin{equation*}
+            X(s) = \frac{1}{(s+1)(s+2)}.
+        \end{equation*}
+    \end{example}
+    \pause
+    \mode<beamer>
+    {
+        %\begin{solution}\end{solution}
+            \input{Figures/pz02}\input{Figures/pz03}\input{Figures/pz04}
+
+    }
+\end{frame}
+
+\begin{frame}{ROC of a Finite-Duration Signal}
+    If $x(t)$ is a finite-duration signal, then the ROC is the entire $s$-plane.
+
+    \mode<beamer>
+    {
+        \input{Figures/decay01}
+    }
+\end{frame}
+
+
+\begin{frame}{ROC of a Right-Sided Signal}
+    If $x(t)$ is right-sided and $\mathrm{Re}\{s\} = \sigma_0$ is in ROC, then all values for which $\mathrm{Re}\{s\} > \sigma_0$ are in ROC.
+
+    \mode<beamer>
+    {
+        \input{Figures/decay02}
+    }
+
+    \onslide<4->
+    {
+        If $x(t)$ is right-sided and $X(s)$ is rational, then ROC is the right of the rightmost pole.
+    }
+\end{frame}
+
+\begin{frame}{ROC of a Left-Sided Signal}
+    If $x(t)$ is left-sided and $\mathrm{Re}\{s\} = \sigma_0$ is in ROC, then all values for which $\mathrm{Re}\{s\} < \sigma_0$ are in ROC.
+
+    %\input{Figures/decay02}
+
+    \onslide<2->
+    {
+        If $x(t)$ is left-sided and $X(s)$ is rational, then ROC is the left of the leftmost pole.
+    }
+\end{frame}
+
+\begin{frame}{ROC of a Two-Sided Signal}
+
+    %\onslide<2->
+    {
+        If $x(t)$ is two-sided and $\mathrm{Re}\{s\} = \sigma_0$ is in ROC, then ROC is the strip in the $s$-plane.
+    }
+\end{frame}
+
+\begin{frame}
+    If the Laplace transform $X(s)$ of $x(t)$ is rational, then if $x(t)$ is right sided, the ROC is the resign in the $s$-plane to the right of the rightmost pole. If $x(t)$ is left sided, the ROC is the region in the $s$-plane to the left of the leftmost pole.
+\end{frame}
+
+
+\begin{frame}[t]{}
+    \begin{example}
+        A Laplace transform is specified by
+        \begin{equation*}
+            X(s) = \frac{1}{(s+1)(s+2)}, \quad \mathrm{Re}\{s\} > -1.
+        \end{equation*}
+        Find the inverse laplace transform.
+
+        \input{Figures/pz05}
+    \end{example}
+\end{frame}
+
+\begin{frame}[t]{}
+    \mode<beamer>
+    {
+        %\begin{solution} \end{solution}
+            \begin{columns}
+                \column[T]{0.4\textwidth}
+                    \input{Figures/pz06}
+                \column[T]{0.6\textwidth}
+                    \begin{align*}
+                        X(s) &= \frac{1}{(s+1)(s+2)}, \quad \mathrm{Re}\{s\} > -1,\\
+                        &= \frac{1}{(s+1)} - \frac{1}{(s+2)}, \quad \mathrm{Re}\{s\} > -1.
+                    \end{align*}
+                    \pause
+                    Consider
+                    \begin{align*}
+                        X_1(s) &= \frac{1}{(s+1)}, \quad \mathrm{Re}\{s\} > -1,\\
+                        x_1(t) &= e^{-t}u(t).
+                    \end{align*}
+            \end{columns}
+
+    }
+\end{frame}
+
+
+\begin{frame}[t]{}
+    \mode<beamer>
+    {
+        %\begin{solution}\end{solution}
+            \begin{columns}
+                \column[T]{0.4\textwidth}
+                    \input{Figures/pz07}
+                \column[T]{0.6\textwidth}
+                    Consider
+                    \begin{align*}
+                        X_2(s) &= -\frac{1}{(s+2)}, \quad \mathrm{Re}\{s\} > -1,\\
+                        x_2(t) &= -e^{-2t}u(t).
+                    \end{align*}
+                    So
+                    \begin{equation*}
+                        x(t) = (e^{-t} -e^{-2t})u(t).
+                    \end{equation*}
+            \end{columns}
+
+    }
+\end{frame}
+
+
+
+\begin{frame}[t]{}
+    \begin{example}
+        Find the inverse laplace transform of
+        \begin{enumerate}
+            \item
+            \begin{equation*}
+                X(s) = \frac{2s+4}{s^2 + 4s+ 3}, \quad \mathrm{Re}\{s\} > -1,
+            \end{equation*}
+            \item
+            \begin{equation*}
+                X(s) = \frac{2s+4}{s^2 + 4s+ 3}, \quad \mathrm{Re}\{s\} < -3,
+            \end{equation*}
+            \item
+            \begin{equation*}
+                X(s) = \frac{2s+4}{s^2 + 4s+ 3}, \quad -3 < \mathrm{Re}\{s\} < -1,
+            \end{equation*}
+        \end{enumerate}
+    \end{example}
+\end{frame}
+
+
+\begin{frame}[t]{}
+    \mode<beamer>
+    {
+        %\begin{solution}
+            \begin{equation*}
+                X(s) = \frac{2s+4}{s^2 + 4s+ 3} = \frac{1}{s+1} + \frac{1}{s+3}
+            \end{equation*}
+        %\end{solution}
+
+        \begin{enumerate}
+            \item<2-> The ROC of $X(s)$ is $\mathrm{Re}\{s\} > -1$. Thus, $x(t)$ is a right-sides signal. We obtain
+            \begin{equation*}
+                x(t) = e^{-t}u(t) + e^{-3t}u(t) = (e^{-t}+ e^{-3t})u(t).
+            \end{equation*}
+
+            \item<3-> The ROC of $X(s)$ is $\mathrm{Re}\{s\} < -3$. Thus, $x(t)$ is a left-sides signal. We obtain
+            \begin{equation*}
+                x(t) = -e^{-t}u(-t) - e^{-3t}u(-t) = -(e^{-t}+ e^{-3t})u(-t).
+            \end{equation*}
+
+            \item<4-> The ROC of $X(s)$ is $-3 < \mathrm{Re}\{s\} < -1$. Thus, $x(t)$ is a double-sided signal. We obtain
+            \begin{equation*}
+                x(t) = -e^{-t}u(-t) + e^{-3t}u(t).
+            \end{equation*}
+        \end{enumerate}
+    }
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Some Laplace Transform Pairs}
+Instead of having to reevaluate the transform of a given signal, we can simply refer to the Laplace transform table and and read out the desired transform.
+    \begin{center}
+        \scriptsize
+        \setlength{\extrarowheight}{10pt}
+        \begin{longtable}{>{$}c<{$}>{$}c<{$}>{$}c<{$}}
+            \toprule
+            x(t) & X(s) & \text{ROC}\\
+            \midrule
+            \endhead
+            \delta(t) & {1} & \text{All } s\\
+            u(t) & {\dfrac{1}{s}} & \mathrm{Re}(s) > 0\\
+            -u(-t) & {\dfrac{1}{s}} & \mathrm{Re}(s) < 0\\
+            tu(t) & {\dfrac{1}{s^2}} & \mathrm{Re}(s) > 0\\
+            \dfrac{t^{n-1}}{(n-1)!}u(t) & {\dfrac{1}{s^{n}}} & \mathrm{Re}(s) > 0\\
+            -\dfrac{t^{n-1}}{(n-1)!}u(-t) & {\dfrac{1}{s^{n}}} & \mathrm{Re}(s) < 0\\
+            e^{-at}u(t) & {\dfrac{1}{s+a}} & \mathrm{Re}(s) > - a\\
+            -e^{-at}u(-t) & {\dfrac{1}{s+a}} & \mathrm{Re}(s) < - a\\
+            te^{-at}u(t) & \dfrac{1}{(s+a)^2} & \mathrm{Re}(s) > - a\\
+            -te^{-at}u(-t) & \dfrac{1}{(s+a)^2} & \mathrm{Re}(s) < - a\\
+            (\cos \omega_0t)u(t) & \dfrac{s}{s^{2}+\omega^2} & \mathrm{Re}(s) > 0\\
+            (\sin \omega_0t) u(t) & \dfrac{\omega_0}{s^{2}+\omega^2} & \mathrm{Re}(s) > 0\\
+            (e^{-at}\cos \omega_0t) u(t) & \dfrac{s+a}{(s+a)^{2}+\omega^2} & \mathrm{Re}(s) >  - a\\
+            (e^{-at}\sin \omega_0t) u(t) & \dfrac{\omega_0}{(s+a)^{2}+\omega^2} & \mathrm{Re}(s) >  - a\\
+            \bottomrule
+        \end{longtable}
+    \end{center}
+\end{frame}
+
+
+\subsection{Properties of the Laplace Transform}
+
+
+
+\begin{frame}{Properties}
+    \begin{equation*}
+        ax_1(t) + bx_2(t) \xleftrightarrow{\mathcal{L}} aX_1(s) + bX_2(s).
+    \end{equation*}
+
+    \begin{equation*}
+        \frac{dx(t)}{dt} \xleftrightarrow{\mathcal{L}} sX(s).
+    \end{equation*}
+    \begin{center}
+        \input{Figures/ltblock}
+    \end{center}
+
+
+    \begin{equation*}
+        Y(s) = H(s)X(s).
+    \end{equation*}
+
+    Stable, causal $\Leftrightarrow$ all poles in left-half $s$-plane [later].
+\end{frame}
+
+
+%\begin{frame}[allowframebreaks]{}
+%    \begin{center}
+%        \scriptsize
+%        \setlength{\extrarowheight}{10pt}
+%        \begin{longtable}{c>{$}c<{$}>{$}c<{$}>{$}c<{$}}
+%            \toprule
+%            Property & \text{Signal} & \text{Transform} & \text{ROC}\\
+%            \midrule
+%            \endhead
+%                & x(t) & X(s) & R\\
+%                & x_1(t) & X_1(s) & R_1\\
+%                & x_2(t) & X_2(s) & R_2\\
+%            Linearity & a_1x_1(t) + a_2x_2(t) &  a_1X_1(t) + a_2X_2(t)   & R^\prime \supset R_1 \cap R_2\\
+%            Time shifting & x(t-t_0) & \mode<beamer>{e^{-st_0}X(s)} & R^\prime = R\\
+%            Shifting in $s$ & e^{s_0t}x(t) & \mode<beamer>{X(s - s_0)} & R^\prime = R + \mathrm{Re}(s_0)\\
+%            Time scaling & x(at) & \mode<beamer>{\frac{1}{|a|}X(s)} & R^\prime = aR\\
+%            Time reversal & x(-t) & X(-s) &  R^\prime = -R\\
+%            Differentiation in $t$ & \dfrac{dx(t)}{dt} & \mode<beamer>{sX(s)} &  R^\prime \supset R\\
+%            Differentiation in $s$ &-tx(t) & \mode<beamer>{\dfrac{dX(s)}{ds}} &  R^\prime = R\\
+%            Integration & \int_{-\infty}^t x(\tau)\tau & \dfrac{1}{s}X(s) &  R^\prime \supset R \{\mathrm{Re}(s)>0\}\\
+%            Convolution & x_1(t) \ast x_2(t) & \mode<beamer>{X_1(s)  X_2(s)}  &   R^\prime \supset R_1 \cap R_2\\
+%            \bottomrule
+%        \end{longtable}
+%    \end{center}
+%\end{frame}
+
+\begin{frame}[allowframebreaks]{Properties of the Laplace Transform}
+\scriptsize
+\renewcommand{\arraystretch}{1.5}
+    \centering
+        \begin{longtable}{@{}p{4cm}p{2cm}lp{4cm}@{}}
+            \toprule
+                Property & \text{Signal} & \text{Laplace transform} & ROC\\
+                            \midrule
+                Linearity & $ax_1(t) + bx_2(t)$ & $aX_1(s) + bX_2(s)$ & At least $R_1 \cap R_2$\\
+                Time shifting & $x(t-t_0)$ & $e^{-st_0}X(s)$ & $R$\\
+                Shifting in $s$ domain & $e^{s_0t}x(t)$ & $X(s-s_0)$ & Shifted version of $R$ (i.e., $s$ is in ROC if $s-s_0$ is in $R$)\\
+                Time scaling & $x(at)$ & $\frac{1}{|a|}X\left(\frac{s}{a}\right)$ & Scaled ROC (i.e., $s$ is in ROC if $s/a$ is in $R$)\\
+                Conjugation & $x^\ast(t)$ & $X^\ast(s^\ast)$ & $R$\\
+                Convolution & $x_1(t) \ast x_2(t)$ & $X_1(s)X_2(s)$ & At least $R_1 \cap R_2$\\
+                Differentiation in the time domain & $\frac{dx(t)}{dt}$ & $sX(s)$ & At least $R$\\
+                Differentiation in the $s$-domain & $-tx(t)$ & $\frac{dX(s)}{ds}$ & $R$\\
+                Integration in the time domain & $\int_{-\infty}^{t}x(\tau)d\tau$ & $\frac{1}{s}X(s)$ & At least $R \cap \{\mathfrak{Re}\{s\}>0\}$\\
+                \multicolumn{4}{p{\textwidth}}
+                {
+                    Initial- and final-value theorems:
+                    If $x(t) = 0$ for $t<0$ and $x(t)$ contains no impulses or higher-order singularities at $t=0$, then
+                }\\
+                \multicolumn{4}{l}
+                {
+                    $x(0^+) = \lim_{s \rightarrow \infty} sX(s)$
+                }\\
+                \multicolumn{4}{l}
+                {
+                    $\lim_{t \rightarrow \infty} x(t) = \lim_{s \rightarrow 0} sX(s) $
+                }\\
+            \bottomrule
+        \end{longtable}
+
+\end{frame}
+
+
+
+
+\begin{frame}{}
+    \begin{example}
+        Verify the time-shifting property
+        \begin{equation*}
+            x(t-t_0) \xleftrightarrow{} e^{-st_0}X(s), \quad R^\prime = R.
+        \end{equation*}
+    \end{example}
+    \pause
+    %\mode<beamer>
+    {
+        \begin{align*}
+            \mathcal{L}\{x(t-t_0)\}    &= \int_{-\infty}^\infty x(t-t_0)e^{-st}dt
+        \end{align*}
+        By the change of variables $\tau=t-t_0$, we obtain\pause
+        \begin{align*}
+            \mathcal{L}\{x(t-t_0)\}    &= \int_{-\infty}^\infty x(\tau)e^{-s(\tau+t_0)}dt\\
+            \pause
+            &= e^{-st_0}\int_{-\infty}^\infty x(\tau)e^{-s\tau}dt\\
+            &= e^{-st_0}X(s)
+        \end{align*}
+        with the same ROC as for $X(s)$ itself.
+    }
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+    \begin{example}
+        Using the various Laplace transform properties, derive the Laplace transforms of the following signals from the Laplace transform of $u(t)$.
+        \begin{enumerate}
+          \item $\delta(t)$
+          \item $\delta^\prime(t)$
+          \item $tu(t)$
+          \item $e^{-at}u(t)$
+          \item $te^{-at}u(t)$
+          \item $\cos \omega_0t u(t)$
+          \item $e^{-at}\cos \omega_0t u(t)$
+        \end{enumerate}
+    \end{example}
+    \pause
+    \mode<beamer>
+    {
+        \begin{enumerate}
+          \item
+              \begin{align*}
+                \mathcal{L}\{u(t)\}    &= \int_{-\infty}^\infty u(t)e^{-st}dt\\
+                &= \int_{0}^\infty e^{-st}dt\\
+                &= - \left.\frac{1}{s}e^{-st}\right|_0^\infty\\
+                &= \frac{1}{s}, \quad \mathrm{Re}(s)>0.
+              \end{align*}
+              \pause
+              \begin{align*}
+                \delta(t) &= \frac{du(t)}{dt}
+              \end{align*}
+              Thus, using time differentiation property, we obtain
+              \begin{align*}
+                \delta(t) &\xleftrightarrow{} {s\frac{1}{s}} = 1, \quad \text{all } s
+              \end{align*}
+              \pause
+          \item Again applying the time-differentiation property to the result above), we obtain
+              \begin{align*}
+                \delta^\prime(t) &\xleftrightarrow{} s, \quad \text{all } s\\
+              \end{align*}
+              \pause
+          \item Using the differentiation in $s$ property, we have
+              \begin{align*}
+                tu(t) &\xleftrightarrow{}  -\frac{d}{ds}\left(\frac{1}{s}\right) = \frac{1}{s^2}, \quad \mathrm{Re}(s)>0\\
+              \end{align*}
+              \pause
+          \item Using the shifting in the $s$-domain property, we have
+              \begin{align*}
+                e^{-at}u(t) &\xleftrightarrow{}  \frac{1}{s+a}, \quad \mathrm{Re}(s)>-a\\
+              \end{align*}
+        \end{enumerate}
+
+    }
+\end{frame}
+
+
+
+
+
+\subsection{Analysis of LTI Systems Using the Laplace Transform}
+
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item The properties of the Laplace transform make it useful in analyzing LTI systems that are represented by linear constant-coefficient differential equations.
+        \item Applying the Laplace transform to a differential equation converts it to an algebraic equation relating the Laplace transform of the system output to the product of the Laplace transform of the system input and the Laplace transform of the system impulse response, referred to as the system function.
+        \item The system function is readily obtained by inspection of the differential equation, and the system impulse response can be obtained by evaluating the inverse Laplace transform of the system function.
+        \item Alternatively, the response for any other input can be evaluated by first multiplying the Laplace transform of the input by the system function and then applying the inverse Laplace transform.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}[<+->]
+        \item The ROC associated with the system function for a \alert{causal} system is a right-half plane.
+        \item For a system with a rational system function, causality of the system is equivalent to the ROC being the right-half plane to the right of the rightmost plane.
+        \item An LTI system is stable if and only if the ROC of its system function $H(s)$ includes the entire $j\omega$-axis [i.e., $\mathfrak{Re}(s) = 0$]
+        \item A causal system with rational system function $H(s)$ is stable if and only if all of the poles of $H(s)$ lie in the left-half of the $s$-plane---i.e., all he pose have negative real parts.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{First- and Second-Order Systems}
+    \begin{itemize}
+        \item Two particularly important classes of systems described by linear constant-coefficient differential equations are first-order and second-order systems.
+        \item In implementing higher-order systems, it is very common to use first and second-order systems as building blocks.
+        \item First-order systems are represented by a single pole in the $s$-plane, and second-order systems by a pair of poles. There may or may not also be zeros in the transfer function, depending on whether there are derivative terms on the right-hand side of the differential equation.
+        \item From the differential equation, the system function can be written directly.
+        \item If we assume that the systems are causal, so that the impulse response is right-sided, then the ROC of the system function is implicitly specified to be to the right of the rightmost pole in the $s$-plane.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Recall: Laplace Transform}
+    \begin{align*}
+        X(s) &= \int_{-\infty}^{+\infty}x(t)e^{-st}dt\\
+        x(t) &\leftrightarrow X(s)\\
+        \left.X(s)\right|_{s=j\omega} &= X(j\omega) = \mathcal{F}\left\{ x(t)\right\}\\
+        s &= \sigma + j\omega\\
+         X(s) &= \mathcal{F}\left\{ x(t)e^{-\sigma t}\right\}
+    \end{align*}
+    LT converges for some values of $\sigma$ and not others: ROC.
+\end{frame}
+
+
+
+\begin{frame}{First-Order System}
+    \begin{equation*}
+        \begin{matrix}
+            \dfrac{dy(t)}{dt} & +& ay(t) &= &x(t)\\
+            \pause
+            \downarrow &&\downarrow &&\downarrow\\
+            \pause
+            sY(s) & +& aY(s) &= &X(s)\\
+        \end{matrix}
+    \end{equation*}
+    \pause
+\mode<beamer>
+{
+    \begin{align*}
+        Y(s) &= \dfrac{1}{s+a}X(s), \quad \mathrm{Re}\{s\}> -a\\
+        h(t) &\xleftrightarrow{\mathcal{L}} H(s)
+    \end{align*}
+    \pause
+    \begin{align*}
+        e^{-at}u(t) &\xleftrightarrow{\mathcal{L}} \dfrac{1}{s+a}, \quad \mathrm{Re}\{s\}>-a\\
+        -e^{-at}u(-t) &\xleftrightarrow{\mathcal{L}} \dfrac{1}{s+a}, \quad \mathrm{Re}\{s\}<-a
+    \end{align*}
+}
+\end{frame}
+
+
+\begin{frame}{Example: $RC$ Step Response}
+    \begin{center}
+        \begin{circuitikz}
+            \draw (0,0)
+            to[V, v=$v_I(t)$, invert] (0,3) %Invert the element to achieve required polarity.
+            to[R=$R$,i=$i(t)$] (5,3)
+            to[C, l_=$C$, v^=$v_C(t)$] (5,0)
+            to[short] (0,0);
+        \end{circuitikz}
+    \end{center}
+    \pause
+    \begin{equation*}
+        v_I(t) - v_R(t) - v_C(t) = 0.
+    \end{equation*}
+    \begin{equation*}
+        i(t) = C\frac{dv_C(t)}{dt}.
+    \end{equation*}
+    \begin{equation*}
+        v_I(t) - RC\frac{dv_C(t)}{dt} - v_C(t) = 0.
+    \end{equation*}
+    \begin{equation*}
+        \frac{dv_C(t)}{dt} + \frac{1}{RC}v_C(t) = \frac{1}{RC}v_I(t).
+    \end{equation*}
+\end{frame}
+
+
+\begin{frame}
+    Assume initial rest.
+    \begin{columns}[T,totalwidth=\textwidth]
+        \begin{column}{0.5\textwidth}
+            \begin{align*}
+                \frac{dv_C(t)}{dt} + \frac{1}{RC}v_C(t) &= \frac{1}{RC}v_I(t).\\
+                \frac{dv_C(t)}{dt} + \frac{1}{RC}v_C(t) &= \frac{1}{RC}u(t)
+            \end{align*}
+            \begin{align*}
+                sV_C(s) + \frac{1}{RC}V_C(s) &= \frac{1}{RC}\frac{1}{s}\\
+                V_C(s) &= \frac{\frac{1}{RC}}{s(s+ \frac{1}{RC})}\\
+                &= \frac{1}{s}  - \frac{1}{s+ \frac{1}{RC}}
+            \end{align*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{align*}
+                v_c(t) &= u(t) - e^{-\frac{1}{RC}t}u(t)\\
+                v_c(t) &= \left(1 - e^{-\frac{1}{RC}t}\right)u(t)
+            \end{align*}
+            Plot with $RC=1$:
+            \begin{center}
+                \input{Figures/capacitor_voltage}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+
+\begin{frame}[t]{Continuous Time  Second-Order System}
+    \begin{columns}[t]
+        \begin{column}{6cm}
+            \begin{equation*}
+                \dfrac{d^2y(t)}{dt^2} + 2\zeta\omega_n\dfrac{dy(t)}{dt} + \omega_n^2y(t) = \omega_n^2x(t).
+            \end{equation*}
+            \pause
+            \mode<beamer>
+            {
+                \begin{equation*}
+                    \left[s^2 + 2\zeta\omega_ns + \omega_n^2\right]Y(s) = \omega_n^2X(s).
+                \end{equation*}
+            }
+            \pause
+            \mode<beamer>
+            {
+                \begin{equation*}
+                    H(s) = \dfrac{\omega_n^2}{s^2 + 2\zeta\omega_ns + \omega_n^2}.
+                \end{equation*}
+            }
+            \pause
+            \mode<beamer>
+            {
+                \begin{equation*}
+                    H(s) = \dfrac{\omega_n^2}{(s - c_1)(s - c_2)}.
+                \end{equation*}
+            }
+
+        \end{column}
+        \begin{column}{4cm}
+            \mode<beamer>
+            {
+                \begin{equation*}
+                    c_1 =\pause -\zeta\omega_n + \omega_n\sqrt{\zeta^2 - 1}
+                \end{equation*}
+            }
+            \vspace{-0.2in}
+            \mode<beamer>
+            {
+                \begin{equation*}
+                    c_2 =\pause -\zeta\omega_n - \omega_n\sqrt{\zeta^2 - 1}
+                \end{equation*}
+            }
+            For $\zeta < 1$,
+            \begin{equation*}
+                \begin{split}
+                    c_1&=c_2^\ast\\
+                    &= -\zeta\omega_n + j\omega_n\sqrt{1-\zeta^2}\\
+                \end{split}
+            \end{equation*}
+
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \input{Figures/sopz01}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \input{Figures/sopz02}
+    \end{center}
+\end{frame}
+
+
+
+\begin{frame}[plain,t]
+    %\mode<beamer>
+    {
+    \begin{figure}
+      \centering
+      \input{figures/second_order_response}
+      \caption{Second-order system responses.}\label{fi:second_order_response}
+    \end{figure}
+    }
+\end{frame}
+
+\begin{frame}
+    \begin{example}
+        The transfer function of a network is
+        \begin{equation*}
+            H(s) = \frac{s+10}{s^2+4s+8}
+        \end{equation*}
+        Determine the pole-zero plot of $H(s)$, the type of damping exhibited by the network, and the unit step response of the.
+    \end{example}
+    \pause
+    \mode<beamer>
+    {
+        Solution: The network is underdamped.\\
+        \pause
+        \begin{equation*}
+          y(t) = \left[\frac{10}{8}+1.4e^{-2t}\cos(2t-210.96^\circ)\right]u(t)
+        \end{equation*}
+    }
+\end{frame}
+
+\begin{frame}
+    \begin{example}
+        Consider an $RLC$ series network in which the capacitor voltage and inductor current are initially zero.
+\begin{center}
+    \begin{circuitikz}
+        \draw (0,0)
+        to[V, v=$v_I(t)$, invert] (0,3) %Invert the element to achieve required polarity.
+        to[R=$R$,i=$i(t)$] (5,3)
+        to[L=$L$] (10,3)
+        to[C, l_=$C$, v^=$v_C(t)$] (10,0)
+        to[short] (0,0);
+    \end{circuitikz}
+\end{center}
+\begin{enumerate}
+    \item Obtain the voltage transfer function.
+    \item If $\omega_n = 2000\:\mathrm{rad/s}$ and $\zeta=0.25, 0.50, 0.75$, and $1.0$, sketch the pole-zero plots.
+    \item Sketch the step response for each case.
+\end{enumerate}
+    \end{example}
+\end{frame}
+
+\begin{frame}<beamer>
+    Take $x(t) = v_i(t)$, and $y(t) = v_C(t) = v_o(t)$.
+    \begin{equation*}
+        v_R(t) + v_L(t) + v_C(t) = x(t).
+    \end{equation*}
+    \pause
+    \begin{equation*}
+        i(t) = C\dfrac{d v_C(t)}{dt} = C\dfrac{dy(t)}{dt}.
+    \end{equation*}
+
+    \begin{equation*}
+        v_L(t) = L\dfrac{d i(t)}{dt} = LC\dfrac{d^2y(t)}{dt^2}.
+    \end{equation*}
+    \pause
+    \begin{equation*}
+        RC\dfrac{dy(t)}{dt} + LC \dfrac{d^2y(t)}{dt^2} + y(t) = x(t).
+    \end{equation*}
+    \pause
+    Taking the LT of both the sides
+    \begin{equation*}
+        RCsY(s) + LC s^2LCY(s) + Y(s) = X(s).
+    \end{equation*}
+    \pause
+     \begin{equation*}
+        H(s) = \dfrac{1/LC}{s^2 + (R/L)s + (1/LC)}.
+    \end{equation*}
+\end{frame}
+
+
+\subsection{The Unilateral Laplace Transform}
+
+\begin{frame}{Introduction to The Unilateral Laplace Transform}
+    \begin{itemize}
+      \item In the preceding sections, we have dealt with what is commonly called the bilateral Laplace transform.
+      \item In this section, we briefly study the unilateral Laplace transform.
+      \item  It is of considerable value in analyzing causal systems and, particularly, systems specified by linear constant-coefficient differential equations with nonzero initial conditions (i.e., systems that are not initially at rest).
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{The Unilateral Laplace Transform}
+    \begin{equation*}
+        \mathcal{X}(s) \triangleq \int_{0^{-}}^{\infty}x(t)e^{-st}dt
+    \end{equation*}
+    where the lower limit of integration, $0^{-}$, signifies that we include in the interval of integration any impulses or higher order singularity functions concentrated at $t = 0$.
+    \begin{equation*}
+        x(t) \xleftrightarrow{\mathcal{UL}} \mathcal{X}(s)
+    \end{equation*}
+
+    \pause
+    \mode<beamer>
+    {
+    \begin{tikzpicture}[remember picture,overlay]  \node at (current page.east) [anchor=east, text width=2in, fill=pink]{    $X(s) = \int_{-\infty}^{+\infty}x(t)e^{-st}dt$\\ $x(t) \xleftrightarrow{\mathcal{L}} X(s)$}; \end{tikzpicture}
+    }
+
+    The system analysis tools and system function algebra developed and used in this lecture apply without change to unilateral transforms, \alert{as long
+as we deal with causal LTI systems (for which the system function is both the bilateral and the unilateral transform of the impulse response) with inputs that are identically zero
+fort $t< 0$}.
+\end{frame}
+
+
+
+\begin{frame}
+    \begin{example}
+        A causal LTI system is described by the differential equation
+        \begin{equation*}
+            \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = x(t).
+        \end{equation*}
+        Suppose that the system is at initial rest.
+        \begin{enumerate}
+            \item Find the system function $\mathcal{H}(s)$.
+            \item Find the Laplace transform of the output $\mathcal{Y}(s)$ if the input is $x(t) = \alpha u(t)$.
+            \item Find the output $y(t)$.
+        \end{enumerate}
+    \end{example}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \mode<beamer>
+    {
+        \begin{equation*}
+            \frac{d^2y(t)}{dt^2} + 3\frac{dy(t)}{dt} + 2y(t) = x(t).
+        \end{equation*}
+        System function is
+        \begin{equation*}
+            \mathcal{H}(s) = \frac{1}{s^2 + 3s + 1}
+        \end{equation*}
+        \pause
+        \begin{align*}
+          x(t) &= \alpha u(t)\\
+          X(s) &= \alpha \frac{1}{s}\\
+        \end{align*}
+        \pause
+        \begin{equation*}
+            \begin{split}
+            \mathcal{Y}(s) &=  \mathcal{H}(s)\mathcal{X}(s) = \frac{\alpha}{s(s^2 + 3s + 1)}\\
+            &= \frac{\alpha/2}{s} - \frac{\alpha}{s+1} +\frac{\alpha/2}{s+2}
+            \end{split}
+        \end{equation*}
+        \pause
+        \begin{equation*}
+            y(t) = \alpha \left[ \frac{1}{2} - e^{-t} + \frac{1}{2}e^{-2t}\right]u(t)
+        \end{equation*}
+
+    }
+\end{frame}
+

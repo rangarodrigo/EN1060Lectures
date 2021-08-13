@@ -1,0 +1,43 @@
+\begin{filecontents}{\subfolder/dt_signal.dat}
+ n   xn
+-4   -1.0
+-3   0.5
+-2  1.5
+-1   1.0
+ 0    1.5
+ 1    2.0
+ 2    -2.0
+ 3    1.0
+ 4    0.0
+\end{filecontents}
+
+
+
+\begin{tikzpicture}
+\begin{axis}
+[
+    scale=1,
+    axis x line=middle,
+    axis y line=middle,
+%    every axis x label={at={(current axis.right of origin)},anchor=north west},
+%    every axis y label={at={(current axis.above origin)},anchor= north west},
+    every axis plot post/.style={mark options={fill=black}},
+    xmin=-5.5,
+    xmax=5.5,
+    xtick ={-4,-3,-2, -1, 0, 1, 2, 3, 4},
+    xlabel={$n$},
+    ylabel={$x[n]$},
+    ytick={-2,-1, 0, 1, 2},
+    ymin=-2.5,
+    ymax=2.5,
+%         every axis x label/.style={
+%    %at={(ticklabel* cs:1.05)},
+%    anchor=west,
+%},
+%every axis y label/.style={
+%    %at={(ticklabel* cs:1.05)},
+%    anchor=south,},
+]
+\addplot+[ycomb,black, thick] table [x={n}, y={xn}] {\subfolder/dt_signal.dat};
+\end{axis}
+\end{tikzpicture} 

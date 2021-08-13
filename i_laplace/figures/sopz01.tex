@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale=1.2]
+	\def\al{3}
+   	 \def\pole{++(135:0.1) -- ++(-45:0.2) ++(135:0.1) -- ++(45:0.1) -- ++(-135:0.2) ++(45:0.1)}
+    	\def\zero{circle (0.1)}
+	\tikzstyle{helper} = [orange,thick, dashed]    	
+	\coordinate (o) at (0,0);
+	\draw (-\al,0) -- (\al,0) node[anchor=west] {$\mathrm{Re}$};
+	\draw (0, -\al) -- (0,\al) node[anchor=south] {$\mathrm{Im}$};
+\mode<beamer>
+{
+    \draw[red, thick] (o) ++(120:2) \pole;
+    \draw[red, thick] (o) ++(-120:2) \pole;
+    \node at (2.5, 2) [anchor=south] {$0<\zeta<1$};
+    \pause
+	\draw[helper] (o) -- ++(30:2.5);
+	\draw[helper] (o) -- ++(120:2)    -- ++(0,-2*0.866) node[anchor=north, text=black] {$-\zeta \omega_n$};	
+	\draw[helper, latex-latex] (o) ++(120:2) -- ++(30:2.5) ++(-150:0.1) -- ++(-60:2) node[midway, fill=white, , text=black] {$\omega_n$};
+	\draw[helper] (o) ++(120:2) --++(1, 0) node[anchor=west, text=black] {$\omega_n\sqrt{1-\zeta^2}$};
+	\draw[helper] (o) ++(-0.5,0) arc (180:120:0.5);
+	\node at (-0.3, -0.05) [anchor=south] {$\theta$};
+	\node at (1.2, 0.0) [anchor=south] {$\cos\theta = \zeta$};
+}
+	
+
+\end{tikzpicture} 

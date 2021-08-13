@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+\begin{scope}	
+    \begin{axis}[
+		y=1cm,
+		x=0.25cm,
+		 clip=false,
+		 xmin=-20,xmax=20,
+		 xlabel= $\omega$,
+		 ylabel={$X(j\omega)$},
+		 ymin=-0.5,ymax=2.5,
+		 axis lines=middle,
+         xtick=\empty,
+		 xticklabels=\empty,
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+     ]
+		\addplot+[blue, dashed, smooth, mark=none] table [x={n}, y={xn}] {d_fourier_transform/figures/periodic_square_fs_samples_of_envilope_gen.dat};%d_fourier_transform/figures/
+		%\addplot+[dirac, y filter/.expression={y==0 ? nan : y}] table [x={n}, y={xn}] {periodic_square_fs_samples_of_envilope_4t1.dat};		
+		\addplot+[mark=*, mark size=1, y filter/.expression={y!=0 ? nan : y}] table [x={n}, y={xn}] {d_fourier_transform/figures/periodic_square_fs_samples_of_envilope_4t1.dat};		
+		\addplot+[red!70!black, mark=none, y filter/.expression={y==0 ? nan : y}, quiver={u=0,v=-\thisrow{xn}}, stealth-] table [x={n}, y={xn}] {d_fourier_transform/figures/periodic_square_fs_samples_of_envilope_4t1.dat};
+		\node at (axis cs:10, 2) [anchor=west] {\scriptsize $T = 4T_1$ };
+		\node at (axis cs:0, 2) [anchor=east] {\scriptsize $\pi$ };
+		\node at (axis cs:-1.5, 1.3) [anchor=east] {\scriptsize $2$ };
+		\node at (axis cs:1.5, 1.3) [anchor=west] {\scriptsize $2$ };		
+		\node at (axis cs:-1.7, 0) [anchor=north] {\scriptsize $-\omega_0$ };		
+		\node at (axis cs:1.5, 0) [anchor=north] {\scriptsize $\omega_0$ };			
+		\draw[latex-] (axis cs:3.14159,0) ++(75:0.1cm) -- ++(75:1cm) node[anchor=south west] {\scriptsize $2\omega_0$};
+    \end{axis}
+\end{scope}
+
+\end{tikzpicture} 

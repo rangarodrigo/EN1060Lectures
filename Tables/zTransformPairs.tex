@@ -1,0 +1,24 @@
+\renewcommand{\arraystretch}{2}
+\begin{table}
+    \centering
+    \caption{$z$-Transform Pairs}\label{ta:ft_properties}
+        \begin{tabular}{@{}LLL@{}}
+            \toprule
+            \text{Signal} & \text{Transfrom} & \text{ROC}\\
+            \midrule
+            \delta[n] & 1 & \text{All } z\\
+            u[n] & \dfrac{1}{1-z^{-1}} & |z| > 1\\
+            -u[-n -1] & \dfrac{1}{1-z^{-1}} & |z| < 1\\
+            \delta[n-m] & z^{-m} & \text{All $z$, except 0 (if $m>0$) or $\infty$ (if $m<0$)}\\
+            \alpha^nu[n] & \dfrac{1}{1-\alpha z^{-1}} & |z| > |\alpha|\\
+            -\alpha^nu[-n -1] & \dfrac{ 1}{1-\alpha z^{-1}} & |z| < |\alpha|\\                     
+            n\alpha^nu[n] &  \dfrac{\alpha z^{-1}}{(1-\alpha z^{-1})^2} & |z| > |\alpha|\\  
+            -n\alpha^nu[-n-1] &  \dfrac{\alpha z^{-1}}{(1-\alpha z^{-1})^2} & |z| < |\alpha|\\ 
+            (\cos \omega_0n)u[n] & \dfrac{1 - (\cos\omega_0) z^{-1}}{1 - 2(\cos\omega_0) z^{-1} +z^{-2} } & |z| > 1\\
+            (\sin \omega_0n)u[n] & \dfrac{1 - (\sin\omega_0) z^{-1}}{1 - 2(\cos\omega_0) z^{-1} +z^{-2} } & |z| > 1\\
+            (r^n\cos \omega_0t)u[n] & \dfrac{1 - (r\cos\omega_0) z^{-1}}{1 - (2r\cos\omega_0) z^{-1} +r^2z^{-2} } & |z| > r\\
+            (r^n\sin \omega_0t)u[n] & \dfrac{1 - (r\sin\omega_0) z^{-1}}{1 - (2r\cos\omega_0) z^{-1} +r^2z^{-2} } & |z| > r\\
+            \bottomrule
+        \end{tabular}
+\end{table}
+

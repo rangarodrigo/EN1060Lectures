@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        axis x line=middle,
+        axis y line=left,
+        no markers,
+        smooth,
+        y axis line style = {-stealth},
+        x axis line style = {-stealth},
+        x label style={at={(current axis.right of origin)},anchor=west},
+        y label style={at={(current axis.above origin)}, anchor=south},
+        xlabel= {$t$},
+        ylabel={$x(t)$},
+        xticklabels={,,}]
+        \addplot table  [x=f, y=x, col sep=comma] {a_introduction/figures/audioclip.csv};
+        %\addplot table  [x=f, y=x, col sep=comma] {audioclip.csv};
+    \end{axis}
+\end{tikzpicture} 

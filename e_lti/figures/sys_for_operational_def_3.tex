@@ -1,0 +1,9 @@
+\begin{tikzpicture}[start chain, system/.style={draw, fill=pink!60, minimum size=2em, align=center}]
+	\node (a) [on chain, text width=2em] {$x(t)$\\ $x[n]$};
+	\node (b) [system, on chain, text width=2em] {$I$};
+	\node (c) [system, on chain, text width=2em] {$I$};	
+	\node (d) [on chain, text width=2em] {$x(t)$ \\ $x[n]$};	
+	\draw[-latex] (a) -- (b);
+	\draw[-latex] (b) -- node[midway, above] {$x(t)$} node[midway, below] {$x[n]$} (c);
+	\draw[-latex] (c) -- (d);	
+\end{tikzpicture}

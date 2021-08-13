@@ -1,0 +1,55 @@
+\begin{filecontents}{sinomega.dat}
+o reak akmag imak argak
+-11 -0.5 0 0 0
+-10 0 0 0 0 
+-9 0.5 0 0 0 
+-8 0 0 0 0
+-7 0 0 0 0
+-6 -0.5 0 0 0
+-5 0 0 0 0
+-4 0.5 0 0 0
+-3 0 0 0 0
+-2 0 0.5 -0.5 -1.57
+-1 -0.5 1.581 0.5 0.32
+0  0 1 0 0
+1 0.5 1.581 -0.5 -0.32
+2 0 0.5 0.5 1.57
+3 0 0 0 0
+4 -0.5 0 0 0
+5 0 0 0 0
+6 0.5 0 0 0
+7 0 0 0 0
+8 0 0.5 -0.5 -1.57
+9 -0.5 0 0 0
+10  0 0 0 0
+11 0.5 0 0 0
+\end{filecontents}
+\pgfplotstableread{sinomega.dat}{\sinomega}
+
+\begin{tikzpicture}[scale=0.6]
+
+
+
+    \begin{axis}[
+    		name=axis1,
+% 		y=1cm,
+ 		x=0.7cm,
+		 clip=false,
+		 xmin=-12,xmax=12,
+		 xlabel= $k$,
+		 ylabel={$a_k$},
+		 ymin=-1,ymax=1,
+		axis lines=middle,
+         	xtick={-11, -10, ..., 11},
+         	%xticklabels={$-N$, $0$, $N$},
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+	\addplot [red,very thick, ycomb] table [x={o}, y={reak}] {\sinomega};
+	\node at (axis cs:-1,-0.5) [anchor= east] {\small $-\dfrac{1}{2j}$};
+	\node at (axis cs:1,.5) [anchor= west] {\small $\dfrac{1}{2j}$};	
+	\end{axis}
+			
+\end{tikzpicture} 

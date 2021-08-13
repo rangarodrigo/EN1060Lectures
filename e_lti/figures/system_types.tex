@@ -1,0 +1,61 @@
+
+\begin{tikzpicture}[
+  basic/.style  = {draw, text width=2cm, rectangle},
+  root/.style   = {basic, rounded corners=2pt, thin, align=center, fill=orange!20!white},
+  level-2/.style = {basic, rounded corners=4pt, thin,align=center, fill=blue!10!white, text width=3cm},
+  level-3/.style = {basic, thin, align=center, fill=white, text width=3cm},
+  level 1/.style={sibling distance=5cm, level distance=5em},
+%   {edge from parent fork down},
+  edge from parent/.style={->,solid,black,thick,sloped,draw},
+  edge from parent path={(\tikzparentnode.south) -- (\tikzchildnode.north)},
+  >=latex, node distance=1.2cm, edge from parent fork down]
+
+% root of the the initial tree, level 1
+\node[root] {\textbf{Systems}}
+% The first level, as children of the initial tree
+  child {node[level-2] (c1) {\textbf{Linear}}}
+  child {node[level-2] (c2) {\textbf{Non-linear}}};
+
+% The second level, relatively positioned nodes
+\begin{scope}[every node/.style={level-3}]
+\node [below of = c1, xshift=30pt] (c11) {Time invariant};
+\node [below of = c11] (c12) {Time variant};
+
+
+\node [below of = c2, xshift=30pt] (c21) {Time invariant};
+\node [below of = c21] (c22) {Time variant};
+\end{scope}
+
+%lines from each level 1 node to every one of its "children"
+\foreach \value in {1,2}
+  \draw[->] (c1.195) |- (c1\value.west);
+%
+\foreach \value in {1,2}
+  \draw[->] (c2.195) |- (c2\value.west);
+
+\pause
+ \draw[rounded corners=4pt, dashed, green!20!black, thick] (c1.north west) ++ (-0.2,0.2) rectangle ($(c11.south east) + (0.2, -0.2)$);
+\node at ($(c1.north west) + (-0.2,0.2)$)  [anchor=south west] {LTI};
+\end{tikzpicture}
+
+%\begin{tikzpicture}[
+%  %man/.style={rectangle,draw,fill=blue!20},
+%  woman/.style={rectangle,draw,fill=red!40!black!20,rounded corners=.8ex},
+%  grandchild/.style={grow=down,xshift=1em,anchor=west,
+%    edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}},
+%  first/.style={level distance=6ex},
+%  second/.style={level distance=12ex},
+%  third/.style={level distance=18ex},
+%  level 1/.style={sibling distance=10em}]
+%    % Parents
+%    \node[woman] {Systems}
+%      child[level distance=0ex]
+%    [edge from parent fork down]
+%    % Children and grandchildren
+%    child{node[woman] {Linear}
+%      child[grandchild,first] {node[woman]{Time-invariant}}
+%      child[grandchild,second] {node[woman]{Time-variant}}}
+%    child{node[woman] {Non-Linear}
+%      child[grandchild,first] {node[woman]{Time-invariant}}
+%      child[grandchild,second] {node[woman]{Time-variant}}};
+%\end{tikzpicture} 

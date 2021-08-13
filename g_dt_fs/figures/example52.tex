@@ -1,0 +1,132 @@
+\begin{filecontents}{example52data.dat}
+o reak akmag imak argak
+-15 0 0 0 0
+-14 0 0 0 0
+-13 0 0 0 0
+-12 0 0.5 -0.5 -1.57
+-11 1.5 1.581 0.5 0.32
+-10 1 1 0 0
+-9 1.5 1.581 -0.5 -0.32
+-8 0 0.5 0.5 1.57
+-7 0 0 0 0
+-6 0 0 0 0
+-5 0 0 0 0
+-4 0 0 0 0
+-3 0 0 0 0
+-2 0 0.5 -0.5 -1.57
+-1 1.5 1.581 0.5 0.32
+0  1 1 0 0
+1 1.5 1.581 -0.5 -0.32
+2 0 0.5 0.5 1.57
+3 0 0 0 0
+4 0 0 0 0
+5 0 0 0 0
+6 0 0 0 0
+7 0 0 0 0
+8 0 0.5 -0.5 -1.57
+9 1.5 1.581 0.5 0.32
+10  1 1 0 0
+11 1.5 1.581 -0.5 -0.32
+12 0 0.5 0.5 1.57
+13 0 0 0 0
+14 0 0 0 0
+15 0 0 0 0
+\end{filecontents}
+\pgfplotstableread{example52data.dat}{\ninivina}
+
+\begin{tikzpicture}[scale=0.6]	
+
+
+
+    \begin{axis}[
+    		name=axis1,
+% 		y=1cm,
+% 		x=1cm,
+		 clip=false,
+		 xmin=-12,xmax=12,
+		 xlabel= $k$,
+		 ylabel={$\mathfrak{Re}\{a_k\}$},
+		 ymin=-1.5,ymax=2,
+		axis lines=middle,
+         	xtick={-10, 0, 10},
+         	xticklabels={$-N$, $0$, $N$},
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+	\addplot [red,very thick, ycomb] table [x={o}, y={reak}] {\ninivina};
+	\node at (axis cs:0,1) [anchor= west] {\small $1$};
+	\node at (axis cs:1,1.5) [anchor= west] {\small $\dfrac{3}{2}$};	
+	\end{axis}
+	
+    \begin{axis}[
+    		name=axis2,
+    		at={($(axis1.east)+(10cm,0)$)},anchor= east,
+% 		y=1cm,
+% 		x=1cm,
+		 clip=false,
+		 xmin=-12,xmax=12,
+		 xlabel= $k$,
+		 ylabel={$|a_k|$},
+		 ymin=-1.5,ymax=2,
+		axis lines=middle,
+         	xtick={-10, 0, 10},
+         	xticklabels={$-N$, $0$, $N$},
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+	\addplot [red,very thick, ycomb] table [x={o}, y={akmag}] {\ninivina};
+	\node at (axis cs:0,1) [anchor= west] {\small $1$};
+	\node at (axis cs:1,1.5) [anchor= west] {\small $\dfrac{\sqrt{10}}{2}$};		
+	\node at (axis cs:2,.5) [anchor= west] {\small $\dfrac{1}{2}$};			
+	\end{axis}	
+	
+    \begin{axis}[
+    		name=axis3,
+    		at={($(axis1.south east)+(0,-1.1cm)$)},anchor=north east,
+% 		y=1cm,
+% 		x=1cm,
+		 clip=false,
+		 xmin=-12,xmax=12,
+		 xlabel= $k$,
+		 ylabel={$\mathfrak{Im}\{a_k\}$},
+		 ymin=-1.5,ymax=2,
+		axis lines=middle,
+         	xtick={-10, 0, 10},
+         	xticklabels={$-N$, $0$, $N$},
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+	\addplot [red,very thick, ycomb] table [x={o}, y={imak}] {\ninivina};
+	\node at (axis cs:-1,.5) [anchor= east] {\small $\dfrac{1}{2}$};
+	\node at (axis cs:1,-.5) [anchor= west] {\small $-\dfrac{1}{2}$};
+	\end{axis}	
+	
+    \begin{axis}[
+    		name=axis4,
+    		at={($(axis2.south east)+(0,-1.1cm)$)},anchor=north east,
+% 		y=1cm,
+% 		x=1cm,
+		 clip=false,
+		 xmin=-12,xmax=12,
+		 xlabel= $k$,
+		 ylabel={$\angle a_k$},
+		 ymin=-1.5,ymax=2,
+		axis lines=middle,
+         	xtick={-10, 0, 10},
+         	xticklabels={$-N$, $0$, $N$},
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+	\addplot [red,very thick, ycomb] table [x={o}, y={argak}] {\ninivina};
+	\node at (axis cs:2,1.5) [anchor= west] {\small $\dfrac{\pi}{2}$};
+	\node at (axis cs:-2,-1.5) [anchor= east] {\small $-\dfrac{\pi}{2}$};	
+	\end{axis}		
+\end{tikzpicture} 

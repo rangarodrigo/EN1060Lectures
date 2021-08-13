@@ -1,0 +1,74 @@
+\begin{tikzpicture}
+
+\begin{scope}	
+    \begin{axis}[
+		y=2cm,
+		x=0.5cm,
+		 clip=false,
+		 xmin=-20,xmax=20,
+		 xlabel= $\omega$,
+		 ylabel={$Ta_k$},
+		 ymin=-0.5,ymax=2.2,
+		 axis lines=middle,
+		 xtick=\empty,
+		 xticklabels=\empty,
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+		\addplot+[red, smooth, mark=none] table [x={n}, y={xn}] {periodic_square_fs_samples_of_envilope_gen.dat};
+		\addplot+[ycomb,blue, mark options={black, mark size=1}] table [x={n}, y={xn}] {periodic_square_fs_samples_of_envilope_4t1.dat};
+		\node at (axis cs:10, 2) [anchor=west] {\scriptsize $T = 4T_1$ };
+		\draw[latex-] (axis cs:3.14159,0) ++(75:0.1cm) -- ++(75:1cm) node[anchor=south west] {\scriptsize $2\omega_0$};
+    \end{axis}
+\end{scope}
+	
+\begin{scope}[yshift=-7cm]	
+    \begin{axis}[
+		y=2cm,
+		x=0.5cm,
+		 clip=false,
+		 xmin=-20,xmax=20,
+		 xlabel= $\omega$,
+		 ylabel={$Ta_k$},
+		 ymin=-0.5,ymax=2.2,
+		 axis lines=middle,
+		  xtick=\empty,
+		 xticklabels=\empty,
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+		\addplot+[red, smooth, mark=none] table [x={n}, y={xn}] {periodic_square_fs_samples_of_envilope_gen.dat};
+		\addplot+[ycomb,blue, mark options={black, mark size=1}] table [x={n}, y={xn}] {periodic_square_fs_samples_of_envilope_8t1.dat};
+		\node at (axis cs:10, 2) [anchor=west] {\scriptsize $T = 8T_1$ };
+		\draw[latex-] (axis cs:3.14159,0) ++(75:0.1cm) -- ++(75:1cm) node[anchor=south west] {\scriptsize $4\omega_0$};
+    \end{axis}
+\end{scope}
+	
+\begin{scope}[yshift=-14cm]	
+    \begin{axis}[
+		y=2cm,
+		x=0.5cm,
+		 clip=false,
+		 xmin=-20,xmax=20,
+		 xlabel= $\omega$,
+		 ylabel={$Ta_k$},
+		 ymin=-0.5,ymax=2.2,
+		 axis lines=middle,
+		  xtick=\empty,
+		 xticklabels=\empty,
+		 ytick={-1, 1},
+		 yticklabels=\empty,
+		 every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west,},
+		every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south,},
+     ]
+		\addplot+[red, smooth, mark=none] table [x={n}, y={xn}] {periodic_square_fs_samples_of_envilope_gen.dat};
+		\addplot+[ycomb,blue, mark options={black, mark size=1}] table [x={n}, y={xn}] {periodic_square_fs_samples_of_envilope_16t1.dat};
+		\node at (axis cs:10, 2) [anchor=west] {\scriptsize $T = 16T_1$ };
+		\draw[latex-] (axis cs:3.14159,0) ++(75:0.1cm) -- ++(75:1cm) node[anchor=south west] {\scriptsize $8\omega_0$};       
+    \end{axis}
+\end{scope}
+\end{tikzpicture} 

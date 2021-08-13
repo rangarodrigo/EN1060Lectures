@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+\def\z{0.1}
+\def\o{100}
+    \draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
+    \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
+    \draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
+    \draw[thick, orange,domain=0:10] plot({\x},{(exp(-\z*\o*\x))*(sin(\x/180))});
+\end{tikzpicture}

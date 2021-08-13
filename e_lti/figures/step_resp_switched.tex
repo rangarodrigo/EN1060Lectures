@@ -1,0 +1,18 @@
+\tikzstyle{int}=[draw, fill=pink!60, minimum size=2em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[node distance=2.5cm,auto,>=latex']
+	
+	\begin{scope}[yshift=-2cm,
+		start chain,
+		node distance=5mm,
+		every node/.style={int, draw,on chain,join,inner sep=2mm},
+		every join/.style={->}
+		]
+		\node[draw=none, fill=none]  {$h[n]$};	
+		\node { $u[n]$};
+		\node[draw=none, fill=none]   {$s[n]$};
+	\end{scope}
+	
+	
+\end{tikzpicture}

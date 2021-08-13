@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\def\R{1}
+\def\C{1}
+\begin{axis}
+	[
+		scale=0.5,
+		xlabel = {$t$},
+		ylabel = {$v_C(t)$},
+		 axis lines=middle,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel style={at=(current axis.above origin), anchor=south},		
+	]
+	\addplot [red!20!black, thick, domain=0:10] {(1- e^(-x/(\R*\C)))};
+\end{axis}
+
+\end{tikzpicture}
